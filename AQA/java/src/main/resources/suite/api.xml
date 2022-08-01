@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="API Full" parallel="methods" thread-count="5">
+<suite name="API Full" parallel="methods" thread-count="10">
     <listeners>
-        <listener class-name="listener.ApiListener" />
+<!--        <listener class-name="listener.ApiListener" />-->
         <listener class-name="com.epam.reportportal.testng.ReportPortalTestNGListener"/>
     </listeners>
     <test name="API">
         <classes>
             <class name="api.nft.search.SearchNftInCollectionTests"></class>
-            <class name="api.nft.search.SearchNftNegativeTests"></class>
             <class name="api.nft.search.SearchNftTests"></class>
+            <class name="api.nft.search.SearchNftNegativeTests"></class>
             <class name="api.nft.LikeUnlikeNftTests"></class>
             <class name="api.nft.PinUnpinNftTests"></class>
             <class name="api.nft.UserPinnedNftTests"></class>

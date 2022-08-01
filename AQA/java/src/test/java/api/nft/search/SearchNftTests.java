@@ -23,7 +23,7 @@ public class SearchNftTests extends BaseApiTests {
     public void searchInWalletMostRecent() {
         SearchNftRequest search = SearchNftRequest.builder()
                 .group(Group.IN_WALLET.getValue())
-                .limit(50)
+                .limit(5)
                 .sort(Sort.MOST_RECENT.getValue())
                 .build();
 
@@ -48,7 +48,7 @@ public class SearchNftTests extends BaseApiTests {
     public void searchInWalletRecentlyListed() {
         SearchNftRequest search = SearchNftRequest.builder()
                 .group(Group.IN_WALLET.getValue())
-                .limit(50)
+                .limit(5)
                 .sort(Sort.RECENTLY_LISTED.getValue())
                 .build();
 
@@ -76,7 +76,7 @@ public class SearchNftTests extends BaseApiTests {
         SearchNftRequest search = SearchNftRequest.builder()
                 .group(Group.IN_WALLET.getValue())
                 .statuses(List.of(Status.ON_SALE.getValue()))
-                .limit(50)
+                .limit(5)
                 .sort(Sort.MOST_RECENT.getValue())
                 .build();
 
@@ -102,7 +102,7 @@ public class SearchNftTests extends BaseApiTests {
         SearchNftRequest search = SearchNftRequest.builder()
                 .group(Group.IN_WALLET.getValue())
                 .statuses(List.of(Status.HAS_OFFERS.getValue()))
-                .limit(50)
+                .limit(5)
                 .sort(Sort.MOST_RECENT.getValue())
                 .build();
 
@@ -128,7 +128,7 @@ public class SearchNftTests extends BaseApiTests {
         SearchNftRequest search = SearchNftRequest.builder()
                 .group(Group.IN_WALLET.getValue())
                 .statuses(List.of(Status.NO_OFFERS.getValue()))
-                .limit(50)
+                .limit(5)
                 .sort(Sort.MOST_RECENT.getValue())
                 .build();
 
@@ -153,7 +153,7 @@ public class SearchNftTests extends BaseApiTests {
     public void searchFavorites() {
         SearchNftRequest search = SearchNftRequest.builder()
                 .group(Group.FAVORITES.getValue())
-                .limit(50)
+                .limit(5)
                 .sort(Sort.MOST_RECENT.getValue())
                 .build();
 

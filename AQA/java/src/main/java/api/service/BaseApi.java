@@ -1,6 +1,5 @@
 package api.service;
 
-import api.util.RequestSpecHelper;
 import com.epam.reportportal.listeners.LogLevel;
 import com.epam.reportportal.restassured.ReportPortalRestAssuredLoggingFilter;
 import io.restassured.RestAssured;
@@ -16,15 +15,14 @@ public class BaseApi {
 
     public BaseApi() {
         RestAssured.defaultParser = Parser.JSON;
+//        RestAssured.filters(new ReportPortalRestAssuredLoggingFilter(42, LogLevel.INFO));
         RestAssured.enableLoggingOfRequestAndResponseIfValidationFails();
-        RestAssured.requestSpecification = RequestSpecHelper.getDefaultRequestSpec();
+//        RestAssured.requestSpecification = RequestSpecHelper.getDefaultRequestSpec();
     }
 
     protected RequestSpecification setupAuthSpec() {
         var spec = RestAssured.given()
-                .baseUri(configuration().authBaseUrl())
-                .log().all()
-                .filters(new ReportPortalRestAssuredLoggingFilter(42, LogLevel.INFO));
+                .baseUri(configuration().authBaseUrl());
         return spec;
     }
 
@@ -32,16 +30,15 @@ public class BaseApi {
         var spec = RestAssured.given()
                 .baseUri(configuration().socialBaseUrl())
                 .header(new Header("Cookie", String.format(authHeader, accessToken)))
-                .log().all()
-                .filters(new ReportPortalRestAssuredLoggingFilter(42, LogLevel.INFO));
+                .log().all();
         return spec;
     }
 
     protected RequestSpecification setupAdminSpec(String accessToken) {
         var spec = RestAssured.given()
                 .baseUri(configuration().adminBaseUrl())
-                .log().all()
-                .filters(new ReportPortalRestAssuredLoggingFilter(42, LogLevel.INFO));
+                .header(new Header("Cookie", String.format(authHeader, accessToken)))
+                .log().all();
         return spec;
     }
 
@@ -49,15 +46,13 @@ public class BaseApi {
         var spec = RestAssured.given()
                 .baseUri(configuration().nftBaseUrl())
                 .header(new Header("Cookie", String.format(authHeader, accessToken)))
-                .log().all()
-                .filters(new ReportPortalRestAssuredLoggingFilter(42, LogLevel.INFO));
+                .log().all();
         return spec;
     }
 
     protected RequestSpecification setupRinkebySpec(String accessToken) {
         var spec = RestAssured.given()
-                .baseUri(configuration().rinkeby())
-                .log().all();
+                .baseUri(configuration().rinkeby());
         return spec;
     }
 

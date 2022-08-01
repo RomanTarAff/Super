@@ -40,7 +40,7 @@ public class SearchNftNegativeTests extends BaseApiTests {
                 .search(faker.lorem().characters(101))
                 .statuses(List.of(Status.NOT_LISTED.getValue()))
                 .group(Group.IN_WALLET.getValue())
-                .limit(50)
+                .limit(5)
                 .sort(Sort.MOST_RECENT.getValue())
                 .build();
 
@@ -59,7 +59,7 @@ public class SearchNftNegativeTests extends BaseApiTests {
                 .search("Lesley")
                 .statuses(List.of("invalid"))
                 .group(Group.IN_WALLET.getValue())
-                .limit(50)
+                .limit(5)
                 .sort(Sort.MOST_RECENT.getValue())
                 .build();
 
@@ -135,7 +135,7 @@ public class SearchNftNegativeTests extends BaseApiTests {
                 .search("")
                 .statuses(List.of(Status.ON_SALE.getValue()))
                 .group(Group.IN_WALLET.getValue())
-                .limit(50)
+                .limit(5)
                 .sort(Sort.MOST_RECENT.getValue())
                 .build();
 
@@ -154,11 +154,11 @@ public class SearchNftNegativeTests extends BaseApiTests {
                 .search("Lesley")
                 .statuses(List.of(Status.ON_SALE.getValue()))
                 .group(Group.IN_WALLET.getValue())
-                .limit(50)
+                .limit(5)
                 .sort(Sort.MOST_RECENT.getValue())
                 .build();
 
-        CodeMessageResponse codeMessageResponse = nftService.searchNftItems(search, "invalid")
+        CodeMessageResponse codeMessageResponse = nftService.searchNftItems(search, null)
                 .shouldHave(Conditions.statusCode(HTTP_FORBIDDEN))
                 .asClass(CodeMessageResponse.class);
         soft.assertEquals(codeMessageResponse.getCode(), "AuthorizationError");

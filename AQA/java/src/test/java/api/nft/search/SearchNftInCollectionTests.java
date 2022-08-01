@@ -25,7 +25,7 @@ public class SearchNftInCollectionTests extends BaseApiTests {
     public void searchMostRecent() {
         SearchNftRequest search = SearchNftRequest.builder()
                 .collections(List.of(EJIK_COLLECTION_ID))
-                .limit(50)
+                .limit(10)
                 .sort(Sort.MOST_RECENT.getValue())
                 .build();
 
@@ -49,7 +49,7 @@ public class SearchNftInCollectionTests extends BaseApiTests {
     public void searchMostPopular() {
         SearchNftRequest search = SearchNftRequest.builder()
                 .collections(List.of(EJIK_COLLECTION_ID))
-                .limit(50)
+                .limit(5)
                 .sort(Sort.MOST_POPULAR.getValue())
                 .build();
 
@@ -73,7 +73,7 @@ public class SearchNftInCollectionTests extends BaseApiTests {
     public void searchTrending() {
         SearchNftRequest search = SearchNftRequest.builder()
                 .collections(List.of(EJIK_COLLECTION_ID))
-                .limit(50)
+                .limit(5)
                 .sort(Sort.MOST_POPULAR.getValue())
                 .build();
 
@@ -100,7 +100,7 @@ public class SearchNftInCollectionTests extends BaseApiTests {
         SearchNftRequest search = SearchNftRequest.builder()
                 .collections(List.of(EJIK_COLLECTION_ID))
                 .statuses(List.of(Status.ON_SALE.getValue()))
-                .limit(50)
+                .limit(5)
                 .sort(Sort.MOST_RECENT.getValue())
                 .build();
 
@@ -126,7 +126,7 @@ public class SearchNftInCollectionTests extends BaseApiTests {
         SearchNftRequest search = SearchNftRequest.builder()
                 .collections(List.of(EJIK_COLLECTION_ID))
                 .statuses(List.of(Status.HAS_OFFERS.getValue()))
-                .limit(50)
+                .limit(5)
                 .sort(Sort.MOST_RECENT.getValue())
                 .build();
 
@@ -152,7 +152,7 @@ public class SearchNftInCollectionTests extends BaseApiTests {
         SearchNftRequest search = SearchNftRequest.builder()
                 .collections(List.of(EJIK_COLLECTION_ID))
                 .statuses(List.of(Status.NO_OFFERS.getValue()))
-                .limit(50)
+                .limit(5)
                 .sort(Sort.MOST_RECENT.getValue())
                 .build();
 
