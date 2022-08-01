@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Status check" parallel="methods" thread-count="2">
+    <listeners>
+        <listener class-name="listener.TestListener" />
+        <listener class-name="com.epam.reportportal.testng.ReportPortalTestNGListener"/>
+    </listeners>
+    <test name="Status">
+        <classes>
+            <class name="ui.StatusCheckTests">
+        </class>
+        </classes>
+    </test>
+</suite>

@@ -1,0 +1,17 @@
+{
+  "name": "superfarm-api-tests",
+  "private": true,
+  "devDependencies": {
+    "ethers": "^5.0.23",
+    "faker": "^5.5.3",
+    "jest": "^28.1.3",
+    "@playwright/test": "^1.24.1",
+    "axios": "^0.26.0",
+    "shelljs": "^0.8.5"
+  },
+  "scripts": {
+    "mint": "npx playwright test --grep @mint",
+    "tokenDev": "npx playwright test --grep @tokenDev",
+    "tokenTest": "npx playwright test --grep @tokenTest"
+  }
+}

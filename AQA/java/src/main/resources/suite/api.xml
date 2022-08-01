@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="API Full" parallel="methods" thread-count="10">
+    <listeners>
+        <listener class-name="listener.ApiListener" />
+        <listener class-name="com.epam.reportportal.testng.ReportPortalTestNGListener"/>
+    </listeners>
+    <test name="API">
+        <classes>
+            <class name="api.nft.UserPinnedNftTests">
+        </class>
+        </classes>
+    </test>
+</suite>

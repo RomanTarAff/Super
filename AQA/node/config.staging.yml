@@ -1,0 +1,7 @@
+baseUrls:
+    authBaseUrl: "https://x06z2jk68f.execute-api.us-east-1.amazonaws.com/staging"
+    socialBaseUrl: "https://hdyj0q8yhf.execute-api.us-east-1.amazonaws.com/staging"
+    adminBaseUrl: "https://epewzk75kb.execute-api.us-east-1.amazonaws.com/staging"
+    nftBaseUrl: "https://4kdhvrlz9k.execute-api.us-east-1.amazonaws.com/staging"
+    dropsBaseUrl: "https://wm9azjzs93.execute-api.us-east-1.amazonaws.com/staging"
+    mediahubBaseUrl: "https://vjhve81dah.execute-api.us-east-1.amazonaws.com/staging"

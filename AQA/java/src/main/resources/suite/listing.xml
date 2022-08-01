@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Create listing" parallel="methods" thread-count="4">
+    <listeners>
+        <listener class-name="listener.TestListener" />
+        <listener class-name="com.epam.reportportal.testng.ReportPortalTestNGListener"/>
+    </listeners>
+    <test name="Create listing">
+        <classes>
+            <class name="ui.listing.CreateListingTests">
+        </class>
+        </classes>
+    </test>
+</suite>
