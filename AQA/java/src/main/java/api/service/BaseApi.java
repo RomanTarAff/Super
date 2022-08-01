@@ -1,6 +1,8 @@
 package api.service;
 
 import api.util.RequestSpecHelper;
+import com.epam.reportportal.listeners.LogLevel;
+import com.epam.reportportal.restassured.ReportPortalRestAssuredLoggingFilter;
 import io.restassured.RestAssured;
 import io.restassured.http.Header;
 import io.restassured.parsing.Parser;
@@ -21,7 +23,8 @@ public class BaseApi {
     protected RequestSpecification setupAuthSpec() {
         var spec = RestAssured.given()
                 .baseUri(configuration().authBaseUrl())
-                .log().all();
+                .log().all()
+                .filters(new ReportPortalRestAssuredLoggingFilter(42, LogLevel.INFO));
         return spec;
     }
 
@@ -29,14 +32,16 @@ public class BaseApi {
         var spec = RestAssured.given()
                 .baseUri(configuration().socialBaseUrl())
                 .header(new Header("Cookie", String.format(authHeader, accessToken)))
-                .log().all();
+                .log().all()
+                .filters(new ReportPortalRestAssuredLoggingFilter(42, LogLevel.INFO));
         return spec;
     }
 
     protected RequestSpecification setupAdminSpec(String accessToken) {
         var spec = RestAssured.given()
                 .baseUri(configuration().adminBaseUrl())
-                .log().all();
+                .log().all()
+                .filters(new ReportPortalRestAssuredLoggingFilter(42, LogLevel.INFO));
         return spec;
     }
 
@@ -44,7 +49,8 @@ public class BaseApi {
         var spec = RestAssured.given()
                 .baseUri(configuration().nftBaseUrl())
                 .header(new Header("Cookie", String.format(authHeader, accessToken)))
-                .log().all();
+                .log().all()
+                .filters(new ReportPortalRestAssuredLoggingFilter(42, LogLevel.INFO));
         return spec;
     }
 
