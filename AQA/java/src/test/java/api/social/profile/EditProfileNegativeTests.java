@@ -1,6 +1,7 @@
 package api.social.profile;
 
 import api.BaseApiTests;
+import api.enums.Account;
 import api.model.request.social.EditProfileRequest;
 import api.model.response.CodeMessageResponse;
 import api.util.conditions.Conditions;
@@ -14,7 +15,7 @@ public class EditProfileNegativeTests extends BaseApiTests {
         EditProfileRequest request = EditProfileRequest.builder()
                 .username(username).build();
 
-        CodeMessageResponse codeMessageResponse = socialService.editProfile(request, MINT_TOKEN)
+        CodeMessageResponse codeMessageResponse = socialService.editProfile(request, System.getProperty(Account.MINT.getENV()))
                 .shouldHave(Conditions.statusCode(422))
                 .asClass(CodeMessageResponse.class);
 
@@ -29,7 +30,7 @@ public class EditProfileNegativeTests extends BaseApiTests {
         EditProfileRequest request = EditProfileRequest.builder()
                 .email(email).build();
 
-        CodeMessageResponse codeMessageResponse = socialService.editProfile(request, MINT_TOKEN)
+        CodeMessageResponse codeMessageResponse = socialService.editProfile(request, System.getProperty(Account.MINT.getENV()))
                 .shouldHave(Conditions.statusCode(422))
                 .asClass(CodeMessageResponse.class);
 
@@ -44,7 +45,7 @@ public class EditProfileNegativeTests extends BaseApiTests {
         EditProfileRequest request = EditProfileRequest.builder()
                 .description(faker.lorem().characters(1001)).build();
 
-        CodeMessageResponse codeMessageResponse = socialService.editProfile(request, MINT_TOKEN)
+        CodeMessageResponse codeMessageResponse = socialService.editProfile(request, System.getProperty(Account.MINT.getENV()))
                 .shouldHave(Conditions.statusCode(422))
                 .asClass(CodeMessageResponse.class);
 
@@ -59,7 +60,7 @@ public class EditProfileNegativeTests extends BaseApiTests {
         EditProfileRequest request = EditProfileRequest.builder()
                 .websiteUrl(url).build();
 
-        CodeMessageResponse codeMessageResponse = socialService.editProfile(request, MINT_TOKEN)
+        CodeMessageResponse codeMessageResponse = socialService.editProfile(request, System.getProperty(Account.MINT.getENV()))
                 .shouldHave(Conditions.statusCode(422))
                 .asClass(CodeMessageResponse.class);
 
@@ -74,7 +75,7 @@ public class EditProfileNegativeTests extends BaseApiTests {
         EditProfileRequest request = EditProfileRequest.builder()
                 .bannerUrl(url).build();
 
-        CodeMessageResponse codeMessageResponse = socialService.editProfile(request, MINT_TOKEN)
+        CodeMessageResponse codeMessageResponse = socialService.editProfile(request, System.getProperty(Account.MINT.getENV()))
                 .shouldHave(Conditions.statusCode(422))
                 .asClass(CodeMessageResponse.class);
 
@@ -89,7 +90,7 @@ public class EditProfileNegativeTests extends BaseApiTests {
         EditProfileRequest request = EditProfileRequest.builder()
                 .avatarUrl(url).build();
 
-        CodeMessageResponse codeMessageResponse = socialService.editProfile(request, MINT_TOKEN)
+        CodeMessageResponse codeMessageResponse = socialService.editProfile(request, System.getProperty(Account.MINT.getENV()))
                 .shouldHave(Conditions.statusCode(422))
                 .asClass(CodeMessageResponse.class);
 

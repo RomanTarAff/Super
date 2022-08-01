@@ -15,14 +15,14 @@ public class BaseApi {
 
     public BaseApi() {
         RestAssured.defaultParser = Parser.JSON;
-//        RestAssured.filters(new ReportPortalRestAssuredLoggingFilter(42, LogLevel.INFO));
         RestAssured.enableLoggingOfRequestAndResponseIfValidationFails();
-//        RestAssured.requestSpecification = RequestSpecHelper.getDefaultRequestSpec();
     }
 
     protected RequestSpecification setupAuthSpec() {
         var spec = RestAssured.given()
-                .baseUri(configuration().authBaseUrl());
+                .baseUri(configuration().authBaseUrl())
+                .log().all();
+//                .filters(new ReportPortalRestAssuredLoggingFilter(42, LogLevel.INFO));
         return spec;
     }
 
@@ -31,6 +31,7 @@ public class BaseApi {
                 .baseUri(configuration().socialBaseUrl())
                 .header(new Header("Cookie", String.format(authHeader, accessToken)))
                 .log().all();
+//                .filters(new ReportPortalRestAssuredLoggingFilter(42, LogLevel.INFO));
         return spec;
     }
 
@@ -39,6 +40,7 @@ public class BaseApi {
                 .baseUri(configuration().adminBaseUrl())
                 .header(new Header("Cookie", String.format(authHeader, accessToken)))
                 .log().all();
+//                .filters(new ReportPortalRestAssuredLoggingFilter(42, LogLevel.INFO));
         return spec;
     }
 
@@ -47,6 +49,7 @@ public class BaseApi {
                 .baseUri(configuration().nftBaseUrl())
                 .header(new Header("Cookie", String.format(authHeader, accessToken)))
                 .log().all();
+//                .filters(new ReportPortalRestAssuredLoggingFilter(42, LogLevel.INFO));
         return spec;
     }
 

@@ -6,7 +6,7 @@ on:
       environment:
         description: Environment
         required: true
-        type: string
+        type: choice
         options:
           - develop
           - test

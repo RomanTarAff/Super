@@ -1,6 +1,7 @@
 package api.nft.search;
 
 import api.BaseApiTests;
+import api.enums.Account;
 import api.enums.Sort;
 import api.enums.Status;
 import api.model.request.nft.SearchNftRequest;
@@ -22,14 +23,14 @@ public class SearchNftInCollectionTests extends BaseApiTests {
     private final String EJIK_COLLECTION_ID = "5e6ef1e3-be31-515d-9de5-07b2b89ff137";
 
     @Test(testName = "Search nfts in random collection most recent")
-    public void searchMostRecent() {
+    public void searchInCollectionMostRecent() {
         SearchNftRequest search = SearchNftRequest.builder()
                 .collections(List.of(EJIK_COLLECTION_ID))
                 .limit(10)
                 .sort(Sort.MOST_RECENT.getValue())
                 .build();
 
-        SearchNftResponseList nfts = nftService.searchNftItems(search, MINT_TOKEN)
+        SearchNftResponseList nfts = nftService.searchNftItems(search, System.getProperty(Account.MINT.getENV()))
                 .shouldHave(Conditions.statusCode(HTTP_OK))
                 .asClass(SearchNftResponseList.class);
 
@@ -46,14 +47,14 @@ public class SearchNftInCollectionTests extends BaseApiTests {
     }
 
     @Test(testName = "Search nfts in random collection most popular")
-    public void searchMostPopular() {
+    public void searchInCollectionMostPopular() {
         SearchNftRequest search = SearchNftRequest.builder()
                 .collections(List.of(EJIK_COLLECTION_ID))
                 .limit(5)
                 .sort(Sort.MOST_POPULAR.getValue())
                 .build();
 
-        SearchNftResponseList nfts = nftService.searchNftItems(search, MINT_TOKEN)
+        SearchNftResponseList nfts = nftService.searchNftItems(search, System.getProperty(Account.MINT.getENV()))
                 .shouldHave(Conditions.statusCode(HTTP_OK))
                 .asClass(SearchNftResponseList.class);
 
@@ -70,14 +71,14 @@ public class SearchNftInCollectionTests extends BaseApiTests {
     }
 
     @Test(testName = "Search nfts in random collection trending")
-    public void searchTrending() {
+    public void searchInCollectionTrending() {
         SearchNftRequest search = SearchNftRequest.builder()
                 .collections(List.of(EJIK_COLLECTION_ID))
                 .limit(5)
                 .sort(Sort.MOST_POPULAR.getValue())
                 .build();
 
-        SearchNftResponseList nfts = nftService.searchNftItems(search, MINT_TOKEN)
+        SearchNftResponseList nfts = nftService.searchNftItems(search, System.getProperty(Account.MINT.getENV()))
                 .shouldHave(Conditions.statusCode(HTTP_OK))
                 .asClass(SearchNftResponseList.class);
 
@@ -96,7 +97,7 @@ public class SearchNftInCollectionTests extends BaseApiTests {
     //todo price 2 tests
 
     @Test(testName = "Search nfts in random collection on sale")
-    public void searchOnSale() {
+    public void searchInCollectionOnSale() {
         SearchNftRequest search = SearchNftRequest.builder()
                 .collections(List.of(EJIK_COLLECTION_ID))
                 .statuses(List.of(Status.ON_SALE.getValue()))
@@ -104,7 +105,7 @@ public class SearchNftInCollectionTests extends BaseApiTests {
                 .sort(Sort.MOST_RECENT.getValue())
                 .build();
 
-        SearchNftResponseList nfts = nftService.searchNftItems(search, MINT_TOKEN)
+        SearchNftResponseList nfts = nftService.searchNftItems(search, System.getProperty(Account.MINT.getENV()))
                 .shouldHave(Conditions.statusCode(HTTP_OK))
                 .asClass(SearchNftResponseList.class);
 
@@ -122,7 +123,7 @@ public class SearchNftInCollectionTests extends BaseApiTests {
     }
 
     @Test(testName = "Search nfts in random collection has offers")
-    public void searchHasOffers() {
+    public void searchInCollectionHasOffers() {
         SearchNftRequest search = SearchNftRequest.builder()
                 .collections(List.of(EJIK_COLLECTION_ID))
                 .statuses(List.of(Status.HAS_OFFERS.getValue()))
@@ -130,7 +131,7 @@ public class SearchNftInCollectionTests extends BaseApiTests {
                 .sort(Sort.MOST_RECENT.getValue())
                 .build();
 
-        SearchNftResponseList nfts = nftService.searchNftItems(search, MINT_TOKEN)
+        SearchNftResponseList nfts = nftService.searchNftItems(search, System.getProperty(Account.MINT.getENV()))
                 .shouldHave(Conditions.statusCode(HTTP_OK))
                 .asClass(SearchNftResponseList.class);
 
@@ -148,7 +149,7 @@ public class SearchNftInCollectionTests extends BaseApiTests {
     }
 
     @Test(testName = "Search nfts in random collection no offers")
-    public void searchNoOffers() {
+    public void searchInCollectionNoOffers() {
         SearchNftRequest search = SearchNftRequest.builder()
                 .collections(List.of(EJIK_COLLECTION_ID))
                 .statuses(List.of(Status.NO_OFFERS.getValue()))
@@ -156,7 +157,7 @@ public class SearchNftInCollectionTests extends BaseApiTests {
                 .sort(Sort.MOST_RECENT.getValue())
                 .build();
 
-        SearchNftResponseList nfts = nftService.searchNftItems(search, MINT_TOKEN)
+        SearchNftResponseList nfts = nftService.searchNftItems(search, System.getProperty(Account.MINT.getENV()))
                 .shouldHave(Conditions.statusCode(HTTP_OK))
                 .asClass(SearchNftResponseList.class);
 

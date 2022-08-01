@@ -1,6 +1,7 @@
 package api.nft.search;
 
 import api.BaseApiTests;
+import api.enums.Account;
 import api.enums.Group;
 import api.enums.Sort;
 import api.enums.Status;
@@ -23,7 +24,7 @@ public class SearchNftNegativeTests extends BaseApiTests {
                 .group(Group.IN_WALLET.getValue())
                 .build();
 
-        CodeMessageResponse codeMessageResponse = nftService.searchNftItems(search, MINT_TOKEN)
+        CodeMessageResponse codeMessageResponse = nftService.searchNftItems(search, System.getProperty(Account.MINT.getENV()))
                 .shouldHave(Conditions.statusCode(422))
                 .asClass(CodeMessageResponse.class);
         soft.assertEquals(codeMessageResponse.getCode(), "ValidationError");
@@ -44,7 +45,7 @@ public class SearchNftNegativeTests extends BaseApiTests {
                 .sort(Sort.MOST_RECENT.getValue())
                 .build();
 
-        CodeMessageResponse codeMessageResponse = nftService.searchNftItems(search, MINT_TOKEN)
+        CodeMessageResponse codeMessageResponse = nftService.searchNftItems(search, System.getProperty(Account.MINT.getENV()))
                 .shouldHave(Conditions.statusCode(422))
                 .asClass(CodeMessageResponse.class);
         soft.assertEquals(codeMessageResponse.getCode(), "ValidationError");
@@ -63,7 +64,7 @@ public class SearchNftNegativeTests extends BaseApiTests {
                 .sort(Sort.MOST_RECENT.getValue())
                 .build();
 
-        CodeMessageResponse codeMessageResponse = nftService.searchNftItems(search, MINT_TOKEN)
+        CodeMessageResponse codeMessageResponse = nftService.searchNftItems(search, System.getProperty(Account.MINT.getENV()))
                 .shouldHave(Conditions.statusCode(422))
                 .asClass(CodeMessageResponse.class);
         soft.assertEquals(codeMessageResponse.getCode(), "ValidationError");
@@ -82,7 +83,7 @@ public class SearchNftNegativeTests extends BaseApiTests {
                 .sort(Sort.MOST_RECENT.getValue())
                 .build();
 
-        CodeMessageResponse codeMessageResponse = nftService.searchNftItems(search, MINT_TOKEN)
+        CodeMessageResponse codeMessageResponse = nftService.searchNftItems(search, System.getProperty(Account.MINT.getENV()))
                 .shouldHave(Conditions.statusCode(422))
                 .asClass(CodeMessageResponse.class);
         soft.assertEquals(codeMessageResponse.getCode(), "ValidationError");
@@ -101,7 +102,7 @@ public class SearchNftNegativeTests extends BaseApiTests {
                 .sort("invalid")
                 .build();
 
-        CodeMessageResponse codeMessageResponse = nftService.searchNftItems(search, MINT_TOKEN)
+        CodeMessageResponse codeMessageResponse = nftService.searchNftItems(search, System.getProperty(Account.MINT.getENV()))
                 .shouldHave(Conditions.statusCode(422))
                 .asClass(CodeMessageResponse.class);
         soft.assertEquals(codeMessageResponse.getCode(), "ValidationError");
@@ -120,7 +121,7 @@ public class SearchNftNegativeTests extends BaseApiTests {
                 .sort(Sort.MOST_RECENT.getValue())
                 .build();
 
-        CodeMessageResponse codeMessageResponse = nftService.searchNftItems(search, MINT_TOKEN)
+        CodeMessageResponse codeMessageResponse = nftService.searchNftItems(search, System.getProperty(Account.MINT.getENV()))
                 .shouldHave(Conditions.statusCode(422))
                 .asClass(CodeMessageResponse.class);
         soft.assertEquals(codeMessageResponse.getCode(), "ValidationError");
@@ -139,7 +140,7 @@ public class SearchNftNegativeTests extends BaseApiTests {
                 .sort(Sort.MOST_RECENT.getValue())
                 .build();
 
-        CodeMessageResponse codeMessageResponse = nftService.searchNftItems(search, MINT_TOKEN)
+        CodeMessageResponse codeMessageResponse = nftService.searchNftItems(search, System.getProperty(Account.MINT.getENV()))
                 .shouldHave(Conditions.statusCode(422))
                 .asClass(CodeMessageResponse.class);
         soft.assertEquals(codeMessageResponse.getCode(), "ValidationError");

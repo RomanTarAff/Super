@@ -1,5 +1,6 @@
 package base;
 
+import api.enums.Account;
 import api.model.response.social.CollectionResponse;
 import api.model.response.social.ProfileResponse;
 import api.service.admin.AdminService;
@@ -7,6 +8,7 @@ import api.service.nft.NftService;
 import api.service.social.SocialService;
 import com.github.javafaker.Faker;
 import lombok.SneakyThrows;
+import org.apache.log4j.Logger;
 import org.testng.annotations.BeforeSuite;
 import org.testng.asserts.SoftAssert;
 
@@ -15,6 +17,8 @@ import java.nio.file.Paths;
 import java.util.concurrent.TimeUnit;
 
 public class BaseTests {
+
+    private static final Logger log = Logger.getLogger(BaseTests.class);
 
     protected SocialService socialService = new SocialService();
     protected NftService nftService = new NftService();
@@ -28,6 +32,7 @@ public class BaseTests {
     protected static final String NPM_RUN_TEST = String.format("npm --prefix %s/node run tokenTest", HOME);
     protected static final String NPM_RUN_MINT = String.format("npm --prefix %s/node run mint", HOME);
     protected String MINT_TOKEN = "";
+    protected String ADMIN_TOKEN = "";
     protected String BUY_TOKEN = "";
     protected String MINT_NFT_NAME = "";
     protected String TEST_COLLECTION_CONTRACT_ADDRESS = "0x902dfd8f9f9d72feeb2457b45f528cd873b7669b";
@@ -56,10 +61,9 @@ public class BaseTests {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-        TimeUnit.SECONDS.sleep(17);
-        userMint = socialService.getMyProfile(MINT_TOKEN).asClass(ProfileResponse.class);
-        userBuy = socialService.getMyProfile(BUY_TOKEN).asClass(ProfileResponse.class);
+        TimeUnit.SECONDS.sleep(10);
+        userMint = socialService.getMyProfile(System.getProperty(Account.MINT.getENV())).asClass(ProfileResponse.class);
+        userBuy = socialService.getMyProfile(System.getProperty(Account.BUY.getENV())).asClass(ProfileResponse.class);
     }
 
     @SneakyThrows
@@ -117,13 +121,20 @@ public class BaseTests {
                         new InputStreamReader(is));
                 while ((s = br.readLine()) != null) {
                     System.out.println(s);
-                    if (s.contains("Access token MINT DEV")) {
+                    if (s.contains("Access token MINT DEV") || s.contains("Access token MINT TEST")) {
                         String[] parts = s.split(" ");
                         MINT_TOKEN = parts[4];
+                        System.setProperty(Account.MINT.getENV(), MINT_TOKEN);
                     }
-                    if (s.contains("Access token BUY DEV")) {
+                    if (s.contains("Access token BUY DEV") || s.contains("Access token BUY TEST")) {
                         String[] parts = s.split(" ");
                         BUY_TOKEN = parts[4];
+                        System.setProperty(Account.BUY.getENV(), BUY_TOKEN);
+                    }
+                    if (s.contains("Access token ADMIN DEV") || s.contains("Access token ADMIN TEST")) {
+                        String[] parts = s.split(" ");
+                        ADMIN_TOKEN = parts[4];
+                        System.setProperty(Account.ADMIN.getENV(), ADMIN_TOKEN);
                     }
                     if (s.contains("Mint nft name:")) {
                         String[] parts = s.split(" ");

@@ -1,6 +1,7 @@
 package api.nft;
 
 import api.BaseApiTests;
+import api.enums.Account;
 import api.enums.Group;
 import api.enums.Sort;
 import api.enums.Status;
@@ -30,12 +31,12 @@ public class LikeUnlikeNftTests extends BaseApiTests {
                 .sort(Sort.MOST_RECENT.getValue())
                 .build();
 
-        List<SearchNftResponse> nfts = nftService.searchNftItems(search, MINT_TOKEN)
+        List<SearchNftResponse> nfts = nftService.searchNftItems(search, System.getProperty(Account.MINT.getENV()))
                 .asClass(SearchNftResponseList.class).getNfts();
         nft_1 = nfts.get(0);
     }
 
-    @Test(testName = "Like and unlike nft")
+    @Test(testName = "Like and unlike nft", enabled = false)
     public void likeAndUnlikeNft() {
         //check count of likes
 
@@ -47,30 +48,30 @@ public class LikeUnlikeNftTests extends BaseApiTests {
                 .sort(Sort.MOST_RECENT.getValue())
                 .build();
 
-        List<SearchNftResponse> nfts = nftService.searchNftItems(search, MINT_TOKEN)
+        List<SearchNftResponse> nfts = nftService.searchNftItems(search, System.getProperty(Account.MINT.getENV()))
                 .asClass(SearchNftResponseList.class).getNfts();
         int likesBefore = nfts.get(0).getLikesCount();
 
         //like nft
-        Object like = nftService.likeNft(nft_1.getId(), MINT_TOKEN)
+        Object like = nftService.likeNft(nft_1.getId(), System.getProperty(Account.MINT.getENV()))
                 .shouldHave(Conditions.statusCode(HTTP_NO_CONTENT))
                 .getResponse().asString();
 
         sleep(5);
 
         //check count of likes
-        List<SearchNftResponse> nft = nftService.searchNftItems(search, MINT_TOKEN)
+        List<SearchNftResponse> nft = nftService.searchNftItems(search, System.getProperty(Account.MINT.getENV()))
                 .asClass(SearchNftResponseList.class).getNfts();
 
         soft.assertEquals(nft.get(0).getLikesCount(), likesBefore + 1, "Likes should be increment after like");
 
         //unlike nft
-        Object unlike = nftService.unlikeNft(nft_1.getId(), MINT_TOKEN)
+        Object unlike = nftService.unlikeNft(nft_1.getId(), System.getProperty(Account.MINT.getENV()))
                 .shouldHave(Conditions.statusCode(HTTP_NO_CONTENT))
                 .getResponse().asString();
 
         //check count of likes after unlike
-        List<SearchNftResponse> nftUnlike = nftService.searchNftItems(search, MINT_TOKEN)
+        List<SearchNftResponse> nftUnlike = nftService.searchNftItems(search, System.getProperty(Account.MINT.getENV()))
                 .asClass(SearchNftResponseList.class).getNfts();
 
         sleep(5);
@@ -81,7 +82,7 @@ public class LikeUnlikeNftTests extends BaseApiTests {
 
     @Test(testName = "Like unauthorized")
     public void likeUnauthorized() {
-        CodeMessageResponse codeMessageResponse = nftService.likeNft(nft_1.getId(), "invalid")
+        CodeMessageResponse codeMessageResponse = nftService.likeNft(nft_1.getId(), null)
                 .shouldHave(Conditions.statusCode(HTTP_UNAUTHORIZED))
                 .asClass(CodeMessageResponse.class);
         soft.assertEquals(codeMessageResponse.getCode(), "AuthorizationError");
@@ -91,7 +92,7 @@ public class LikeUnlikeNftTests extends BaseApiTests {
 
     @Test(testName = "Unlike unauthorized")
     public void unlikeUnauthorized() {
-        CodeMessageResponse codeMessageResponse = nftService.unlikeNft(nft_1.getId(), "invalid")
+        CodeMessageResponse codeMessageResponse = nftService.unlikeNft(nft_1.getId(), null)
                 .shouldHave(Conditions.statusCode(HTTP_UNAUTHORIZED))
                 .asClass(CodeMessageResponse.class);
         soft.assertEquals(codeMessageResponse.getCode(), "AuthorizationError");
@@ -101,7 +102,7 @@ public class LikeUnlikeNftTests extends BaseApiTests {
 
     @Test(testName = "Like invalid nft id")
     public void likeInvalidNftId() {
-        CodeMessageResponse codeMessageResponse = nftService.likeNft(faker.internet().uuid(), MINT_TOKEN)
+        CodeMessageResponse codeMessageResponse = nftService.likeNft(faker.internet().uuid(), System.getProperty(Account.MINT.getENV()))
                 .shouldHave(Conditions.statusCode(HTTP_NOT_FOUND))
                 .asClass(CodeMessageResponse.class);
         System.out.println(codeMessageResponse.toString());
@@ -112,7 +113,7 @@ public class LikeUnlikeNftTests extends BaseApiTests {
 
     @Test(testName = "Unlike invalid nft id")
     public void unlikeInvalidNftId() {
-        CodeMessageResponse codeMessageResponse = nftService.unlikeNft(faker.internet().uuid(), MINT_TOKEN)
+        CodeMessageResponse codeMessageResponse = nftService.unlikeNft(faker.internet().uuid(), System.getProperty(Account.MINT.getENV()))
                 .shouldHave(Conditions.statusCode(HTTP_NOT_FOUND))
                 .asClass(CodeMessageResponse.class);
         soft.assertEquals(codeMessageResponse.getCode(), "NFTNotFound");

@@ -1,6 +1,7 @@
 package api.nft;
 
 import api.BaseApiTests;
+import api.enums.Account;
 import api.enums.Group;
 import api.enums.Sort;
 import api.enums.Status;
@@ -30,7 +31,7 @@ public class UserPinnedNftTests extends BaseApiTests {
                 .sort(Sort.MOST_RECENT.getValue())
                 .build();
 
-        nftResult = nftService.searchNftItems(search, MINT_TOKEN)
+        nftResult = nftService.searchNftItems(search, System.getProperty(Account.MINT.getENV()))
                 .asClass(SearchNftResponseList.class).getNfts().stream()
                 .filter(nft -> !nft.isPinned()).findFirst().get();
     }
@@ -44,7 +45,7 @@ public class UserPinnedNftTests extends BaseApiTests {
                 .build();
 
         //get pinned nfts
-        SearchNftResponseList nfts = nftService.getPinnedNft(userMint.getId(), MINT_TOKEN)
+        SearchNftResponseList nfts = nftService.getPinnedNft(userMint.getId(), System.getProperty(Account.MINT.getENV()))
                 .shouldHave(Conditions.statusCode(HTTP_OK))
                 .asClass(SearchNftResponseList.class);
 
@@ -54,14 +55,14 @@ public class UserPinnedNftTests extends BaseApiTests {
         });
 
         //pin nft
-        Object pin = nftService.pinNft(nftResult.getId(), MINT_TOKEN)
+        Object pin = nftService.pinNft(nftResult.getId(), System.getProperty(Account.MINT.getENV()))
                 .shouldHave(Conditions.statusCode(HTTP_NO_CONTENT))
                 .getResponse().asString();
 
         sleep(3);
 
         //get pinned nfts again
-        SearchNftResponseList nftsAgain = nftService.getPinnedNft(userMint.getId(), MINT_TOKEN)
+        SearchNftResponseList nftsAgain = nftService.getPinnedNft(userMint.getId(), System.getProperty(Account.MINT.getENV()))
                 .shouldHave(Conditions.statusCode(HTTP_OK))
                 .asClass(SearchNftResponseList.class);
 

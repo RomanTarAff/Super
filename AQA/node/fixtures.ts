@@ -21,13 +21,13 @@ type Service = {
 type AccessTokenDev = {
     accessTokenMintDev: string,
     accessTokenBuyDev: string,
-    //accessTokenAdminDev: string
+    accessTokenAdminDev: string
 }
 
 type AccessTokenTest = {
     accessTokenMintTest: string,
     accessTokenBuyTest: string,
-    //accessTokenAdminTest: string
+    accessTokenAdminTest: string
 }
 
 type WorkerFixtures = {
@@ -79,19 +79,20 @@ export const test = base.extend<TestFixtures, WorkerFixtures>({
             const verifyResponseMintAccount = await service.verifyDev.verify(verifyRequest);
             console.log(`Access token MINT DEV ${verifyResponseMintAccount.data.accessToken}`)
             // console.log('Login Admin DEV account')
-            // //login on admin
-            // const walletAdmin = await metamaskHelper.createNewWalletAdmin();
-            // const sessionIdAndOtpAdmin = await service.authDev.login(walletAdmin);
-            //
-            // //sign message and get code admin
-            // const signedMessageAdmin = await service.authDev.signMessageAndGetCode(walletAdmin.address, sessionIdAndOtpAdmin.data, wallet.useAccount);
-            //
-            // const verifyRequestAdmin: VerifyRequest = {
-            //     sessionId: sessionIdAndOtpAdmin.data.sessionId,
-            //     code: signedMessageAdmin
-            // }
-            //
-            // const verifyResponseAdmin = await service.verifyDev.verify(verifyRequestAdmin);
+            //login on admin
+            const walletAdmin = await metamaskHelper.createNewWalletAdmin();
+            const sessionIdAndOtpAdmin = await service.authDev.login(walletAdmin);
+
+            //sign message and get code admin
+            const signedMessageAdmin = await service.authDev.signMessageAndGetCode(walletAdmin.address, sessionIdAndOtpAdmin.data, wallet.useAccount);
+
+            const verifyRequestAdmin: VerifyRequest = {
+                sessionId: sessionIdAndOtpAdmin.data.sessionId,
+                code: signedMessageAdmin
+            }
+
+            const verifyResponseAdmin = await service.verifyDev.verify(verifyRequestAdmin);
+            console.log(`Access token ADMIN DEV ${verifyResponseAdmin.data.accessToken}`)
 
             ///
             //console.log('Login BUY DEV account')
@@ -112,7 +113,7 @@ export const test = base.extend<TestFixtures, WorkerFixtures>({
             use({
                 accessTokenMintDev: verifyResponseMintAccount.data.accessToken,
                 accessTokenBuyDev: verifyResponseBuyAccount.data.accessToken,
-                //accessTokenAdminDev: verifyResponseAdmin.data.accessToken,
+                accessTokenAdminDev: verifyResponseAdmin.data.accessToken,
             });
 
         },
@@ -138,24 +139,26 @@ export const test = base.extend<TestFixtures, WorkerFixtures>({
             }
 
             const verifyResponseMintAccount = await service.verifyTest.verify(verifyRequest);
+            console.log(`Access token MINT TEST ${verifyResponseMintAccount.data.accessToken}`)
 
             // console.log('Login Admin DEV account')
-            // //login on admin
-            // const walletAdmin = await metamaskHelper.createNewWalletAdmin();
-            // const sessionIdAndOtpAdmin = await service.authTest.login(walletAdmin);
-            //
-            // //sign message and get code admin
-            // const signedMessageAdmin = await service.authTest.signMessageAndGetCode(walletAdmin.address, sessionIdAndOtpAdmin.data, wallet.useAccount);
-            //
-            // const verifyRequestAdmin: VerifyRequest = {
-            //     sessionId: sessionIdAndOtpAdmin.data.sessionId,
-            //     code: signedMessageAdmin
-            // }
-            //
-            // const verifyResponseAdmin = await service.verifyTest.verify(verifyRequestAdmin);
+            //login on admin
+            const walletAdmin = await metamaskHelper.createNewWalletAdmin();
+            const sessionIdAndOtpAdmin = await service.authTest.login(walletAdmin);
+
+            //sign message and get code admin
+            const signedMessageAdmin = await service.authTest.signMessageAndGetCode(walletAdmin.address, sessionIdAndOtpAdmin.data, wallet.useAccount);
+
+            const verifyRequestAdmin: VerifyRequest = {
+                sessionId: sessionIdAndOtpAdmin.data.sessionId,
+                code: signedMessageAdmin
+            }
+
+            const verifyResponseAdmin = await service.verifyTest.verify(verifyRequestAdmin);
+            console.log(`Access token ADMIN TEST ${verifyResponseAdmin.data.accessToken}`)
 
             ///
-            console.log('Login BUY DEV account')
+            // console.log('Login BUY DEV account')
             const walletTwo = await metamaskHelper.createNewWalletBuy();
             const sessionIdAndOtpTwo = await service.authTest.login(walletTwo);
 
@@ -168,11 +171,12 @@ export const test = base.extend<TestFixtures, WorkerFixtures>({
             }
 
             const verifyResponseBuyAccount = await service.verifyTest.verify(verifyRequestTwo);
+            console.log(`Access token BUY TEST ${verifyResponseBuyAccount.data.accessToken}`)
 
             use({
                 accessTokenMintTest: verifyResponseMintAccount.data.accessToken,
                 accessTokenBuyTest: verifyResponseBuyAccount.data.accessToken,
-                //accessTokenAdminTest: verifyResponseAdmin.data.accessToken,
+                accessTokenAdminTest: verifyResponseAdmin.data.accessToken,
             });
 
         },

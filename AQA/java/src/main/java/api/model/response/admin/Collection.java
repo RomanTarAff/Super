@@ -13,4 +13,5 @@ public class Collection {
     private String createdAt;
     private String contractAddress;
     private String isVerified;
+    private String slug;
 }

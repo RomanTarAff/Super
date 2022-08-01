@@ -48,15 +48,15 @@ public class SocialService extends BaseApi {
                 .delete(SocialEndPoint.FOLLOW_UNFOLLOW_COLLECTION));
     }
 
-    public AssertableResponse followUser(String ethAddress, String token) {
+    public AssertableResponse followUser(String id, String token) {
         return new AssertableResponse(setupSocialSpec(token)
-                .pathParam("ethAddress", ethAddress)
-                .post(SocialEndPoint.FOLLOW_UNFOLLOW_USER));
+                .pathParam("id", id)
+                .put(SocialEndPoint.FOLLOW_UNFOLLOW_USER));
     }
 
-    public AssertableResponse unfollowUser(String ethAddress, String token) {
+    public AssertableResponse unfollowUser(String id, String token) {
         return new AssertableResponse(setupSocialSpec(token)
-                .pathParam("ethAddress", ethAddress)
+                .pathParam("id", id)
                 .delete(SocialEndPoint.FOLLOW_UNFOLLOW_USER));
     }
 

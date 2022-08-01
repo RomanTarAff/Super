@@ -1,6 +1,7 @@
 package api.nft.search;
 
 import api.BaseApiTests;
+import api.enums.Account;
 import api.enums.Group;
 import api.enums.Sort;
 import api.enums.Status;
@@ -27,7 +28,7 @@ public class SearchNftTests extends BaseApiTests {
                 .sort(Sort.MOST_RECENT.getValue())
                 .build();
 
-        SearchNftResponseList nfts = nftService.searchNftItems(search, MINT_TOKEN)
+        SearchNftResponseList nfts = nftService.searchNftItems(search, System.getProperty(Account.MINT.getENV()))
                 .shouldHave(Conditions.statusCode(HTTP_OK))
                 .asClass(SearchNftResponseList.class);
 
@@ -48,11 +49,11 @@ public class SearchNftTests extends BaseApiTests {
     public void searchInWalletRecentlyListed() {
         SearchNftRequest search = SearchNftRequest.builder()
                 .group(Group.IN_WALLET.getValue())
-                .limit(5)
+                .limit(30)
                 .sort(Sort.RECENTLY_LISTED.getValue())
                 .build();
 
-        SearchNftResponseList nfts = nftService.searchNftItems(search, MINT_TOKEN)
+        SearchNftResponseList nfts = nftService.searchNftItems(search, System.getProperty(Account.MINT.getENV()))
                 .shouldHave(Conditions.statusCode(HTTP_OK))
                 .asClass(SearchNftResponseList.class);
 
@@ -80,7 +81,7 @@ public class SearchNftTests extends BaseApiTests {
                 .sort(Sort.MOST_RECENT.getValue())
                 .build();
 
-        SearchNftResponseList nfts = nftService.searchNftItems(search, MINT_TOKEN)
+        SearchNftResponseList nfts = nftService.searchNftItems(search, System.getProperty(Account.MINT.getENV()))
                 .shouldHave(Conditions.statusCode(HTTP_OK))
                 .asClass(SearchNftResponseList.class);
 
@@ -106,7 +107,7 @@ public class SearchNftTests extends BaseApiTests {
                 .sort(Sort.MOST_RECENT.getValue())
                 .build();
 
-        SearchNftResponseList nfts = nftService.searchNftItems(search, MINT_TOKEN)
+        SearchNftResponseList nfts = nftService.searchNftItems(search, System.getProperty(Account.MINT.getENV()))
                 .shouldHave(Conditions.statusCode(HTTP_OK))
                 .asClass(SearchNftResponseList.class);
 
@@ -132,7 +133,7 @@ public class SearchNftTests extends BaseApiTests {
                 .sort(Sort.MOST_RECENT.getValue())
                 .build();
 
-        SearchNftResponseList nfts = nftService.searchNftItems(search, MINT_TOKEN)
+        SearchNftResponseList nfts = nftService.searchNftItems(search, System.getProperty(Account.MINT.getENV()))
                 .shouldHave(Conditions.statusCode(HTTP_OK))
                 .asClass(SearchNftResponseList.class);
 
@@ -157,7 +158,7 @@ public class SearchNftTests extends BaseApiTests {
                 .sort(Sort.MOST_RECENT.getValue())
                 .build();
 
-        SearchNftResponseList nfts = nftService.searchNftItems(search, MINT_TOKEN)
+        SearchNftResponseList nfts = nftService.searchNftItems(search, System.getProperty(Account.MINT.getENV()))
                 .shouldHave(Conditions.statusCode(HTTP_OK))
                 .asClass(SearchNftResponseList.class);
 
@@ -183,7 +184,7 @@ public class SearchNftTests extends BaseApiTests {
                 .sort(Sort.MOST_RECENT.getValue())
                 .build();
 
-        SearchNftResponseList nfts = nftService.searchNftItems(search, MINT_TOKEN)
+        SearchNftResponseList nfts = nftService.searchNftItems(search, System.getProperty(Account.MINT.getENV()))
                 .shouldHave(Conditions.statusCode(HTTP_OK))
                 .asClass(SearchNftResponseList.class);
 

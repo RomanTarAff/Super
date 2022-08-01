@@ -171,7 +171,7 @@ public class NftDetailsPage extends BasePage {
     }
 
     public CancelListingDialog cancelListing() {
-        cancelListingBtn.press();
+        cancelListingBtn.pressWithout();
         return new CancelListingDialog();
     }
 
