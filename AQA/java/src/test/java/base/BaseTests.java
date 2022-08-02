@@ -9,6 +9,7 @@ import api.service.social.SocialService;
 import com.github.javafaker.Faker;
 import lombok.SneakyThrows;
 import org.apache.log4j.Logger;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeSuite;
 import org.testng.asserts.SoftAssert;
 
@@ -62,6 +63,10 @@ public class BaseTests {
             e.printStackTrace();
         }
         TimeUnit.SECONDS.sleep(10);
+    }
+
+    @BeforeClass
+    public void initUsers() {
         userMint = socialService.getMyProfile(System.getProperty(Account.MINT.getENV())).asClass(ProfileResponse.class);
         userBuy = socialService.getMyProfile(System.getProperty(Account.BUY.getENV())).asClass(ProfileResponse.class);
     }

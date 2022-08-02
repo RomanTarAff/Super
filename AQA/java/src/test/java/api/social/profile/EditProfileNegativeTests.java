@@ -43,7 +43,7 @@ public class EditProfileNegativeTests extends BaseApiTests {
     @Test(testName = "Edit profile invalid description")
     public void editProfileInvalidDescription() {
         EditProfileRequest request = EditProfileRequest.builder()
-                .description(faker.lorem().characters(1001)).build();
+                .description(faker.lorem().characters(1005)).build();
 
         CodeMessageResponse codeMessageResponse = socialService.editProfile(request, System.getProperty(Account.MINT.getENV()))
                 .shouldHave(Conditions.statusCode(422))

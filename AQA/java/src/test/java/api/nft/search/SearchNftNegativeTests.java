@@ -162,8 +162,8 @@ public class SearchNftNegativeTests extends BaseApiTests {
         CodeMessageResponse codeMessageResponse = nftService.searchNftItems(search, null)
                 .shouldHave(Conditions.statusCode(HTTP_FORBIDDEN))
                 .asClass(CodeMessageResponse.class);
-        soft.assertEquals(codeMessageResponse.getCode(), "AuthorizationError");
-        soft.assertEquals(codeMessageResponse.getMessage(), "Unauthorized");
+        soft.assertEquals(codeMessageResponse.getCode(), "AccessDenied");
+        soft.assertEquals(codeMessageResponse.getMessage(), "group is forbidden for unauthorized users");
         soft.assertAll();
     }
 }
