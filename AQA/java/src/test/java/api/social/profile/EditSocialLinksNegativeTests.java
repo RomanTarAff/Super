@@ -14,7 +14,7 @@ import java.util.List;
 public class EditSocialLinksNegativeTests extends BaseApiTests {
 
     @Test(testName = "Edit profile invalid facebook", dataProvider = "urls")
-    public void editProfileInvalidEmail(String url, String error) {
+    public void editProfileInvalidFacebook(String url, String error) {
         EditProfileRequest request = EditProfileRequest.builder()
                 .socialLinks(SocialLinks.builder()
                         .facebook(List.of(url))
@@ -172,6 +172,214 @@ public class EditSocialLinksNegativeTests extends BaseApiTests {
         soft.assertEquals(codeMessageResponse.getCode(), "ValidationError");
         soft.assertEquals(codeMessageResponse.getMessage(), "Data validation error");
         soft.assertTrue(codeMessageResponse.getPayload().getErrors().get(0).contains(error));
+        soft.assertAll();
+    }
+
+    @Test(testName = "Edit profile invalid discord", dataProvider = "urls")
+    public void editProfileInvalidDiscord(String url, String error) {
+        EditProfileRequest request = EditProfileRequest.builder()
+                .socialLinks(SocialLinks.builder()
+                        .discord(List.of(url))
+                        .build())
+                .build();
+
+        CodeMessageResponse codeMessageResponse = socialService.editProfile(request, System.getProperty(Account.MINT.getENV()))
+                .shouldHave(Conditions.statusCode(422))
+                .asClass(CodeMessageResponse.class);
+
+        soft.assertEquals(codeMessageResponse.getCode(), "ValidationError");
+        soft.assertEquals(codeMessageResponse.getMessage(), "Data validation error");
+        soft.assertTrue(codeMessageResponse.getPayload().getErrors().get(0).contains(error));
+        soft.assertAll();
+    }
+
+    @Test(testName = "Edit profile facebook length")
+    public void editProfileFacebookLength() {
+        List<String> facebook = List.of("https://" + faker.internet().url(), "https://" + faker.internet().url(), "https://" + faker.internet().url());
+        EditProfileRequest request = EditProfileRequest.builder()
+                .socialLinks(SocialLinks.builder()
+                        .facebook(facebook)
+                        .build())
+                .build();
+
+        CodeMessageResponse codeMessageResponse = socialService.editProfile(request, System.getProperty(Account.MINT.getENV()))
+                .shouldHave(Conditions.statusCode(422))
+                .asClass(CodeMessageResponse.class);
+
+        soft.assertEquals(codeMessageResponse.getCode(), "ValidationError");
+        soft.assertEquals(codeMessageResponse.getMessage(), "Data validation error");
+        soft.assertEquals(codeMessageResponse.getPayload().getErrors().get(0), "");
+        soft.assertAll();
+    }
+
+    @Test(testName = "Edit profile instagram length")
+    public void editProfileInstagramLength() {
+        List<String> instagram = List.of("https://" + faker.internet().url(), "https://" + faker.internet().url(), "https://" + faker.internet().url());
+        EditProfileRequest request = EditProfileRequest.builder()
+                .socialLinks(SocialLinks.builder()
+                        .instagram(instagram)
+                        .build())
+                .build();
+
+        CodeMessageResponse codeMessageResponse = socialService.editProfile(request, System.getProperty(Account.MINT.getENV()))
+                .shouldHave(Conditions.statusCode(422))
+                .asClass(CodeMessageResponse.class);
+
+        soft.assertEquals(codeMessageResponse.getCode(), "ValidationError");
+        soft.assertEquals(codeMessageResponse.getMessage(), "Data validation error");
+        soft.assertEquals(codeMessageResponse.getPayload().getErrors().get(0), "");
+        soft.assertAll();
+    }
+
+    @Test(testName = "Edit profile linkedin length")
+    public void editProfileLinkedinLength() {
+        List<String> linkedin = List.of("https://" + faker.internet().url(), "https://" + faker.internet().url(), "https://" + faker.internet().url());
+        EditProfileRequest request = EditProfileRequest.builder()
+                .socialLinks(SocialLinks.builder()
+                        .linkedin(linkedin)
+                        .build())
+                .build();
+
+        CodeMessageResponse codeMessageResponse = socialService.editProfile(request, System.getProperty(Account.MINT.getENV()))
+                .shouldHave(Conditions.statusCode(422))
+                .asClass(CodeMessageResponse.class);
+
+        soft.assertEquals(codeMessageResponse.getCode(), "ValidationError");
+        soft.assertEquals(codeMessageResponse.getMessage(), "Data validation error");
+        soft.assertEquals(codeMessageResponse.getPayload().getErrors().get(0), "");
+        soft.assertAll();
+    }
+
+    @Test(testName = "Edit profile medium length")
+    public void editProfileMediumLength() {
+        List<String> medium = List.of("https://" + faker.internet().url(), "https://" + faker.internet().url(), "https://" + faker.internet().url());
+        EditProfileRequest request = EditProfileRequest.builder()
+                .socialLinks(SocialLinks.builder()
+                        .medium(medium)
+                        .build())
+                .build();
+
+        CodeMessageResponse codeMessageResponse = socialService.editProfile(request, System.getProperty(Account.MINT.getENV()))
+                .shouldHave(Conditions.statusCode(422))
+                .asClass(CodeMessageResponse.class);
+
+        soft.assertEquals(codeMessageResponse.getCode(), "ValidationError");
+        soft.assertEquals(codeMessageResponse.getMessage(), "Data validation error");
+        soft.assertEquals(codeMessageResponse.getPayload().getErrors().get(0), "");
+        soft.assertAll();
+    }
+
+    @Test(testName = "Edit profile snapchat length")
+    public void editProfileSnapchatLength() {
+        List<String> snapchat = List.of("https://" + faker.internet().url(), "https://" + faker.internet().url(), "https://" + faker.internet().url());
+        EditProfileRequest request = EditProfileRequest.builder()
+                .socialLinks(SocialLinks.builder()
+                        .snapchat(snapchat)
+                        .build())
+                .build();
+
+        CodeMessageResponse codeMessageResponse = socialService.editProfile(request, System.getProperty(Account.MINT.getENV()))
+                .shouldHave(Conditions.statusCode(422))
+                .asClass(CodeMessageResponse.class);
+
+        soft.assertEquals(codeMessageResponse.getCode(), "ValidationError");
+        soft.assertEquals(codeMessageResponse.getMessage(), "Data validation error");
+        soft.assertEquals(codeMessageResponse.getPayload().getErrors().get(0), "");
+        soft.assertAll();
+    }
+
+    @Test(testName = "Edit profile telegram length")
+    public void editProfileTelegramLength() {
+        List<String> telegram = List.of("https://" + faker.internet().url(), "https://" + faker.internet().url(), "https://" + faker.internet().url());
+        EditProfileRequest request = EditProfileRequest.builder()
+                .socialLinks(SocialLinks.builder()
+                        .telegram(telegram)
+                        .build())
+                .build();
+
+        CodeMessageResponse codeMessageResponse = socialService.editProfile(request, System.getProperty(Account.MINT.getENV()))
+                .shouldHave(Conditions.statusCode(422))
+                .asClass(CodeMessageResponse.class);
+
+        soft.assertEquals(codeMessageResponse.getCode(), "ValidationError");
+        soft.assertEquals(codeMessageResponse.getMessage(), "Data validation error");
+        soft.assertEquals(codeMessageResponse.getPayload().getErrors().get(0), "");
+        soft.assertAll();
+    }
+
+    @Test(testName = "Edit profile twitch length")
+    public void editProfileTwitchLength() {
+        List<String> twitch = List.of("https://" + faker.internet().url(), "https://" + faker.internet().url(), "https://" + faker.internet().url());
+        EditProfileRequest request = EditProfileRequest.builder()
+                .socialLinks(SocialLinks.builder()
+                        .twitch(twitch)
+                        .build())
+                .build();
+
+        CodeMessageResponse codeMessageResponse = socialService.editProfile(request, System.getProperty(Account.MINT.getENV()))
+                .shouldHave(Conditions.statusCode(422))
+                .asClass(CodeMessageResponse.class);
+
+        soft.assertEquals(codeMessageResponse.getCode(), "ValidationError");
+        soft.assertEquals(codeMessageResponse.getMessage(), "Data validation error");
+        soft.assertEquals(codeMessageResponse.getPayload().getErrors().get(0), "");
+        soft.assertAll();
+    }
+
+    @Test(testName = "Edit profile twitter length")
+    public void editProfileTwitterLength() {
+        List<String> twitter = List.of("https://" + faker.internet().url(), "https://" + faker.internet().url(), "https://" + faker.internet().url());
+        EditProfileRequest request = EditProfileRequest.builder()
+                .socialLinks(SocialLinks.builder()
+                        .twitter(twitter)
+                        .build())
+                .build();
+
+        CodeMessageResponse codeMessageResponse = socialService.editProfile(request, System.getProperty(Account.MINT.getENV()))
+                .shouldHave(Conditions.statusCode(422))
+                .asClass(CodeMessageResponse.class);
+
+        soft.assertEquals(codeMessageResponse.getCode(), "ValidationError");
+        soft.assertEquals(codeMessageResponse.getMessage(), "Data validation error");
+        soft.assertEquals(codeMessageResponse.getPayload().getErrors().get(0), "");
+        soft.assertAll();
+    }
+
+    @Test(testName = "Edit profile youtube length")
+    public void editProfileYoutubeLength() {
+        List<String> youtube = List.of("https://" + faker.internet().url(), "https://" + faker.internet().url(), "https://" + faker.internet().url());
+        EditProfileRequest request = EditProfileRequest.builder()
+                .socialLinks(SocialLinks.builder()
+                        .youtube(youtube)
+                        .build())
+                .build();
+
+        CodeMessageResponse codeMessageResponse = socialService.editProfile(request, System.getProperty(Account.MINT.getENV()))
+                .shouldHave(Conditions.statusCode(422))
+                .asClass(CodeMessageResponse.class);
+
+        soft.assertEquals(codeMessageResponse.getCode(), "ValidationError");
+        soft.assertEquals(codeMessageResponse.getMessage(), "Data validation error");
+        soft.assertEquals(codeMessageResponse.getPayload().getErrors().get(0), "");
+        soft.assertAll();
+    }
+
+    @Test(testName = "Edit profile discord length")
+    public void editProfileDiscordLength() {
+        List<String> discord = List.of("https://" + faker.internet().url(), "https://" + faker.internet().url(), "https://" + faker.internet().url());
+        EditProfileRequest request = EditProfileRequest.builder()
+                .socialLinks(SocialLinks.builder()
+                        .discord(discord)
+                        .build())
+                .build();
+
+        CodeMessageResponse codeMessageResponse = socialService.editProfile(request, System.getProperty(Account.MINT.getENV()))
+                .shouldHave(Conditions.statusCode(422))
+                .asClass(CodeMessageResponse.class);
+
+        soft.assertEquals(codeMessageResponse.getCode(), "ValidationError");
+        soft.assertEquals(codeMessageResponse.getMessage(), "Data validation error");
+        soft.assertEquals(codeMessageResponse.getPayload().getErrors().get(0), "");
         soft.assertAll();
     }
 

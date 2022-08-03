@@ -7,15 +7,20 @@
     <test name="API">
         <classes>
             <class name="api.nft.search.SearchNftInCollectionTests"></class>
-            <class name="api.nft.search.SearchNftTests"></class>
             <class name="api.nft.search.SearchNftNegativeTests"></class>
+            <class name="api.nft.search.SearchNftTests"></class>
+
             <class name="api.nft.LikeUnlikeNftTests"></class>
             <class name="api.nft.PinUnpinNftTests"></class>
             <class name="api.nft.UserPinnedNftTests"></class>
+
+            <class name="api.social.profile.EditProfileNegativeTests"></class>
+            <class name="api.social.profile.EditProfileSocialLinksTests"></class>
+            <class name="api.social.profile.EditProfileTests"></class>
+            <class name="api.social.profile.EditSocialLinksNegativeTests"></class>
+
             <class name="api.social.FollowUnfollowUserTests"></class>
             <class name="api.social.FollowUnfollowCollection"></class>
-            <class name="api.social.profile.EditSocialLinksNegativeTests"></class>
-            <class name="api.social.profile.EditProfileNegativeTests"></class>
         </classes>
     </test>
 </suite>

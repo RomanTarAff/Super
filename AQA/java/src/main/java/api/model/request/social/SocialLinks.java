@@ -25,4 +25,5 @@ public class SocialLinks {
     private List<String> twitch;
     private List<String> twitter;
     private List<String> youtube;
+    private List<String> discord;
 }
