@@ -169,7 +169,7 @@ public class SearchNftInCollectionTests extends BaseApiTests {
         //check collection id and on sale
         nfts.getNfts().forEach(nft -> {
             soft.assertEquals(nft.getCollection().getId(), EJIK_COLLECTION_ID);
-            soft.assertNull(nft.getOffer(), "NFT should be without offers");
+            soft.assertTrue(nft.getStatuses().contains(Status.NO_OFFERS.getValue()), "NFT should be without offers");
         });
         soft.assertAll();
     }

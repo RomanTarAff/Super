@@ -6,5 +6,5 @@ public class NftEndPoint {
     public static final String LIKE_UNLIKE_NFT = "/v1/nfts/{id}/likes";
     public static final String PIN_UNPIN_NFT = "/v1/nfts/{id}/pin";
     public static final String GET_USER_PINNED_NFT = "/v1/users/{id}/nfts/pinned";
-
+    public static final String GET_NFT_DETAILS = "/v2/collections/{contractAddress}/{tokenId}";
 }
