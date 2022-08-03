@@ -42,4 +42,11 @@ public class NftService extends BaseApi {
                 .get(NftEndPoint.GET_USER_PINNED_NFT));
     }
 
+    public AssertableResponse getNftDetails(String contractAddress, String tokenId, String token) {
+        return new AssertableResponse(setupNftSpec(token)
+                .pathParam("contractAddress", contractAddress)
+                .pathParam("tokenId", tokenId)
+                .get(NftEndPoint.GET_NFT_DETAILS));
+    }
+
 }
