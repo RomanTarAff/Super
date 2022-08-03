@@ -21,7 +21,7 @@ public class EditSocialLinksNegativeTests extends BaseApiTests {
                         .build())
                 .build();
 
-        CodeMessageResponse codeMessageResponse = socialService.editProfile(request, System.getProperty(Account.MINT.getENV()))
+        CodeMessageResponse codeMessageResponse = socialService.editProfile(request, System.getProperty(Account.BUY.getENV()))
                 .shouldHave(Conditions.statusCode(422))
                 .asClass(CodeMessageResponse.class);
 
@@ -39,7 +39,7 @@ public class EditSocialLinksNegativeTests extends BaseApiTests {
                         .build())
                 .build();
 
-        CodeMessageResponse codeMessageResponse = socialService.editProfile(request, System.getProperty(Account.MINT.getENV()))
+        CodeMessageResponse codeMessageResponse = socialService.editProfile(request, System.getProperty(Account.BUY.getENV()))
                 .shouldHave(Conditions.statusCode(422))
                 .asClass(CodeMessageResponse.class);
 
@@ -57,7 +57,7 @@ public class EditSocialLinksNegativeTests extends BaseApiTests {
                         .build())
                 .build();
 
-        CodeMessageResponse codeMessageResponse = socialService.editProfile(request, System.getProperty(Account.MINT.getENV()))
+        CodeMessageResponse codeMessageResponse = socialService.editProfile(request, System.getProperty(Account.BUY.getENV()))
                 .shouldHave(Conditions.statusCode(422))
                 .asClass(CodeMessageResponse.class);
 
@@ -75,7 +75,7 @@ public class EditSocialLinksNegativeTests extends BaseApiTests {
                         .build())
                 .build();
 
-        CodeMessageResponse codeMessageResponse = socialService.editProfile(request, System.getProperty(Account.MINT.getENV()))
+        CodeMessageResponse codeMessageResponse = socialService.editProfile(request, System.getProperty(Account.BUY.getENV()))
                 .shouldHave(Conditions.statusCode(422))
                 .asClass(CodeMessageResponse.class);
 
@@ -93,7 +93,7 @@ public class EditSocialLinksNegativeTests extends BaseApiTests {
                         .build())
                 .build();
 
-        CodeMessageResponse codeMessageResponse = socialService.editProfile(request, System.getProperty(Account.MINT.getENV()))
+        CodeMessageResponse codeMessageResponse = socialService.editProfile(request, System.getProperty(Account.BUY.getENV()))
                 .shouldHave(Conditions.statusCode(422))
                 .asClass(CodeMessageResponse.class);
 
@@ -111,7 +111,7 @@ public class EditSocialLinksNegativeTests extends BaseApiTests {
                         .build())
                 .build();
 
-        CodeMessageResponse codeMessageResponse = socialService.editProfile(request, System.getProperty(Account.MINT.getENV()))
+        CodeMessageResponse codeMessageResponse = socialService.editProfile(request, System.getProperty(Account.BUY.getENV()))
                 .shouldHave(Conditions.statusCode(422))
                 .asClass(CodeMessageResponse.class);
 
@@ -129,7 +129,7 @@ public class EditSocialLinksNegativeTests extends BaseApiTests {
                         .build())
                 .build();
 
-        CodeMessageResponse codeMessageResponse = socialService.editProfile(request, System.getProperty(Account.MINT.getENV()))
+        CodeMessageResponse codeMessageResponse = socialService.editProfile(request, System.getProperty(Account.BUY.getENV()))
                 .shouldHave(Conditions.statusCode(422))
                 .asClass(CodeMessageResponse.class);
 
@@ -147,7 +147,7 @@ public class EditSocialLinksNegativeTests extends BaseApiTests {
                         .build())
                 .build();
 
-        CodeMessageResponse codeMessageResponse = socialService.editProfile(request, System.getProperty(Account.MINT.getENV()))
+        CodeMessageResponse codeMessageResponse = socialService.editProfile(request, System.getProperty(Account.BUY.getENV()))
                 .shouldHave(Conditions.statusCode(422))
                 .asClass(CodeMessageResponse.class);
 
@@ -165,7 +165,7 @@ public class EditSocialLinksNegativeTests extends BaseApiTests {
                         .build())
                 .build();
 
-        CodeMessageResponse codeMessageResponse = socialService.editProfile(request, System.getProperty(Account.MINT.getENV()))
+        CodeMessageResponse codeMessageResponse = socialService.editProfile(request, System.getProperty(Account.BUY.getENV()))
                 .shouldHave(Conditions.statusCode(422))
                 .asClass(CodeMessageResponse.class);
 
@@ -183,7 +183,7 @@ public class EditSocialLinksNegativeTests extends BaseApiTests {
                         .build())
                 .build();
 
-        CodeMessageResponse codeMessageResponse = socialService.editProfile(request, System.getProperty(Account.MINT.getENV()))
+        CodeMessageResponse codeMessageResponse = socialService.editProfile(request, System.getProperty(Account.BUY.getENV()))
                 .shouldHave(Conditions.statusCode(422))
                 .asClass(CodeMessageResponse.class);
 
@@ -202,7 +202,7 @@ public class EditSocialLinksNegativeTests extends BaseApiTests {
                         .build())
                 .build();
 
-        CodeMessageResponse codeMessageResponse = socialService.editProfile(request, System.getProperty(Account.MINT.getENV()))
+        CodeMessageResponse codeMessageResponse = socialService.editProfile(request, System.getProperty(Account.BUY.getENV()))
                 .shouldHave(Conditions.statusCode(422))
                 .asClass(CodeMessageResponse.class);
 
@@ -221,7 +221,7 @@ public class EditSocialLinksNegativeTests extends BaseApiTests {
                         .build())
                 .build();
 
-        CodeMessageResponse codeMessageResponse = socialService.editProfile(request, System.getProperty(Account.MINT.getENV()))
+        CodeMessageResponse codeMessageResponse = socialService.editProfile(request, System.getProperty(Account.BUY.getENV()))
                 .shouldHave(Conditions.statusCode(422))
                 .asClass(CodeMessageResponse.class);
 
@@ -240,7 +240,7 @@ public class EditSocialLinksNegativeTests extends BaseApiTests {
                         .build())
                 .build();
 
-        CodeMessageResponse codeMessageResponse = socialService.editProfile(request, System.getProperty(Account.MINT.getENV()))
+        CodeMessageResponse codeMessageResponse = socialService.editProfile(request, System.getProperty(Account.BUY.getENV()))
                 .shouldHave(Conditions.statusCode(422))
                 .asClass(CodeMessageResponse.class);
 
@@ -259,7 +259,7 @@ public class EditSocialLinksNegativeTests extends BaseApiTests {
                         .build())
                 .build();
 
-        CodeMessageResponse codeMessageResponse = socialService.editProfile(request, System.getProperty(Account.MINT.getENV()))
+        CodeMessageResponse codeMessageResponse = socialService.editProfile(request, System.getProperty(Account.BUY.getENV()))
                 .shouldHave(Conditions.statusCode(422))
                 .asClass(CodeMessageResponse.class);
 
@@ -278,7 +278,7 @@ public class EditSocialLinksNegativeTests extends BaseApiTests {
                         .build())
                 .build();
 
-        CodeMessageResponse codeMessageResponse = socialService.editProfile(request, System.getProperty(Account.MINT.getENV()))
+        CodeMessageResponse codeMessageResponse = socialService.editProfile(request, System.getProperty(Account.BUY.getENV()))
                 .shouldHave(Conditions.statusCode(422))
                 .asClass(CodeMessageResponse.class);
 
@@ -297,7 +297,7 @@ public class EditSocialLinksNegativeTests extends BaseApiTests {
                         .build())
                 .build();
 
-        CodeMessageResponse codeMessageResponse = socialService.editProfile(request, System.getProperty(Account.MINT.getENV()))
+        CodeMessageResponse codeMessageResponse = socialService.editProfile(request, System.getProperty(Account.BUY.getENV()))
                 .shouldHave(Conditions.statusCode(422))
                 .asClass(CodeMessageResponse.class);
 
@@ -316,7 +316,7 @@ public class EditSocialLinksNegativeTests extends BaseApiTests {
                         .build())
                 .build();
 
-        CodeMessageResponse codeMessageResponse = socialService.editProfile(request, System.getProperty(Account.MINT.getENV()))
+        CodeMessageResponse codeMessageResponse = socialService.editProfile(request, System.getProperty(Account.BUY.getENV()))
                 .shouldHave(Conditions.statusCode(422))
                 .asClass(CodeMessageResponse.class);
 
@@ -335,7 +335,7 @@ public class EditSocialLinksNegativeTests extends BaseApiTests {
                         .build())
                 .build();
 
-        CodeMessageResponse codeMessageResponse = socialService.editProfile(request, System.getProperty(Account.MINT.getENV()))
+        CodeMessageResponse codeMessageResponse = socialService.editProfile(request, System.getProperty(Account.BUY.getENV()))
                 .shouldHave(Conditions.statusCode(422))
                 .asClass(CodeMessageResponse.class);
 
@@ -354,7 +354,7 @@ public class EditSocialLinksNegativeTests extends BaseApiTests {
                         .build())
                 .build();
 
-        CodeMessageResponse codeMessageResponse = socialService.editProfile(request, System.getProperty(Account.MINT.getENV()))
+        CodeMessageResponse codeMessageResponse = socialService.editProfile(request, System.getProperty(Account.BUY.getENV()))
                 .shouldHave(Conditions.statusCode(422))
                 .asClass(CodeMessageResponse.class);
 
@@ -373,7 +373,7 @@ public class EditSocialLinksNegativeTests extends BaseApiTests {
                         .build())
                 .build();
 
-        CodeMessageResponse codeMessageResponse = socialService.editProfile(request, System.getProperty(Account.MINT.getENV()))
+        CodeMessageResponse codeMessageResponse = socialService.editProfile(request, System.getProperty(Account.BUY.getENV()))
                 .shouldHave(Conditions.statusCode(422))
                 .asClass(CodeMessageResponse.class);
 
