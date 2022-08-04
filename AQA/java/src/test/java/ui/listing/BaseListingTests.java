@@ -7,13 +7,17 @@ import api.enums.Status;
 import api.model.request.nft.SearchNftRequest;
 import api.model.response.nft.SearchNftResponse;
 import api.model.response.nft.SearchNftResponseList;
+import base.BaseTests;
 import core.selenium.DriverManager;
+import org.apache.log4j.Logger;
 import org.testng.annotations.*;
 import ui.BaseUiTests;
 
 import java.util.List;
 
 public class BaseListingTests extends BaseUiTests {
+
+    private static final Logger log = Logger.getLogger(BaseTests.class);
 
     protected SearchNftResponse nftWithoutListing_1;
     protected SearchNftResponse nftWithoutListing_2;
@@ -23,7 +27,7 @@ public class BaseListingTests extends BaseUiTests {
     protected SearchNftResponse nftWithoutListing_6;
     protected SearchNftResponse nftWithoutListing_7;
 
-    @BeforeClass
+    @BeforeSuite
     public void getNftNotOnSale() {
 
         SearchNftRequest search = SearchNftRequest.builder()
@@ -42,6 +46,14 @@ public class BaseListingTests extends BaseUiTests {
         nftWithoutListing_5 = nfts.get(4);
         nftWithoutListing_6 = nfts.get(5);
         nftWithoutListing_7 = nfts.get(6);
+
+        log.info("Listing 1: " + nftWithoutListing_1);
+        log.info("Listing 2: " + nftWithoutListing_2);
+        log.info("Listing 3: " + nftWithoutListing_3);
+        log.info("Listing 4: " + nftWithoutListing_4);
+        log.info("Listing 5: " + nftWithoutListing_5);
+        log.info("Listing 6: " + nftWithoutListing_6);
+        log.info("Listing 7: " + nftWithoutListing_7);
     }
 
     @BeforeMethod

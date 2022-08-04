@@ -1,4 +1,4 @@
-name: UI Tests
+name: Listing
 
 on:
   workflow_dispatch:
@@ -10,12 +10,6 @@ on:
         options:
           - develop
           - test
-      testSet:
-        description: Test suite
-        required: true
-        type: choice
-        options:
-          - full
 
 env:
   RP_RUN_ID: api-${{ github.run_id }}
@@ -42,7 +36,7 @@ jobs:
       run: npm install
     - name: Run UI tests
       working-directory: AQA/java
-      run: xvfb-run --auto-servernum mvn clean test -Pui -q -DsuiteXmlFile=${{ env.TEST_SET }} -Dhost=${{ env.HOST }}
+      run: xvfb-run --auto-servernum mvn clean test -Pui -q -DsuiteXmlFile=listing -Dhost=${{ env.HOST }} -Drp.launch=Listing -Drp.attributes="runId:$RP_RUN_ID;env:$HOST;tag:Listing"
       env:
         JOB_NAME: UI tests on ${{ inputs.environment }}
 
@@ -72,4 +66,3 @@ jobs:
       with:
         name: screenshots
         path: 'AQA/java/screenshots'
-
