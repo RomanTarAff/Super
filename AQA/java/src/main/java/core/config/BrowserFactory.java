@@ -42,6 +42,7 @@ public class BrowserFactory {
             put("sessionTimeout", "10m");
             put("enableVideo", true);
             put("enableVNC", true);
+            put("maxInstances", 20);
         }});
         return chromeOptions;
     }

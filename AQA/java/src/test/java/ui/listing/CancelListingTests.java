@@ -20,11 +20,11 @@ public class CancelListingTests extends BaseListingTests {
 
     private static final Logger log = Logger.getLogger(CreateListingTests.class);
 
-    @AfterMethod
-    public void toMainPage() {
-        Header header = new Header();
-        header.logo();
-    }
+//    @AfterMethod
+//    public void toMainPage() {
+//        Header header = new Header();
+//        header.logo();
+//    }
 
     @Test(testName = "Cancel listing from nft details")
     public void cancelListingFromNftDetails() {
