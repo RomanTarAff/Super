@@ -1,8 +1,10 @@
 package ui;
 
 import api.enums.Account;
+import core.selenium.DriverManager;
 import listener.TestListener;
 import org.apache.log4j.Logger;
+import org.aspectj.lang.annotation.After;
 import org.testng.annotations.*;
 import ui.page.app.MyProfilePage;
 import ui.page.metamask.ActivityPage;
@@ -54,6 +56,7 @@ public class StatusCheckTests extends BaseUiTests {
         String numberOfNftBeforeMint = myProfilePage.getSearchResultCount();
         mint();
         myProfilePage.reloadPageUntilMintedNftPresent(Integer.parseInt(numberOfNftBeforeMint) + 1);
+        myProfilePage.reloadPageUntilMintedNameIsPresent(MINT_NFT_NAME);
 
         soft.assertEquals(myProfilePage.nftCards.getNftName(MINT_NFT_NAME), MINT_NFT_NAME,
                 String.format("Minted nft name should be %s", MINT_NFT_NAME));
@@ -67,5 +70,10 @@ public class StatusCheckTests extends BaseUiTests {
 
         soft.assertEquals(activityPage.table.getEventValue(MINT_NFT_NAME), "Minted",
                 String.format("Event for nft %s should be minted", MINT_NFT_NAME));
+    }
+
+    @AfterMethod
+    public void closeJob() {
+        DriverManager.getInstance().closeBrowser();
     }
 }

@@ -1,7 +1,8 @@
 name: Status develop
 
 on:
-  workflow_dispatch:
+  schedule:
+    - cron: '*/60 * * * *'
 
 env:
   RP_RUN_ID: api-${{ github.run_id }}

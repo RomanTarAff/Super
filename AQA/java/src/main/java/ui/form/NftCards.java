@@ -11,10 +11,10 @@ public class NftCards {
 
     private final Button threeDotMenu = new Button(By.cssSelector("div[class='three-dots-trigger']"));
     private String menuItem ="//div[@class='dropdown-content three-dots-content']//div[text()=' %s']";
-    private String nftItem ="//a[contains(@class,'nft-card')][.//div[text()='%s']]";
-    private String nftCollection ="//a[contains(@class,'nft-card')][.//div[text()='%s']]//div[contains(@class,'collection-info-tooltip')]";
-    private String nftImg ="//a[contains(@class,'nft-card')][.//div[text()='%s']]//img";
-    private String nftLikes ="//a[contains(@class,'nft-card')][.//div[text()='%s']]//div[contains(@class,'like-action')]/div[@class='text-footnote']";
+    private String nftItem ="//*[contains(@class,'nft-card')]//span[text()='%s']";
+    private String nftCollection ="//*[contains(@class,'nft-card')][.//div[text()='%s']]//div[contains(@class,'collection-info-tooltip')]";
+    private String nftImg ="//*[contains(@class,'nft-card')][.//div[text()='%s']]//img";
+    private String nftLikes ="//*[contains(@class,'nft-card')][.//div[text()='%s']]//div[contains(@class,'like-action')]/div[@class='text-footnote']";
     private Button firstNft = new Button(By.cssSelector("div[class='nft-card cursor-pointer']"));
 
     public void openThreeDotMenu() {
@@ -43,6 +43,11 @@ public class NftCards {
 
     public String getNftName(String nft) {
         return new TextLabel(By.xpath(String.format(nftItem, nft))).getText();
+    }
+
+    public boolean isNftNameDisplayed(String nft) {
+        TextLabel name = new TextLabel(By.xpath(String.format(nftItem, nft)));
+        return name.isPresent();
     }
 
     public String getNftCollection(String nft) {

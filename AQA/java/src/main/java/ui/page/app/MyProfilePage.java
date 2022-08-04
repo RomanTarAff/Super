@@ -81,4 +81,13 @@ public class MyProfilePage extends BasePage {
             reloadPageUntilMintedNftPresent(count);
         }
     }
+
+    public void reloadPageUntilMintedNameIsPresent(String name) {
+        boolean isDisplayed = nftCards.isNftNameDisplayed(name);
+        if(!isDisplayed) {
+            this.reload();
+            sleep(4);
+            reloadPageUntilMintedNameIsPresent(name);
+        }
+    }
 }
