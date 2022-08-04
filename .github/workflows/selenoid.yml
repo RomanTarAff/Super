@@ -25,6 +25,7 @@ jobs:
     - uses: docker-practice/actions-setup-docker@master
     - run: |
         docker pull selenoid/chrome:latest
+    - run: |
         docker run -d                                   \
         --name selenoid                                 \
         -p 4444:4444                                    \
@@ -45,7 +46,7 @@ jobs:
       run: npm install
     - name: Run UI tests
       working-directory: AQA/java
-      run: xvfb-run --auto-servernum mvn clean test -Pui -q -DsuiteXmlFile=listing -Dhost=${{ env.HOST }} -Drp.launch=Listing"
+      run: xvfb-run --auto-servernum mvn clean test -Pui -q -DsuiteXmlFile=listing -Dhost=${{ env.HOST }} -Drp.launch=Listing
       env:
         JOB_NAME: UI tests on ${{ inputs.environment }}
 
