@@ -2,7 +2,7 @@ name: Status develop
 
 on:
   schedule:
-    - cron: '*/60 * * * *'
+    - cron: '0 * * * *'
 
 env:
   RP_RUN_ID: api-${{ github.run_id }}
