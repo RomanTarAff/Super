@@ -1,11 +1,9 @@
 package ui.listing;
 
 import org.apache.log4j.Logger;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 import ui.BasePage;
 import ui.enums.Page;
-import ui.form.Header;
 import ui.page.NftDetailsPage;
 import ui.page.app.sell.CancelListingDialog;
 import ui.page.app.sell.ListingDialog;

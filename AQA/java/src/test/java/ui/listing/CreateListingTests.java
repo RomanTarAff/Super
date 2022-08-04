@@ -23,11 +23,11 @@ public class CreateListingTests extends BaseListingTests {
 
     private static final Logger log = Logger.getLogger(CreateListingTests.class);
 
-    @AfterMethod
-    public void toMainPage() {
-        Header header = new Header();
-        header.logo();
-    }
+//    @AfterMethod
+//    public void toMainPage() {
+//        Header header = new Header();
+//        header.logo();
+//    }
 
     @Test(testName = "Create listing with 4KB", priority = 0)
     public void createListingWith4KB() {
