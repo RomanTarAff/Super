@@ -46,7 +46,11 @@ public class BaseListingTests extends BaseUiTests {
         nftWithoutListing_5 = nfts.get(4);
         nftWithoutListing_6 = nfts.get(5);
         nftWithoutListing_7 = nfts.get(6);
+    }
 
+    @BeforeClass
+    public void initBrowser() {
+        log.info("Start browser");
         log.info("Listing 1: " + nftWithoutListing_1);
         log.info("Listing 2: " + nftWithoutListing_2);
         log.info("Listing 3: " + nftWithoutListing_3);
@@ -54,10 +58,6 @@ public class BaseListingTests extends BaseUiTests {
         log.info("Listing 5: " + nftWithoutListing_5);
         log.info("Listing 6: " + nftWithoutListing_6);
         log.info("Listing 7: " + nftWithoutListing_7);
-    }
-
-    @BeforeClass
-    public void initBrowser() {
         initMetamask(Account.MINT);
     }
 
