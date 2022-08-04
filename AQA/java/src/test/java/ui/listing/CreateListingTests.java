@@ -1,12 +1,12 @@
 package ui.listing;
 
 import api.enums.DatePeriod;
+import core.selenium.DriverManager;
 import listener.TestListener;
 import org.apache.log4j.Logger;
 import org.testng.annotations.*;
 import ui.BasePage;
 import ui.enums.Page;
-import ui.form.Header;
 import ui.page.NftDetailsPage;
 import ui.page.app.sell.ListingDialog;
 import ui.page.app.sell.SellNftPage;
@@ -23,11 +23,10 @@ public class CreateListingTests extends BaseListingTests {
 
     private static final Logger log = Logger.getLogger(CreateListingTests.class);
 
-//    @AfterMethod
-//    public void toMainPage() {
-//        Header header = new Header();
-//        header.logo();
-//    }
+    @AfterMethod
+    public void toMainPage() {
+        DriverManager.getInstance().getDriver().get(configuration().url());
+    }
 
     @Test(testName = "Create listing with 4KB", priority = 0)
     public void createListingWith4KB() {

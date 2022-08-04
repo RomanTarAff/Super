@@ -1,6 +1,8 @@
 package ui.listing;
 
+import core.selenium.DriverManager;
 import org.apache.log4j.Logger;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 import ui.BasePage;
 import ui.enums.Page;
@@ -18,11 +20,10 @@ public class CancelListingTests extends BaseListingTests {
 
     private static final Logger log = Logger.getLogger(CreateListingTests.class);
 
-//    @AfterMethod
-//    public void toMainPage() {
-//        Header header = new Header();
-//        header.logo();
-//    }
+    @AfterMethod
+    public void toMainPage() {
+        DriverManager.getInstance().getDriver().get(configuration().url());
+    }
 
     @Test(testName = "Cancel listing from nft details")
     public void cancelListingFromNftDetails() {
