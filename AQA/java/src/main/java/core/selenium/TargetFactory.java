@@ -33,7 +33,7 @@ public class TargetFactory {
     private synchronized RemoteWebDriver createRemoteInstance(MutableCapabilities capability) {
         RemoteWebDriver remoteWebDriver = null;
         try {
-            String gridURL = "http://localhost:4444/";
+            String gridURL = "http://localhost:4444/wd/hub";
 
             remoteWebDriver = new RemoteWebDriver(new URL(gridURL), capability);
         } catch (java.net.MalformedURLException e) {

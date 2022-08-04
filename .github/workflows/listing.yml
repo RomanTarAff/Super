@@ -35,6 +35,7 @@ jobs:
       working-directory: AQA/node
       run: npm install
     - name: Run UI tests
+      uses: Xotabu4/selenoid-github-action@v2
       working-directory: AQA/java
       run: xvfb-run --auto-servernum mvn clean test -Pui -q -DsuiteXmlFile=listing -Dhost=${{ env.HOST }} -Drp.launch=Listing -Drp.attributes="runId:$RP_RUN_ID;env:$HOST;tag:Listing"
       env:
