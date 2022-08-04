@@ -20,6 +20,7 @@ public class TestListener implements ITestListener {
         log.info("=========== Failed test: " + result.getMethod().getMethodName() + "===============");
     }
     public void onTestSkipped(ITestResult result) {
+        Screen.captureScreenshot(result.getMethod().getMethodName());
         log.info("=========== Skipped test: " + result.getMethod().getMethodName() + "===============");
     }
 }
