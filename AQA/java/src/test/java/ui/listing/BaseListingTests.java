@@ -27,7 +27,7 @@ public class BaseListingTests extends BaseUiTests {
     protected SearchNftResponse nftWithoutListing_6;
     protected SearchNftResponse nftWithoutListing_7;
 
-    @BeforeSuite
+    @BeforeTest
     public void getNftNotOnSale() {
 
         SearchNftRequest search = SearchNftRequest.builder()
