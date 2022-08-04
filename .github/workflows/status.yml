@@ -29,7 +29,7 @@ jobs:
       run: npm install
     - name: Run UI tests
       working-directory: AQA/java
-      run: xvfb-run --auto-servernum mvn clean test -Pui -DsuiteXmlFile=statusCheck -q -Dhost=develop -Drp.launch=StatusCheck -Drp.attributes="runId:$RP_RUN_ID;env:$HOST;tag:status"
+      run: xvfb-run --auto-servernum mvn clean test -Pui -DsuiteXmlFile=statusCheck -q -Dhost=develop -Drp.launch=StatusCheck -Drp.attributes="id:$RP_RUN_ID;env:$HOST;tag:status"
       env:
         JOB_NAME: Status check on develop
 
