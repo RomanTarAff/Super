@@ -17,7 +17,7 @@ import java.util.List;
 
 public class BaseListingTests extends BaseUiTests {
 
-    private static final Logger log = Logger.getLogger(BaseTests.class);
+    private static final Logger log = Logger.getLogger(BaseListingTests.class);
 
     protected SearchNftResponse nftWithoutListing_1;
     protected SearchNftResponse nftWithoutListing_2;
