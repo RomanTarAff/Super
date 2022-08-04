@@ -18,7 +18,7 @@ public class BaseUiTests extends BaseTests {
     protected void initMetamask(Account account) {
         DriverManager.getInstance().setDriver(new TargetFactory().createInstance("chrome"));
         DriverManager.getInstance().getDriver().get(configuration().url());
-        DriverManager.getInstance().getDriver().manage().window().maximize();
+        DriverManager.getInstance().getDriver().manage().window().setSize(dimension);
         DriverWait.turnOnImplicitWaits();
         sleep(4);
         BasePage.switchTo(Page.METAMASK);
