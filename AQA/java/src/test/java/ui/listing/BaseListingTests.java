@@ -37,7 +37,7 @@ public class BaseListingTests extends BaseUiTests {
                 .limit(100)
                 .sort(Sort.MOST_RECENT.getValue())
                 .build();
-        List<SearchNftResponse> nfts = nftService.searchNftItems(search, MINT_TOKEN)
+        List<SearchNftResponse> nfts = nftService.searchNftItems(search, System.getProperty(Account.MINT.getENV()))
                 .asClass(SearchNftResponseList.class).getNfts();
         nftWithoutListing_1 = nfts.get(0);
         nftWithoutListing_2 = nfts.get(1);
