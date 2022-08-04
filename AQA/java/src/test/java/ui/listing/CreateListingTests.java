@@ -6,6 +6,7 @@ import org.apache.log4j.Logger;
 import org.testng.annotations.*;
 import ui.BasePage;
 import ui.enums.Page;
+import ui.form.Header;
 import ui.page.NftDetailsPage;
 import ui.page.app.sell.ListingDialog;
 import ui.page.app.sell.SellNftPage;
@@ -21,6 +22,12 @@ import static core.config.ConfigurationManager.configuration;
 public class CreateListingTests extends BaseListingTests {
 
     private static final Logger log = Logger.getLogger(CreateListingTests.class);
+
+    @AfterMethod
+    public void toMainPage() {
+        Header header = new Header();
+        header.logo();
+    }
 
     @Test(testName = "Create listing with 4KB", priority = 0)
     public void createListingWith4KB() {

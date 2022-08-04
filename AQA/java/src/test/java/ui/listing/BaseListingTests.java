@@ -56,12 +56,12 @@ public class BaseListingTests extends BaseUiTests {
         log.info("Listing 7: " + nftWithoutListing_7);
     }
 
-    @BeforeMethod
+    @BeforeClass
     public void initBrowser() {
         initMetamask(Account.MINT);
     }
 
-    @AfterMethod
+    @AfterClass
     public void closeJob() {
         DriverManager.getInstance().closeBrowser();
     }

@@ -1,9 +1,11 @@
 package ui.listing;
 
 import org.apache.log4j.Logger;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 import ui.BasePage;
 import ui.enums.Page;
+import ui.form.Header;
 import ui.page.NftDetailsPage;
 import ui.page.app.sell.CancelListingDialog;
 import ui.page.app.sell.ListingDialog;
@@ -17,6 +19,12 @@ import static core.config.ConfigurationManager.configuration;
 public class CancelListingTests extends BaseListingTests {
 
     private static final Logger log = Logger.getLogger(CreateListingTests.class);
+
+    @AfterMethod
+    public void toMainPage() {
+        Header header = new Header();
+        header.logo();
+    }
 
     @Test(testName = "Cancel listing from nft details")
     public void cancelListingFromNftDetails() {
