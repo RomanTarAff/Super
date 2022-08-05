@@ -84,7 +84,7 @@ export const test = base.extend<TestFixtures, WorkerFixtures>({
             const sessionIdAndOtpAdmin = await service.authDev.login(walletAdmin);
 
             //sign message and get code admin
-            const signedMessageAdmin = await service.authDev.signMessageAndGetCode(walletAdmin.address, sessionIdAndOtpAdmin.data, wallet.useAccount);
+            const signedMessageAdmin = await service.authDev.signMessageAndGetCode(walletAdmin.address, sessionIdAndOtpAdmin.data, walletAdmin.useAccount);
 
             const verifyRequestAdmin: VerifyRequest = {
                 sessionId: sessionIdAndOtpAdmin.data.sessionId,
@@ -147,7 +147,7 @@ export const test = base.extend<TestFixtures, WorkerFixtures>({
             const sessionIdAndOtpAdmin = await service.authTest.login(walletAdmin);
 
             //sign message and get code admin
-            const signedMessageAdmin = await service.authTest.signMessageAndGetCode(walletAdmin.address, sessionIdAndOtpAdmin.data, wallet.useAccount);
+            const signedMessageAdmin = await service.authTest.signMessageAndGetCode(walletAdmin.address, sessionIdAndOtpAdmin.data, walletAdmin.useAccount);
 
             const verifyRequestAdmin: VerifyRequest = {
                 sessionId: sessionIdAndOtpAdmin.data.sessionId,
