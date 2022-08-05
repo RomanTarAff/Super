@@ -52,7 +52,7 @@ public class EditProfileNegativeTests extends BaseApiTests {
 
         assertEquals(codeMessageResponse.getCode(), "ValidationError");
         assertEquals(codeMessageResponse.getMessage(), "Data validation error");
-        assertEquals(codeMessageResponse.getPayload().getErrors().get(0), "");
+        assertEquals(codeMessageResponse.getPayload().getErrors().get(0), "data/data/description must NOT have more than 1000 characters");
     }
 
     @Test(testName = "Edit profile invalid website url", dataProvider = "urls")
