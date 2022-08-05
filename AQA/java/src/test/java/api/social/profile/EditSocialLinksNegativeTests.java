@@ -219,7 +219,7 @@ public class EditSocialLinksNegativeTests extends BaseApiTests {
 
         assertEquals(codeMessageResponse.getCode(), "ValidationError");
         assertEquals(codeMessageResponse.getMessage(), "Data validation error");
-        assertEquals(codeMessageResponse.getPayload().getErrors().get(0), "data/data/socialLinks/facebook must NOT have more than 2 items");
+        assertEquals(codeMessageResponse.getPayload().getErrors().get(0), "data/data/socialLinks/instagram must NOT have more than 2 items");
     }
 
     @Test(testName = "Edit profile linkedin length")
@@ -237,7 +237,7 @@ public class EditSocialLinksNegativeTests extends BaseApiTests {
 
         assertEquals(codeMessageResponse.getCode(), "ValidationError");
         assertEquals(codeMessageResponse.getMessage(), "Data validation error");
-        assertEquals(codeMessageResponse.getPayload().getErrors().get(0), "data/data/socialLinks/facebook must NOT have more than 2 items");
+        assertEquals(codeMessageResponse.getPayload().getErrors().get(0), "data/data/socialLinks/linkedin must NOT have more than 2 items");
     }
 
     @Test(testName = "Edit profile medium length")
@@ -255,7 +255,7 @@ public class EditSocialLinksNegativeTests extends BaseApiTests {
 
         assertEquals(codeMessageResponse.getCode(), "ValidationError");
         assertEquals(codeMessageResponse.getMessage(), "Data validation error");
-        assertEquals(codeMessageResponse.getPayload().getErrors().get(0), "data/data/socialLinks/facebook must NOT have more than 2 items");
+        assertEquals(codeMessageResponse.getPayload().getErrors().get(0), "data/data/socialLinks/medium must NOT have more than 2 items");
     }
 
     @Test(testName = "Edit profile snapchat length")
@@ -273,7 +273,7 @@ public class EditSocialLinksNegativeTests extends BaseApiTests {
 
         assertEquals(codeMessageResponse.getCode(), "ValidationError");
         assertEquals(codeMessageResponse.getMessage(), "Data validation error");
-        assertEquals(codeMessageResponse.getPayload().getErrors().get(0), "data/data/socialLinks/facebook must NOT have more than 2 items");
+        assertEquals(codeMessageResponse.getPayload().getErrors().get(0), "data/data/socialLinks/snapchat must NOT have more than 2 items");
     }
 
     @Test(testName = "Edit profile telegram length")
@@ -291,7 +291,7 @@ public class EditSocialLinksNegativeTests extends BaseApiTests {
 
         assertEquals(codeMessageResponse.getCode(), "ValidationError");
         assertEquals(codeMessageResponse.getMessage(), "Data validation error");
-        assertEquals(codeMessageResponse.getPayload().getErrors().get(0), "data/data/socialLinks/facebook must NOT have more than 2 items");
+        assertEquals(codeMessageResponse.getPayload().getErrors().get(0), "data/data/socialLinks/telegram must NOT have more than 2 items");
     }
 
     @Test(testName = "Edit profile twitch length")
@@ -309,7 +309,7 @@ public class EditSocialLinksNegativeTests extends BaseApiTests {
 
         assertEquals(codeMessageResponse.getCode(), "ValidationError");
         assertEquals(codeMessageResponse.getMessage(), "Data validation error");
-        assertEquals(codeMessageResponse.getPayload().getErrors().get(0), "data/data/socialLinks/facebook must NOT have more than 2 items");
+        assertEquals(codeMessageResponse.getPayload().getErrors().get(0), "data/data/socialLinks/twitch must NOT have more than 2 items");
     }
 
     @Test(testName = "Edit profile twitter length")
@@ -327,7 +327,7 @@ public class EditSocialLinksNegativeTests extends BaseApiTests {
 
         assertEquals(codeMessageResponse.getCode(), "ValidationError");
         assertEquals(codeMessageResponse.getMessage(), "Data validation error");
-        assertEquals(codeMessageResponse.getPayload().getErrors().get(0), "data/data/socialLinks/facebook must NOT have more than 2 items");
+        assertEquals(codeMessageResponse.getPayload().getErrors().get(0), "data/data/socialLinks/twitter must NOT have more than 2 items");
     }
 
     @Test(testName = "Edit profile youtube length")
@@ -345,7 +345,7 @@ public class EditSocialLinksNegativeTests extends BaseApiTests {
 
         assertEquals(codeMessageResponse.getCode(), "ValidationError");
         assertEquals(codeMessageResponse.getMessage(), "Data validation error");
-        assertEquals(codeMessageResponse.getPayload().getErrors().get(0), "data/data/socialLinks/facebook must NOT have more than 2 items");
+        assertEquals(codeMessageResponse.getPayload().getErrors().get(0), "data/data/socialLinks/youtube must NOT have more than 2 items");
     }
 
     @Test(testName = "Edit profile discord length")
@@ -363,7 +363,7 @@ public class EditSocialLinksNegativeTests extends BaseApiTests {
 
         assertEquals(codeMessageResponse.getCode(), "ValidationError");
         assertEquals(codeMessageResponse.getMessage(), "Data validation error");
-        assertEquals(codeMessageResponse.getPayload().getErrors().get(0), "data/data/socialLinks/facebook must NOT have more than 2 items");
+        assertEquals(codeMessageResponse.getPayload().getErrors().get(0), "data/data/socialLinks/discord must NOT have more than 2 items");
     }
 
     @DataProvider(name = "urls")
