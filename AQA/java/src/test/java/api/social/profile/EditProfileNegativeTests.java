@@ -8,6 +8,9 @@ import api.util.conditions.Conditions;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertTrue;
+
 public class EditProfileNegativeTests extends BaseApiTests {
 
     @Test(testName = "Edit profile invalid username", dataProvider = "usernames")
@@ -19,10 +22,9 @@ public class EditProfileNegativeTests extends BaseApiTests {
                 .shouldHave(Conditions.statusCode(422))
                 .asClass(CodeMessageResponse.class);
 
-        soft.assertEquals(codeMessageResponse.getCode(), "ValidationError");
-        soft.assertEquals(codeMessageResponse.getMessage(), "Data validation error");
-        soft.assertTrue(codeMessageResponse.getPayload().getErrors().get(0).contains(error));
-        soft.assertAll();
+        assertEquals(codeMessageResponse.getCode(), "ValidationError");
+        assertEquals(codeMessageResponse.getMessage(), "Data validation error");
+        assertTrue(codeMessageResponse.getPayload().getErrors().get(0).contains(error));
     }
 
     @Test(testName = "Edit profile invalid email", dataProvider = "emails")
@@ -34,10 +36,9 @@ public class EditProfileNegativeTests extends BaseApiTests {
                 .shouldHave(Conditions.statusCode(422))
                 .asClass(CodeMessageResponse.class);
 
-        soft.assertEquals(codeMessageResponse.getCode(), "ValidationError");
-        soft.assertEquals(codeMessageResponse.getMessage(), "Data validation error");
-        soft.assertEquals(codeMessageResponse.getPayload().getErrors().get(0), error);
-        soft.assertAll();
+        assertEquals(codeMessageResponse.getCode(), "ValidationError");
+        assertEquals(codeMessageResponse.getMessage(), "Data validation error");
+        assertEquals(codeMessageResponse.getPayload().getErrors().get(0), error);
     }
 
     @Test(testName = "Edit profile invalid description")
@@ -49,10 +50,9 @@ public class EditProfileNegativeTests extends BaseApiTests {
                 .shouldHave(Conditions.statusCode(422))
                 .asClass(CodeMessageResponse.class);
 
-        soft.assertEquals(codeMessageResponse.getCode(), "ValidationError");
-        soft.assertEquals(codeMessageResponse.getMessage(), "Data validation error");
-        soft.assertEquals(codeMessageResponse.getPayload().getErrors().get(0), "");
-        soft.assertAll();
+        assertEquals(codeMessageResponse.getCode(), "ValidationError");
+        assertEquals(codeMessageResponse.getMessage(), "Data validation error");
+        assertEquals(codeMessageResponse.getPayload().getErrors().get(0), "");
     }
 
     @Test(testName = "Edit profile invalid website url", dataProvider = "urls")
@@ -64,10 +64,9 @@ public class EditProfileNegativeTests extends BaseApiTests {
                 .shouldHave(Conditions.statusCode(422))
                 .asClass(CodeMessageResponse.class);
 
-        soft.assertEquals(codeMessageResponse.getCode(), "ValidationError");
-        soft.assertEquals(codeMessageResponse.getMessage(), "Data validation error");
-        soft.assertTrue(codeMessageResponse.getPayload().getErrors().get(0).contains(error));
-        soft.assertAll();
+        assertEquals(codeMessageResponse.getCode(), "ValidationError");
+        assertEquals(codeMessageResponse.getMessage(), "Data validation error");
+        assertTrue(codeMessageResponse.getPayload().getErrors().get(0).contains(error));
     }
 
     @Test(testName = "Edit profile invalid banner url", dataProvider = "urls")
@@ -79,10 +78,9 @@ public class EditProfileNegativeTests extends BaseApiTests {
                 .shouldHave(Conditions.statusCode(422))
                 .asClass(CodeMessageResponse.class);
 
-        soft.assertEquals(codeMessageResponse.getCode(), "ValidationError");
-        soft.assertEquals(codeMessageResponse.getMessage(), "Data validation error");
-        soft.assertTrue(codeMessageResponse.getPayload().getErrors().get(0).contains(error));
-        soft.assertAll();
+        assertEquals(codeMessageResponse.getCode(), "ValidationError");
+        assertEquals(codeMessageResponse.getMessage(), "Data validation error");
+        assertTrue(codeMessageResponse.getPayload().getErrors().get(0).contains(error));
     }
 
     @Test(testName = "Edit profile invalid avatar url", dataProvider = "urls")
@@ -94,10 +92,9 @@ public class EditProfileNegativeTests extends BaseApiTests {
                 .shouldHave(Conditions.statusCode(422))
                 .asClass(CodeMessageResponse.class);
 
-        soft.assertEquals(codeMessageResponse.getCode(), "ValidationError");
-        soft.assertEquals(codeMessageResponse.getMessage(), "Data validation error");
-        soft.assertTrue(codeMessageResponse.getPayload().getErrors().get(0).contains(error));
-        soft.assertAll();
+        assertEquals(codeMessageResponse.getCode(), "ValidationError");
+        assertEquals(codeMessageResponse.getMessage(), "Data validation error");
+        assertTrue(codeMessageResponse.getPayload().getErrors().get(0).contains(error));
     }
 
     @DataProvider(name = "usernames")
