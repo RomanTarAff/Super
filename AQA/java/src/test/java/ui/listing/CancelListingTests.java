@@ -20,11 +20,6 @@ public class CancelListingTests extends BaseListingTests {
 
     private static final Logger log = Logger.getLogger(CreateListingTests.class);
 
-    @AfterMethod
-    public void toMainPage() {
-        DriverManager.getInstance().getDriver().get(configuration().url());
-    }
-
     @Test(testName = "Cancel listing from nft details")
     public void cancelListingFromNftDetails() {
         String price = faker.random().nextInt(1, 5).toString();
