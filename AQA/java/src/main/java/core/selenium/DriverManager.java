@@ -5,7 +5,7 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 
 public class DriverManager {
 
-    private ThreadLocal<WebDriver> driver = new ThreadLocal<>();
+    private static ThreadLocal<WebDriver> driver = new ThreadLocal<>();
     private static DriverManager instance  = new DriverManager();
 
     private DriverManager() {}
@@ -15,6 +15,7 @@ public class DriverManager {
     }
 
     public WebDriver getDriver() {
+        System.out.println("Thread: " + Thread.currentThread().getId());
         return driver.get();
     }
 

@@ -6,6 +6,7 @@ import core.selenium.DriverManager;
 import core.selenium.TargetFactory;
 import core.selenium.wait.DriverWait;
 import org.openqa.selenium.Dimension;
+import org.openqa.selenium.WebDriver;
 import ui.enums.Page;
 import ui.page.metamask.*;
 
@@ -16,12 +17,14 @@ public class BaseUiTests extends BaseTests {
     private final Dimension dimension = new Dimension(1920, 1080);
 
     protected void initMetamask(Account account) {
-        DriverManager.getInstance().setDriver(new TargetFactory().createInstance("chrome"));
+        WebDriver driver = new TargetFactory().createInstance("chrome");
+        DriverManager.getInstance().setDriver(driver);
         DriverManager.getInstance().getDriver().get(configuration().url());
         DriverManager.getInstance().getDriver().manage().window().setSize(dimension);
         DriverWait.turnOnImplicitWaits();
         sleep(4);
         BasePage.switchTo(Page.METAMASK);
+        sleep(5);
         WelcomePage welcomePage = new WelcomePage();
         ImportPage importPage = welcomePage.start();
         AgreePage agreePage = importPage.importAcc();

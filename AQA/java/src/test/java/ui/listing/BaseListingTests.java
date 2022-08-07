@@ -48,7 +48,7 @@ public class BaseListingTests extends BaseUiTests {
         nftWithoutListing_7 = nfts.get(6);
     }
 
-    @BeforeClass
+    @BeforeMethod
     public void initBrowser() {
         log.info("Start browser");
         log.info("Listing 1: " + nftWithoutListing_1);
@@ -61,7 +61,7 @@ public class BaseListingTests extends BaseUiTests {
         initMetamask(Account.MINT);
     }
 
-    @AfterClass
+    @AfterMethod
     public void closeJob() {
         DriverManager.getInstance().closeBrowser();
     }

@@ -49,9 +49,9 @@ public class BaseTests {
         Process proc = null;
 
         try {
-            if (System.getProperty("host").equals("develop")) {
+            if (System.getenv("host").equals("develop")) {
                 proc = rt.exec(NPM_RUN_DEV);
-            } else if (System.getProperty("host").equals("test")) {
+            } else if (System.getenv("host").equals("test")) {
                 proc = rt.exec(NPM_RUN_TEST);
             }
 

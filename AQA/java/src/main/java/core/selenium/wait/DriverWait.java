@@ -1,6 +1,8 @@
 package core.selenium.wait;
 
+import core.control.TextLabel;
 import core.selenium.DriverManager;
+import lombok.SneakyThrows;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -38,6 +40,20 @@ public class DriverWait {
         fluentWait(PAGE_WAIT_TIMEOUT).ignoring(TimeoutException.class).until(function);
     }
 
+    public static void waitForWelcomePage(By by) {
+        Function<WebDriver, Boolean> function = driver ->
+        {
+            driver.navigate().refresh();
+            sleep(4500);
+            boolean result = !driver.findElements(by).isEmpty();
+            if (result) {
+                log.info("Welcome page is loaded");
+            }
+            return result;
+        };
+        fluentWait(PAGE_WAIT_TIMEOUT).ignoring(NoSuchElementException.class).until(function);
+    }
+
     public static void waitElementPresent(By by) {
         fluentWait(ELEMENT_WAIT_TIMEOUT).ignoring(TimeoutException.class).until(ExpectedConditions.presenceOfElementLocated(by));
     }
@@ -48,6 +64,16 @@ public class DriverWait {
 
     public static void waitElementClickable(By by) {
         fluentWait(ELEMENT_WAIT_TIMEOUT).ignoring(TimeoutException.class).until(ExpectedConditions.elementToBeClickable(by));
+    }
+
+    @SneakyThrows
+    public static void reloadAndWaitElement(By by) {
+        boolean isErrorPage = true;
+        while(isErrorPage) {
+            DriverManager.getInstance().getDriver().navigate().refresh();
+            TimeUnit.SECONDS.sleep(5);
+            isErrorPage = DriverManager.getInstance().getDriver().findElements(by).isEmpty();
+        }
     }
 
     private static void sleep(long msecs) {

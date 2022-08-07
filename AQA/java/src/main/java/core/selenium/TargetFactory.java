@@ -14,14 +14,15 @@ import static core.config.ConfigurationManager.configuration;
 public class TargetFactory {
     private static final Logger logger = LogManager.getLogger(TargetFactory.class);
 
-    public synchronized WebDriver createInstance(String browser) {
+    public WebDriver createInstance(String browser) {
         Target execution = Target.valueOf(configuration().execution().toUpperCase());
         WebDriver webdriver = null;
 
         switch (execution) {
             case LOCAL:
                 webdriver = BrowserFactory.createDriver();
-                System.out.println("Instance was created");
+                System.out.println("Instance!!!!! ");
+                //System.out.println("Instance was created! " + Thread.currentThread().getId());
                 break;
             case REMOTE:
                 webdriver = createRemoteInstance(BrowserFactory.getSelenoidOptions());

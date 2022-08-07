@@ -1,7 +1,9 @@
 package ui;
 
+import core.control.TextLabel;
 import core.selenium.DriverManager;
 import core.selenium.wait.DriverWait;
+import lombok.SneakyThrows;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import ui.enums.Page;
@@ -16,6 +18,7 @@ public abstract class BasePage {
 
     private static final Logger log = Logger.getLogger(BasePage.class);
     public Header header = new Header();
+    private final TextLabel error = new TextLabel(By.id("critical-error-button"));
 
     protected BasePage(By by) {
         DriverWait.waitForPageLoaded();
@@ -26,6 +29,12 @@ public abstract class BasePage {
         if (reload) DriverManager.getInstance().getDriver().navigate().refresh();
         DriverWait.waitForPageLoaded();
         DriverWait.waitElementPresent(by);
+    }
+
+    @SneakyThrows
+    protected BasePage(boolean isError, By by) {
+        DriverWait.waitForPageLoaded();
+        if (isError) DriverWait.waitForWelcomePage(by);
     }
 
     public void reload() {

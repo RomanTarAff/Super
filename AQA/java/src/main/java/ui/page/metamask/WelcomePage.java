@@ -12,7 +12,7 @@ public class WelcomePage extends BasePage {
     private final Button startBtn = new Button(By.cssSelector("button[role='button']"));
 
     public WelcomePage() {
-        super(By.cssSelector("div[class='welcome-page']"));
+        super(true, By.cssSelector("div[class='welcome-page']"));
         log.info("Welcome page is opened");
     }
 
