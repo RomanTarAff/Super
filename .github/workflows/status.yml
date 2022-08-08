@@ -44,7 +44,6 @@ jobs:
         bearerToken: '830c1494-2c9c-4b3f-8cb8-29e54a84d2e0'
 
   report:
-    name: Extract ID of the launch ${{ env.RP_RUN_ID }}
     runs-on: ubuntu-latest
     outputs:
       launchID: ${{ steps.extractData.outputs.launchID }}
