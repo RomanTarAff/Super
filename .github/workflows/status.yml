@@ -11,6 +11,12 @@ env:
 
 jobs:
   tests:
+    outputs:
+      launchID: ${{ steps.getTestLaunch.outputs.launchID }}
+      status: ${{ steps.getTestLaunch.outputs.status }}
+      passed: ${{ steps.getTestLaunch.outputs.passed }}
+      failed: ${{ steps.getTestLaunch.outputs.failed }}
+      total: ${{ steps.getTestLaunch.outputs.total }}
     timeout-minutes: 10
     runs-on: ubuntu-latest
 
@@ -42,20 +48,6 @@ jobs:
         url: https://report-portal.rmr-t.ru/api/v1/superfarm/launch?filter.has.attributeKey=id&filter.has.attributeValue=${{ env.RP_RUN_ID }}
         method: 'GET'
         bearerToken: '830c1494-2c9c-4b3f-8cb8-29e54a84d2e0'
-
-  report:
-    runs-on: ubuntu-latest
-    needs: [tests]
-    outputs:
-      launchID: ${{ steps.extractData.outputs.launchID }}
-      status: ${{ steps.extractData.outputs.status }}
-      passed: ${{ steps.extractData.outputs.passed }}
-      failed: ${{ steps.extractData.outputs.failed }}
-      total: ${{ steps.extractData.outputs.total }}
-    if: always()
-    steps:
-    - name: Extract Data for Report portal
-      id: extractData
       run: |
         echo ${{ steps.getTestLaunch.outputs.response }}
         echo "::set-output name=launchID::$(echo '${{ steps.getTestLaunch.outputs.response }}' | jq .content[].id)"
@@ -74,9 +66,9 @@ jobs:
   notify:
     name: Slack Notification
     runs-on: ubuntu-latest
-    needs: [ report ]
+    needs: [ tests ]
     timeout-minutes: 3
-    if: ${{ needs.report.outputs.status == 'FAILED' }}
+    if: ${{ needs.tests.outputs.status == 'FAILED' }}
     steps:
     - name: Slack Notification
       uses: rtCamp/action-slack-notify@v2
@@ -84,7 +76,7 @@ jobs:
         SLACK_USERNAME: 'Activity check'
         #SLACK_ICON_EMOJI: '🟢'
         SLACK_TITLE: Status check on develop
-        SLACK_MESSAGE: ${{ needs.report.outputs.passed }} of ${{ needs.report.outputs.total }} passed - https://report-portal.rmr-t.ru/ui/#superfarm/launches/all/${{ needs.report.outputs.launchID }}
+        SLACK_MESSAGE: ${{ needs.tests.outputs.passed }} of ${{ needs.tests.outputs.total }} passed - https://report-portal.rmr-t.ru/ui/#superfarm/launches/all/${{ needs.tests.outputs.launchID }}
         SLACK_FOOTER: ''
         SLACK_COLOR: success
         SLACK_WEBHOOK: 'https://hooks.slack.com/services/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'
