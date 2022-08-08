@@ -77,13 +77,13 @@ jobs:
     timeout-minutes: 3
     if: ${{ needs.report.outputs.status == 'FAILED' }}
     steps:
-     - name: Slack Notification
-       uses: rtCamp/action-slack-notify@v2
-       env:
-         SLACK_USERNAME: 'Activity check'
-         #SLACK_ICON_EMOJI: '🟢'
-         SLACK_TITLE: Status check on develop
-         SLACK_MESSAGE: ${{ needs.report.outputs.passed }} of ${{ needs.report.outputs.total }} passed - https://report-portal.rmr-t.ru/ui/#superfarm/launches/all/${{ needs.report.outputs.launchID }}
-         SLACK_FOOTER: ''
-         SLACK_COLOR: success
-         SLACK_WEBHOOK: 'https://hooks.slack.com/services/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'
+    - name: Slack Notification
+      uses: rtCamp/action-slack-notify@v2
+      env:
+        SLACK_USERNAME: 'Activity check'
+        #SLACK_ICON_EMOJI: '🟢'
+        SLACK_TITLE: Status check on develop
+        SLACK_MESSAGE: ${{ needs.report.outputs.passed }} of ${{ needs.report.outputs.total }} passed - https://report-portal.rmr-t.ru/ui/#superfarm/launches/all/${{ needs.report.outputs.launchID }}
+        SLACK_FOOTER: ''
+        SLACK_COLOR: success
+        SLACK_WEBHOOK: 'https://hooks.slack.com/services/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'
