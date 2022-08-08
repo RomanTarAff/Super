@@ -1,8 +1,8 @@
-name: API
+name: API Nightly
 
 on:
   schedule:
-    - cron: '0 16 * * *'
+    - cron: '45 20 * * *'
 
 jobs:
   api_develop:
@@ -14,8 +14,3 @@ jobs:
     uses: ./.github/workflows/api.yml
     with:
       environment: test
-
-  api_staging:
-    uses: ./.github/workflows/api.yml
-    with:
-      environment: staging

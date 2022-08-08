@@ -1,0 +1,18 @@
+name: Listing Manual
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: Environment
+        required: true
+        type: choice
+        options:
+          - develop
+          - test
+
+jobs:
+  api-tests:
+    uses: ./.github/workflows/listing.yml
+    with:
+      environment: ${{ github.event.inputs.environment }}

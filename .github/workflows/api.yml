@@ -1,16 +1,12 @@
-name: API Manual
+name: API
 
 on:
-  workflow_dispatch:
+  workflow_call:
     inputs:
       environment:
         description: Environment
         required: true
-        type: choice
-        options:
-          - develop
-          - test
-          - staging
+        type: string
 
 env:
   RP_RUN_ID: api-${{ github.run_id }}
