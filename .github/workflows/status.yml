@@ -13,12 +13,6 @@ jobs:
   tests:
     timeout-minutes: 10
     runs-on: ubuntu-latest
-    outputs:
-      launchID: ${{ steps.extractReportID.outputs.launchID }}
-      status: ${{ steps.extractReportID.outputs.status }}
-      passed: ${{ steps.extractReportID.outputs.passed }}
-      failed: ${{ steps.extractReportID.outputs.failed }}
-      total: ${{ steps.extractReportID.outputs.total }}
 
     steps:
     - uses: actions/checkout@v3
@@ -49,16 +43,26 @@ jobs:
         method: 'GET'
         bearerToken: '830c1494-2c9c-4b3f-8cb8-29e54a84d2e0'
 
-    - name: Extract ID of the launch ${{ env.RP_RUN_ID }}
-      id: extractReportID
-      if: always()
-      run: |
-        echo ${{ steps.getTestLaunch.outputs.response }}
-        echo "::set-output name=launchID::$(echo '${{ steps.getTestLaunch.outputs.response }}' | jq .content[].id)"
-        echo "::set-output name=status::$(echo '${{ steps.getTestLaunch.outputs.response }}' | jq .content[].status)"
-        echo "::set-output name=passed::$(echo '${{ steps.getTestLaunch.outputs.response }}' | jq .content[].statistics.executions.passed)"
-        echo "::set-output name=total::$(echo '${{ steps.getTestLaunch.outputs.response }}' | jq .content[].statistics.executions.total)"
-        echo "::set-output name=failed::$(echo '${{ steps.getTestLaunch.outputs.response }}' | jq .content[].statistics.executions.failed)"
+  report:
+    name: Extract ID of the launch ${{ env.RP_RUN_ID }}
+    runs-on: ubuntu-latest
+    outputs:
+      launchID: ${{ steps.extractData.outputs.launchID }}
+      status: ${{ steps.extractData.outputs.status }}
+      passed: ${{ steps.extractData.outputs.passed }}
+      failed: ${{ steps.extractData.outputs.failed }}
+      total: ${{ steps.extractData.outputs.total }}
+    if: always()
+    steps:
+      - name: Extract Data for Report portal
+        id: extractData
+        run: |
+          echo ${{ steps.getTestLaunch.outputs.response }}
+          echo "::set-output name=launchID::$(echo '${{ steps.getTestLaunch.outputs.response }}' | jq .content[].id)"
+          echo "::set-output name=status::$(echo '${{ steps.getTestLaunch.outputs.response }}' | jq .content[].status)"
+          echo "::set-output name=passed::$(echo '${{ steps.getTestLaunch.outputs.response }}' | jq .content[].statistics.executions.passed)"
+          echo "::set-output name=total::$(echo '${{ steps.getTestLaunch.outputs.response }}' | jq .content[].statistics.executions.total)"
+          echo "::set-output name=failed::$(echo '${{ steps.getTestLaunch.outputs.response }}' | jq .content[].statistics.executions.failed)"
 
     - name: Upload artifact
       uses: actions/upload-artifact@v3
@@ -70,9 +74,9 @@ jobs:
   notify:
     name: Slack Notification
     runs-on: ubuntu-latest
-    needs: [ tests ]
+    needs: [ report ]
     timeout-minutes: 3
-    if: ${{ needs.tests.outputs.status == 'FAILED' }}
+    if: ${{ needs.report.outputs.status == 'FAILED' }}
     steps:
      - name: Slack Notification
        uses: rtCamp/action-slack-notify@v2
@@ -80,7 +84,7 @@ jobs:
          SLACK_USERNAME: 'Activity check'
          #SLACK_ICON_EMOJI: '🟢'
          SLACK_TITLE: Status check on develop
-         SLACK_MESSAGE: ${{ needs.tests.outputs.passed }} of ${{ needs.tests.outputs.total }} passed - https://report-portal.rmr-t.ru/ui/#superfarm/launches/all/${{ needs.tests.outputs.launchID }}
+         SLACK_MESSAGE: ${{ needs.report.outputs.passed }} of ${{ needs.report.outputs.total }} passed - https://report-portal.rmr-t.ru/ui/#superfarm/launches/all/${{ needs.report.outputs.launchID }}
          SLACK_FOOTER: ''
          SLACK_COLOR: success
          SLACK_WEBHOOK: 'https://hooks.slack.com/services/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'

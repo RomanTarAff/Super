@@ -1,0 +1,16 @@
+name: Listing
+
+on:
+  schedule:
+    - cron: '20 16 * * *'
+
+jobs:
+  listing_develop:
+    uses: ./.github/workflows/listing.yml
+    with:
+      environment: develop
+
+  listing_test:
+    uses: ./.github/workflows/listing.yml
+    with:
+      environment: test

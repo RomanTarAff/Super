@@ -1,0 +1,21 @@
+name: API
+
+on:
+  schedule:
+    - cron: '0 16 * * *'
+
+jobs:
+  api_develop:
+    uses: ./.github/workflows/api.yml
+    with:
+      environment: develop
+
+  api_test:
+    uses: ./.github/workflows/api.yml
+    with:
+      environment: test
+
+  api_staging:
+    uses: ./.github/workflows/api.yml
+    with:
+      environment: staging

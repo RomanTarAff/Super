@@ -1,4 +1,4 @@
-name: Listing
+name: Buy
 
 on:
   workflow_dispatch:
@@ -14,7 +14,7 @@ on:
 env:
   RP_RUN_ID: api-${{ github.run_id }}
   HOST: ${{ inputs.environment }}
-  TEST_SET: Listing
+  TEST_SET: Buy
 
 jobs:
   tests:
@@ -36,9 +36,9 @@ jobs:
       run: npm install
     - name: Run UI tests
       working-directory: AQA/java
-      run: xvfb-run --auto-servernum mvn clean test -Pui -q -DsuiteXmlFile=listing -Dhost=${{ env.HOST }} -Drp.launch=Listing -Drp.attributes="id:$RP_RUN_ID;env:$HOST;tag:Listing"
+      run: xvfb-run --auto-servernum mvn clean test -Pui -q -DsuiteXmlFile=buy -Dhost=${{ env.HOST }} -Drp.launch=Buy -Drp.attributes="id:$RP_RUN_ID;env:$HOST;tag:Buy"
       env:
-        JOB_NAME: Listing tests on ${{ inputs.environment }}
+        JOB_NAME: Buy tests on ${{ inputs.environment }}
 
     - name: Get test launch with label ${{ env.RP_RUN_ID }}
       id: getTestLaunch

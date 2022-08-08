@@ -10,6 +10,7 @@ on:
         options:
           - develop
           - test
+          - staging
 
 env:
   RP_RUN_ID: api-${{ github.run_id }}

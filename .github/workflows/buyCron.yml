@@ -1,0 +1,16 @@
+name: Buy
+
+on:
+  schedule:
+    - cron: '10 16 * * *'
+
+jobs:
+  buy_develop:
+    uses: ./.github/workflows/buy.yml
+    with:
+      environment: develop
+
+  buy_test:
+    uses: ./.github/workflows/buy.yml
+    with:
+      environment: test
