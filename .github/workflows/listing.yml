@@ -1,4 +1,4 @@
-name: Listing
+name: Listing Manual
 
 on:
   workflow_dispatch:

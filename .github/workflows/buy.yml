@@ -1,4 +1,4 @@
-name: Buy
+name: Buy Manual
 
 on:
   workflow_dispatch:

@@ -53,15 +53,15 @@ jobs:
       total: ${{ steps.extractData.outputs.total }}
     if: always()
     steps:
-      - name: Extract Data for Report portal
-        id: extractData
-        run: |
-          echo ${{ steps.getTestLaunch.outputs.response }}
-          echo "::set-output name=launchID::$(echo '${{ steps.getTestLaunch.outputs.response }}' | jq .content[].id)"
-          echo "::set-output name=status::$(echo '${{ steps.getTestLaunch.outputs.response }}' | jq .content[].status)"
-          echo "::set-output name=passed::$(echo '${{ steps.getTestLaunch.outputs.response }}' | jq .content[].statistics.executions.passed)"
-          echo "::set-output name=total::$(echo '${{ steps.getTestLaunch.outputs.response }}' | jq .content[].statistics.executions.total)"
-          echo "::set-output name=failed::$(echo '${{ steps.getTestLaunch.outputs.response }}' | jq .content[].statistics.executions.failed)"
+    - name: Extract Data for Report portal
+      id: extractData
+      run: |
+        echo ${{ steps.getTestLaunch.outputs.response }}
+        echo "::set-output name=launchID::$(echo '${{ steps.getTestLaunch.outputs.response }}' | jq .content[].id)"
+        echo "::set-output name=status::$(echo '${{ steps.getTestLaunch.outputs.response }}' | jq .content[].status)"
+        echo "::set-output name=passed::$(echo '${{ steps.getTestLaunch.outputs.response }}' | jq .content[].statistics.executions.passed)"
+        echo "::set-output name=total::$(echo '${{ steps.getTestLaunch.outputs.response }}' | jq .content[].statistics.executions.total)"
+        echo "::set-output name=failed::$(echo '${{ steps.getTestLaunch.outputs.response }}' | jq .content[].statistics.executions.failed)"
 
     - name: Upload artifact
       uses: actions/upload-artifact@v3
