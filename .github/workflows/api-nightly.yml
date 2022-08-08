@@ -2,7 +2,7 @@ name: API Nightly
 
 on:
   schedule:
-    - cron: '57 18 * * *'
+    - cron: '03 19 * * *'
 
 jobs:
   api_develop:
