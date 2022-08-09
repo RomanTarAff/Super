@@ -67,6 +67,8 @@ public class StatusCheckTests extends BaseUiTests {
 
         ActivityPage activityPage = homePage.openActivityPage();
         activityPage.table.filterTags.closeFilter("Sold");
+        activityPage.table.filtersPanel.openStatusTab();
+        activityPage.table.filtersPanel.mints();
 
         soft.assertEquals(activityPage.table.getEventValue(MINT_NFT_NAME), "Minted",
                 String.format("Event for nft %s should be minted", MINT_NFT_NAME));

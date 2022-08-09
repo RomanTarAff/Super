@@ -8,6 +8,7 @@ public class Table {
 
     private final TextLabel countOfRows = new TextLabel(By.xpath("//div[contains(@class,'table-body-row')]"));
     public FilterTags filterTags = new FilterTags();
+    public FiltersPanel filtersPanel = new FiltersPanel();
 
     //by name
     private TextLabel getItemByName(String name) {

@@ -12,6 +12,7 @@ public class FiltersPanel {
 
     private final Button statusTabBtn = new Button(By.xpath("//button[@class='new-filters__button']//div[text()='Status ']"));
     private final Button statusListings = new Button(By.xpath("//div[@class='statuses']//button[text()=' Listings']"));
+    private final Button mintsBtn = new Button(By.xpath("//div[@class='statuses']//button[text()=' Mints']"));
     private final Button statusSales = new Button(By.xpath("//div[@class='statuses']//button[text()=' Sales']"));
     private final Button statusOfferMade = new Button(By.xpath("//div[@class='statuses']//button[text()=' Offer Made']"));
     private final Button priceTab = new Button(By.xpath("//button[@class='new-filters__button']//div[text()='Price']"));
@@ -26,7 +27,17 @@ public class FiltersPanel {
         statusOfferMade.press();
         log.info("Status offer made is clicked");
         try {
-            TimeUnit.SECONDS.sleep(7);
+            TimeUnit.SECONDS.sleep(5);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void mints() {
+        mintsBtn.press();
+        log.info("Status Mints is clicked");
+        try {
+            TimeUnit.SECONDS.sleep(5);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
