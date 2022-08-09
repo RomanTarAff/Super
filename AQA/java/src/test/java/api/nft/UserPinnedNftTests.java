@@ -16,6 +16,8 @@ import java.util.List;
 
 import static java.net.HttpURLConnection.HTTP_NO_CONTENT;
 import static java.net.HttpURLConnection.HTTP_OK;
+import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertTrue;
 
 public class UserPinnedNftTests extends BaseApiTests {
 
@@ -38,11 +40,6 @@ public class UserPinnedNftTests extends BaseApiTests {
 
     @Test(testName = "Get pinned nfts")
     public void getPinnedNfts() {
-        SearchNftRequest search = SearchNftRequest.builder()
-                .group(Group.IN_WALLET.getValue())
-                .limit(50)
-                .sort(Sort.MOST_RECENT.getValue())
-                .build();
 
         //get pinned nfts
         SearchNftResponseList nfts = nftService.getPinnedNft(userMint.getId(), System.getProperty(Account.MINT.getENV()))
@@ -50,8 +47,8 @@ public class UserPinnedNftTests extends BaseApiTests {
                 .asClass(SearchNftResponseList.class);
 
         nfts.getNfts().forEach(nft -> {
-            soft.assertEquals(nft.getOwnerAddress(), userMint.getEthAddress());
-            soft.assertTrue(nft.isPinned(), "NFT should be pinned in group");
+            assertEquals(nft.getOwnerAddress(), userMint.getEthAddress());
+            assertTrue(nft.isPinned(), "NFT should be pinned in group");
         });
 
         //pin nft
@@ -66,12 +63,30 @@ public class UserPinnedNftTests extends BaseApiTests {
                 .shouldHave(Conditions.statusCode(HTTP_OK))
                 .asClass(SearchNftResponseList.class);
 
-        nfts.getNfts().forEach(nft -> {
-            soft.assertEquals(nft.getOwnerAddress(), userMint.getEthAddress());
-            soft.assertTrue(nft.isPinned(), "NFT should be pinned in group");
+        nftsAgain.getNfts().forEach(nft -> {
+            assertEquals(nft.getOwnerAddress(), userMint.getEthAddress());
+            assertTrue(nft.isPinned(), "NFT should be pinned in group");
         });
-        soft.assertEquals(nfts.getNfts().size(), nftsAgain.getNfts().size() + 1,
+        assertEquals(nfts.getNfts().size(), nftsAgain.getNfts().size() + 1,
                 "Size of pinned nfts list is not the same after pin NFT");
-        soft.assertAll();
+        
+        //unpin nft
+        Object unpin = nftService.unpinNft(nftResult.getId(), System.getProperty(Account.MINT.getENV()))
+                .shouldHave(Conditions.statusCode(HTTP_NO_CONTENT))
+                .getResponse().asString();
+
+        sleep(3);
+
+        //get pinned nfts again
+        SearchNftResponseList nftsAgainUnpin = nftService.getPinnedNft(userMint.getId(), System.getProperty(Account.MINT.getENV()))
+                .shouldHave(Conditions.statusCode(HTTP_OK))
+                .asClass(SearchNftResponseList.class);
+
+        nftsAgainUnpin.getNfts().forEach(nft -> {
+            assertEquals(nft.getOwnerAddress(), userMint.getEthAddress());
+            assertTrue(nft.isPinned(), "NFT should be pinned in group");
+        });
+        assertEquals(nfts.getNfts().size(), nftsAgainUnpin.getNfts().size(),
+                "Size of pinned nfts list is not the same after pin NFT");
     }
 }
