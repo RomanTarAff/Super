@@ -13,6 +13,10 @@ test.describe('Status check', async function () {
         await metamaskHelper.mint(name, description);
     });
 
+    test('Mint nft @change', async () => {
+        await metamaskHelper.changeOwner();
+    });
+
     test('Get token @tokenDev', async ({service, authModeDev}) => {
         console.log('INIT DEV TOKENS')
         shell.exec(`export MINT_TOKEN=${authModeDev.accessTokenMintDev}`);

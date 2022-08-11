@@ -12,6 +12,7 @@
   "scripts": {
     "mint": "npx playwright test --grep @mint",
     "tokenDev": "npx playwright test --grep @tokenDev",
-    "tokenTest": "npx playwright test --grep @tokenTest"
+    "tokenTest": "npx playwright test --grep @tokenTest",
+    "change": "npx playwright test --grep @change"
   }
 }
