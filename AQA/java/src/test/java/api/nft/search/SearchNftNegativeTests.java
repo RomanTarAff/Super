@@ -13,13 +13,32 @@ import org.testng.annotations.Test;
 import java.util.List;
 
 import static java.net.HttpURLConnection.HTTP_FORBIDDEN;
+import static org.testng.Assert.assertEquals;
 
 public class SearchNftNegativeTests extends BaseApiTests {
 
-    @Test(testName = "Search nft without required fields")
-    public void searchWithoutRequiredFields() {
+    @Test(testName = "Search nft without limit")
+    public void searchWithoutLimit() {
         SearchNftRequest search = SearchNftRequest.builder()
-                .search("")
+                .search("gfrere")
+                .statuses(List.of(Status.NOT_LISTED.getValue()))
+                .group(Group.IN_WALLET.getValue())
+                .sort(Sort.MOST_RECENT.getValue())
+                .build();
+
+        CodeMessageResponse codeMessageResponse = nftService.searchNftItems(search, System.getProperty(Account.MINT.getENV()))
+                .shouldHave(Conditions.statusCode(422))
+                .asClass(CodeMessageResponse.class);
+        assertEquals(codeMessageResponse.getCode(), "ValidationError");
+        assertEquals(codeMessageResponse.getMessage(), "Data validation error");
+        assertEquals(codeMessageResponse.getPayload().getErrors().get(0), "data must have required property 'limit'");
+    }
+
+    @Test(testName = "Search nft without sort")
+    public void searchWithoutSort() {
+        SearchNftRequest search = SearchNftRequest.builder()
+                .search("gfrere")
+                .limit(10)
                 .statuses(List.of(Status.NOT_LISTED.getValue()))
                 .group(Group.IN_WALLET.getValue())
                 .build();
@@ -27,12 +46,9 @@ public class SearchNftNegativeTests extends BaseApiTests {
         CodeMessageResponse codeMessageResponse = nftService.searchNftItems(search, System.getProperty(Account.MINT.getENV()))
                 .shouldHave(Conditions.statusCode(422))
                 .asClass(CodeMessageResponse.class);
-        soft.assertEquals(codeMessageResponse.getCode(), "ValidationError");
-        soft.assertEquals(codeMessageResponse.getMessage(), "Data validation error");
-        soft.assertEquals(codeMessageResponse.getPayload().getErrors().get(0), "data must have required property 'sort'");
-        soft.assertEquals(codeMessageResponse.getPayload().getErrors().get(1), "data must have required property 'limit'");
-        soft.assertEquals(codeMessageResponse.getPayload().getErrors().get(2), "data/search must NOT have fewer than 1 characters");
-        soft.assertAll();
+        assertEquals(codeMessageResponse.getCode(), "ValidationError");
+        assertEquals(codeMessageResponse.getMessage(), "Data validation error");
+        assertEquals(codeMessageResponse.getPayload().getErrors().get(0), "data must have required property 'sort'");
     }
 
     @Test(testName = "Search nft more 100 chars")
@@ -48,10 +64,9 @@ public class SearchNftNegativeTests extends BaseApiTests {
         CodeMessageResponse codeMessageResponse = nftService.searchNftItems(search, System.getProperty(Account.MINT.getENV()))
                 .shouldHave(Conditions.statusCode(422))
                 .asClass(CodeMessageResponse.class);
-        soft.assertEquals(codeMessageResponse.getCode(), "ValidationError");
-        soft.assertEquals(codeMessageResponse.getMessage(), "Data validation error");
-        soft.assertEquals(codeMessageResponse.getPayload().getErrors().get(0), "data/search must NOT have more than 100 characters");
-        soft.assertAll();
+        assertEquals(codeMessageResponse.getCode(), "ValidationError");
+        assertEquals(codeMessageResponse.getMessage(), "Data validation error");
+        assertEquals(codeMessageResponse.getPayload().getErrors().get(0), "data/search must NOT have more than 100 characters");
     }
 
     @Test(testName = "Search nft invalid status")
@@ -67,10 +82,9 @@ public class SearchNftNegativeTests extends BaseApiTests {
         CodeMessageResponse codeMessageResponse = nftService.searchNftItems(search, System.getProperty(Account.MINT.getENV()))
                 .shouldHave(Conditions.statusCode(422))
                 .asClass(CodeMessageResponse.class);
-        soft.assertEquals(codeMessageResponse.getCode(), "ValidationError");
-        soft.assertEquals(codeMessageResponse.getMessage(), "Data validation error");
-        soft.assertEquals(codeMessageResponse.getPayload().getErrors().get(0), "data/statuses/0 must be equal to one of the allowed values");
-        soft.assertAll();
+        assertEquals(codeMessageResponse.getCode(), "ValidationError");
+        assertEquals(codeMessageResponse.getMessage(), "Data validation error");
+        assertEquals(codeMessageResponse.getPayload().getErrors().get(0), "data/statuses/0 must be equal to one of the allowed values");
     }
 
     @Test(testName = "Search nft invalid group")
@@ -86,10 +100,9 @@ public class SearchNftNegativeTests extends BaseApiTests {
         CodeMessageResponse codeMessageResponse = nftService.searchNftItems(search, System.getProperty(Account.MINT.getENV()))
                 .shouldHave(Conditions.statusCode(422))
                 .asClass(CodeMessageResponse.class);
-        soft.assertEquals(codeMessageResponse.getCode(), "ValidationError");
-        soft.assertEquals(codeMessageResponse.getMessage(), "Data validation error");
-        soft.assertEquals(codeMessageResponse.getPayload().getErrors().get(0), "data/group must be equal to one of the allowed values");
-        soft.assertAll();
+        assertEquals(codeMessageResponse.getCode(), "ValidationError");
+        assertEquals(codeMessageResponse.getMessage(), "Data validation error");
+        assertEquals(codeMessageResponse.getPayload().getErrors().get(0), "data/group must be equal to one of the allowed values");
     }
 
     @Test(testName = "Search nft invalid sort")
@@ -105,10 +118,9 @@ public class SearchNftNegativeTests extends BaseApiTests {
         CodeMessageResponse codeMessageResponse = nftService.searchNftItems(search, System.getProperty(Account.MINT.getENV()))
                 .shouldHave(Conditions.statusCode(422))
                 .asClass(CodeMessageResponse.class);
-        soft.assertEquals(codeMessageResponse.getCode(), "ValidationError");
-        soft.assertEquals(codeMessageResponse.getMessage(), "Data validation error");
-        soft.assertEquals(codeMessageResponse.getPayload().getErrors().get(0), "data/sort must be equal to one of the allowed values");
-        soft.assertAll();
+        assertEquals(codeMessageResponse.getCode(), "ValidationError");
+        assertEquals(codeMessageResponse.getMessage(), "Data validation error");
+        assertEquals(codeMessageResponse.getPayload().getErrors().get(0), "data/sort must be equal to one of the allowed values");
     }
 
     @Test(testName = "Search nft invalid limit")
@@ -117,17 +129,16 @@ public class SearchNftNegativeTests extends BaseApiTests {
                 .search("Lesley")
                 .statuses(List.of(Status.ON_SALE.getValue()))
                 .group(Group.IN_WALLET.getValue())
-                .limit(101)
+                .limit(121)
                 .sort(Sort.MOST_RECENT.getValue())
                 .build();
 
         CodeMessageResponse codeMessageResponse = nftService.searchNftItems(search, System.getProperty(Account.MINT.getENV()))
                 .shouldHave(Conditions.statusCode(422))
                 .asClass(CodeMessageResponse.class);
-        soft.assertEquals(codeMessageResponse.getCode(), "ValidationError");
-        soft.assertEquals(codeMessageResponse.getMessage(), "Data validation error");
-        soft.assertEquals(codeMessageResponse.getPayload().getErrors().get(0), "data/limit must be <= 100");
-        soft.assertAll();
+        assertEquals(codeMessageResponse.getCode(), "ValidationError");
+        assertEquals(codeMessageResponse.getMessage(), "Data validation error");
+        assertEquals(codeMessageResponse.getPayload().getErrors().get(0), "data/limit must be <= 120");
     }
 
     @Test(testName = "Search nft empty search")
@@ -143,10 +154,9 @@ public class SearchNftNegativeTests extends BaseApiTests {
         CodeMessageResponse codeMessageResponse = nftService.searchNftItems(search, System.getProperty(Account.MINT.getENV()))
                 .shouldHave(Conditions.statusCode(422))
                 .asClass(CodeMessageResponse.class);
-        soft.assertEquals(codeMessageResponse.getCode(), "ValidationError");
-        soft.assertEquals(codeMessageResponse.getMessage(), "Data validation error");
-        soft.assertEquals(codeMessageResponse.getPayload().getErrors().get(0), "data/search must NOT have fewer than 1 characters");
-        soft.assertAll();
+        assertEquals(codeMessageResponse.getCode(), "ValidationError");
+        assertEquals(codeMessageResponse.getMessage(), "Data validation error");
+        assertEquals(codeMessageResponse.getPayload().getErrors().get(0), "data/search must NOT have fewer than 3 characters");
     }
 
     @Test(testName = "Search nft unauthorized")
@@ -162,8 +172,7 @@ public class SearchNftNegativeTests extends BaseApiTests {
         CodeMessageResponse codeMessageResponse = nftService.searchNftItems(search, null)
                 .shouldHave(Conditions.statusCode(HTTP_FORBIDDEN))
                 .asClass(CodeMessageResponse.class);
-        soft.assertEquals(codeMessageResponse.getCode(), "AccessDenied");
-        soft.assertEquals(codeMessageResponse.getMessage(), "group is forbidden for unauthorized users");
-        soft.assertAll();
+        assertEquals(codeMessageResponse.getCode(), "AccessDenied");
+        assertEquals(codeMessageResponse.getMessage(), "group is forbidden for unauthorized users");
     }
 }

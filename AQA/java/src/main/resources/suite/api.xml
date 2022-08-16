@@ -10,6 +10,7 @@
             <class name="api.nft.search.SearchNftNegativeTests"></class>
             <class name="api.nft.search.SearchNftTests"></class>
 
+            <class name="api.nft.GetNftActiveOffers"></class>
             <class name="api.nft.GetNftDetailsTests"></class>
             <class name="api.nft.LikeUnlikeNftTests"></class>
             <class name="api.nft.PinUnpinNftTests"></class>
@@ -22,6 +23,7 @@
 
             <class name="api.social.FollowUnfollowUserTests"></class>
             <class name="api.social.FollowUnfollowCollection"></class>
+            <class name="api.social.GetMyCollectionsTests"></class>
         </classes>
     </test>
 </suite>

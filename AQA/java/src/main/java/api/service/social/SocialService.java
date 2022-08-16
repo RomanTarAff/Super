@@ -5,6 +5,8 @@ import api.model.request.social.SearchSuggestionsRequest;
 import api.service.BaseApi;
 import api.util.assertions.AssertableResponse;
 
+import java.util.Map;
+
 public class SocialService extends BaseApi {
 
     public AssertableResponse getMyProfile(String token) {
@@ -60,6 +62,9 @@ public class SocialService extends BaseApi {
                 .delete(SocialEndPoint.FOLLOW_UNFOLLOW_USER));
     }
 
-
-
+    public AssertableResponse getMyCollections(Map<String, Object> params, String token) {
+        return new AssertableResponse(setupSocialSpec(token)
+                .params(params)
+                .get(SocialEndPoint.GET_MY_COLLECTIONS));
+    }
 }
