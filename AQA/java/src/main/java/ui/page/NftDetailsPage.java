@@ -80,7 +80,7 @@ public class NftDetailsPage extends BasePage {
     private String itemHistoryCurrencyByRow
             = "//div[contains(@class,'wrapper__history')][.//span[text()='ITEM HISTORY']]//div[contains(@class,'table-body-row')][%d]//div[contains(@class,'price-wrapper')]//img";
     private String itemHistoryPriceByRow
-            = "//div[contains(@class,'wrapper__history')][.//span[text()='ITEM HISTORY']]//div[contains(@class,'table-row')][%d]//span[@class='price-amount']";
+            = "//div[contains(@class,'wrapper__history')][.//span[text()='ITEM HISTORY']]//div[contains(@class,'table-row')][%d]//div[contains(@class,'price-amount')]";
     private String itemHistoryPriceUsdByRow
             = "//div[contains(@class,'wrapper__history')][.//span[text()='ITEM HISTORY']]//div[contains(@class,'table-row')][%d]//div[@class='currency-price']";
     private String itemHistoryFromByIndex
