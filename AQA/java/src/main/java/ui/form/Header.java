@@ -12,7 +12,7 @@ public class Header {
 
     private final Button logoBtn = new Button(By.xpath("//a[contains(@class,'logo')]"));
     private final Button connectWalletBtn = new Button(By.xpath("//div[text()=' Connect Wallet ']"));
-    private final Button selectMetamaskBtn = new Button(By.cssSelector("button[class='provider-item metomask-provider-item login-modal__provider-item']"));
+    private final Button selectMetamaskBtn = new Button(By.xpath("//h3[@class='provider-item__title'][text()='MetaMask']"));
     private final TextField search = new TextField(By.cssSelector("input[placeholder='Search NFTs, collections, and users']"));
     private final Button profileBtn = new Button(By.xpath("//div[contains(@class,'short-profile')]//button"));
     private final Button userInfo = new Button(By.xpath("button[class='action-item secondary header-short-profile__action']"));
