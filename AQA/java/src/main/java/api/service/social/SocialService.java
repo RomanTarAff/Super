@@ -38,6 +38,12 @@ public class SocialService extends BaseApi {
                 .get(SocialEndPoint.GET_COLLECTION));
     }
 
+    public AssertableResponse getCollectionOwnersCount(String id, String token) {
+        return new AssertableResponse(setupSocialSpec(token)
+                .pathParam("id", id)
+                .get(SocialEndPoint.GET_COLLECTION_OWNERS_COUNT));
+    }
+
     public AssertableResponse followCollection(String collectionId, String token) {
         return new AssertableResponse(setupSocialSpec(token)
                 .pathParam("collectionId", collectionId)

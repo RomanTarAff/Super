@@ -31,10 +31,12 @@ public abstract class BasePage {
         DriverWait.waitElementPresent(by);
     }
 
-    @SneakyThrows
     protected BasePage(boolean isError, By by) {
+        System.out.println("THIS CONSTRUCTOR");
         DriverWait.waitForPageLoaded();
-        if (isError) DriverWait.waitForWelcomePage(by);
+        sleep(4);
+        reload();
+        DriverWait.waitElementPresent(by);
     }
 
     public void reload() {

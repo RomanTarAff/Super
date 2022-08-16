@@ -23,6 +23,8 @@
 
             <class name="api.social.FollowUnfollowUserTests"></class>
             <class name="api.social.FollowUnfollowCollection"></class>
+            <class name="api.social.GetCollectionOwnersCountTests"></class>
+            <class name="api.social.GetCollectionsTests"></class>
             <class name="api.social.GetMyCollectionsTests"></class>
         </classes>
     </test>
