@@ -15,7 +15,6 @@ public class DriverManager {
     }
 
     public WebDriver getDriver() {
-        System.out.println("Thread: " + Thread.currentThread().getId());
         return driver.get();
     }
 

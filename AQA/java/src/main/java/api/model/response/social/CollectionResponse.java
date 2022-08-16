@@ -1,5 +1,6 @@
 package api.model.response.social;
 
+import api.model.FloorPrice;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
@@ -18,7 +19,7 @@ public class CollectionResponse {
     private String avgSaleAmount;
     private String totalSaleAmount;
     private String websiteUrl;
-    private Object floorPrice;
+    private FloorPrice floorPrice;
     private Object socialLinks;
     private Object tokens;
     private Object royalties;

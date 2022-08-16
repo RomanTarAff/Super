@@ -15,6 +15,8 @@ import ui.BaseUiTests;
 
 import java.util.List;
 
+import static core.config.ConfigurationManager.configuration;
+
 public class BaseListingTests extends BaseUiTests {
 
     private static final Logger log = Logger.getLogger(BaseListingTests.class);
@@ -48,7 +50,8 @@ public class BaseListingTests extends BaseUiTests {
         nftWithoutListing_7 = nfts.get(6);
     }
 
-    @BeforeMethod
+
+    @BeforeClass
     public void initBrowser() {
         log.info("Start browser");
         log.info("Listing 1: " + nftWithoutListing_1);
@@ -62,6 +65,11 @@ public class BaseListingTests extends BaseUiTests {
     }
 
     @AfterMethod
+    public void toMainPage() {
+        DriverManager.getInstance().getDriver().get(configuration().url());
+    }
+
+    @AfterClass
     public void closeJob() {
         DriverManager.getInstance().closeBrowser();
     }

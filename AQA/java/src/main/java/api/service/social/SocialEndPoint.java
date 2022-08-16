@@ -16,6 +16,7 @@ public class SocialEndPoint {
 
     public static final String GET_COLLECTIONS_INFO = "/v1/collections/{id}/info";
     public static final String GET_COLLECTION = "/v2/collections/{id}";
+    public static final String GET_COLLECTION_OWNERS_COUNT = "/v2/collections/{id}/stats/owner-count";
     public static final String SEARCH_SUGGESTIONS = "/v1/search/suggestions";
 
 }

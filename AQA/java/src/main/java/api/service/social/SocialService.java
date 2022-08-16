@@ -5,6 +5,8 @@ import api.model.request.social.SearchSuggestionsRequest;
 import api.service.BaseApi;
 import api.util.assertions.AssertableResponse;
 
+import java.util.Map;
+
 public class SocialService extends BaseApi {
 
     public AssertableResponse getMyProfile(String token) {
@@ -36,6 +38,12 @@ public class SocialService extends BaseApi {
                 .get(SocialEndPoint.GET_COLLECTION));
     }
 
+    public AssertableResponse getCollectionOwnersCount(String id, String token) {
+        return new AssertableResponse(setupSocialSpec(token)
+                .pathParam("id", id)
+                .get(SocialEndPoint.GET_COLLECTION_OWNERS_COUNT));
+    }
+
     public AssertableResponse followCollection(String collectionId, String token) {
         return new AssertableResponse(setupSocialSpec(token)
                 .pathParam("collectionId", collectionId)
@@ -60,6 +68,9 @@ public class SocialService extends BaseApi {
                 .delete(SocialEndPoint.FOLLOW_UNFOLLOW_USER));
     }
 
-
-
+    public AssertableResponse getMyCollections(Map<String, Object> params, String token) {
+        return new AssertableResponse(setupSocialSpec(token)
+                .params(params)
+                .get(SocialEndPoint.GET_MY_COLLECTIONS));
+    }
 }

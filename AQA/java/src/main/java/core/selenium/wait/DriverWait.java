@@ -48,6 +48,7 @@ public class DriverWait {
             boolean result = !driver.findElements(by).isEmpty();
             if (result) {
                 log.info("Welcome page is loaded");
+                System.out.println("Welcome page is loaded");
             }
             return result;
         };
