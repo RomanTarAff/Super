@@ -55,4 +55,9 @@ public class NftService extends BaseApi {
                 .get(NftEndPoint.GET_ACTIVE_OFFERS));
     }
 
+    public AssertableResponse getOfferDetails(String offerId, String token) {
+        return new AssertableResponse(setupNftSpec(token)
+                .pathParam("id", offerId)
+                .get(NftEndPoint.GET_OFFER_DETAILS));
+    }
 }

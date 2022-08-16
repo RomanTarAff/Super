@@ -29,9 +29,8 @@ public class BaseListingTests extends BaseUiTests {
     protected SearchNftResponse nftWithoutListing_6;
     protected SearchNftResponse nftWithoutListing_7;
 
-    @BeforeTest
-    public void getNftNotOnSale() {
-
+    @BeforeClass
+    public void initBrowser() {
         SearchNftRequest search = SearchNftRequest.builder()
                 .search("Lesley")
                 .statuses(List.of(Status.NOT_LISTED.getValue()))
@@ -48,11 +47,6 @@ public class BaseListingTests extends BaseUiTests {
         nftWithoutListing_5 = nfts.get(4);
         nftWithoutListing_6 = nfts.get(5);
         nftWithoutListing_7 = nfts.get(6);
-    }
-
-
-    @BeforeClass
-    public void initBrowser() {
         log.info("Start browser");
         log.info("Listing 1: " + nftWithoutListing_1);
         log.info("Listing 2: " + nftWithoutListing_2);
