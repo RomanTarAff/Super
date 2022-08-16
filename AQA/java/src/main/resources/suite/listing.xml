@@ -7,10 +7,7 @@
     </listeners>
     <test name="Create and cancel listing">
         <classes>
-            <class name="ui.listing.ListingTests">
-        </class>
-            <class name="ui.listing.ListingTests">
-            </class>
+            <class name="ui.listing.ListingTests"></class>
         </classes>
     </test>
 </suite>
