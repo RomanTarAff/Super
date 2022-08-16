@@ -22,11 +22,6 @@ public class CreateListingTests extends BaseListingTests {
 
     private static final Logger log = Logger.getLogger(CreateListingTests.class);
 
-//    @AfterMethod
-//    public void toMainPage() {
-//        DriverManager.getInstance().getDriver().get(configuration().url());
-//    }
-
     @Test(testName = "Create listing with 4KB", priority = 0)
     public void createListingWith4KB() {
         String price = faker.random().nextInt(1, 5).toString();
