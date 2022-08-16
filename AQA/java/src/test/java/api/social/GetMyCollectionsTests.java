@@ -75,6 +75,4 @@ public class GetMyCollectionsTests extends BaseApiTests {
         assertEquals(codeMessageResponse.getCode(), "ValidationError");
         assertEquals(codeMessageResponse.getPayload().getErrors().get(0), "data/sort must be equal to one of the allowed values");
     }
-
-
 }
