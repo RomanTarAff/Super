@@ -10,5 +10,4 @@ public class CollectionsListResponse {
     private List<CollectionResponse> collections;
     private String cursorNext;
     private Integer totalCount;
-
 }
