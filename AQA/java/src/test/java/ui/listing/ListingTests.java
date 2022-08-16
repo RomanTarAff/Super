@@ -102,7 +102,6 @@ public class ListingTests extends BaseListingTests {
         assertEquals(nftDetailsPage1.getItemHistoryWhen(0), "1m ago");
         assertEquals(nftDetailsPage1.getUrl(),
                 configuration().url() + "/collections/" + getTestCollectionData().getContractAddress() + "/" + nftWithoutListing_1.getTokenId());
-        soft.assertAll();
     }
 
     @Test(testName = "Create listing with ETH", priority = 1)
@@ -185,7 +184,6 @@ public class ListingTests extends BaseListingTests {
         assertEquals(nftDetailsPage1.getItemHistoryWhen(0), "1m ago");
         assertEquals(nftDetailsPage1.getUrl(),
                 configuration().url() + "/collections/" + getTestCollectionData().getContractAddress() + "/" + nftWithoutListing_2.getTokenId());
-        soft.assertAll();
     }
 
     @Test(testName = "Sell NFT page", priority = 2)
@@ -260,7 +258,6 @@ public class ListingTests extends BaseListingTests {
         sellNftPage.setPrice("1");
         assertEquals(sellNftPage.getListingEndsPhrase(), "Listing ends in 6 months");
         assertEquals(sellNftPage.getListingEndsDate(), DateHelper.getDatePlus(DatePeriod.MONTHS_6));
-        soft.assertAll();
     }
 
     @Test(testName = "Create listing reject", priority = 3)
@@ -281,7 +278,6 @@ public class ListingTests extends BaseListingTests {
         assertEquals(listingDialog.getModalErrorMessage(), "MetaMask Message Signature: User denied message signature.");
 
         listingDialog.closeDialog();
-        soft.assertAll();
     }
 
     @Test(testName = "Cancel listing from nft details", priority = 4)
@@ -329,7 +325,6 @@ public class ListingTests extends BaseListingTests {
         assertEquals(nftDetailsPage1.getItemHistoryWhen(0), "1m ago");
         assertEquals(nftDetailsPage1.getUrl(),
                 configuration().url() + "/collections/" + getTestCollectionData().getContractAddress() + "/" + nftWithoutListing_5.getTokenId());
-        soft.assertAll();
     }
 
     @Test(testName = "Cancel listing reject", priority = 5)
@@ -364,7 +359,6 @@ public class ListingTests extends BaseListingTests {
         assertFalse(nftDetailsPage1.isSellNftDisplayed(), "Sell nft btn should be not present");
         assertTrue(nftDetailsPage1.isCancelListingDisplayed(), "Cancel listing btn should be present");
         assertEquals(nftDetailsPage1.getNotification(), "MetaMask Tx Signature: User denied transaction signature.");
-        soft.assertAll();
     }
 
     //    @Test(testName = "Cancel listing from three dot menu")
