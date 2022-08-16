@@ -104,7 +104,7 @@ public class ListingTests extends BaseListingTests {
         soft.assertAll();
     }
 
-    @Test(testName = "Create listing with ETH", priority = 1, enabled = false)
+    @Test(testName = "Create listing with ETH", priority = 1)
     public void createListingWithETH() {
         String price = "0.0000000001";
         String currency = "ETH";
@@ -187,7 +187,7 @@ public class ListingTests extends BaseListingTests {
         soft.assertAll();
     }
 
-    @Test(testName = "Sell NFT page", priority = 2, enabled = false)
+    @Test(testName = "Sell NFT page", priority = 2)
     public void sellNftPage() {
         String invalidPrice = "0.0000000000000000000";
         String currencyETH = "ETH";
@@ -262,7 +262,7 @@ public class ListingTests extends BaseListingTests {
         soft.assertAll();
     }
 
-    @Test(testName = "Create listing reject", priority = 3, enabled = false)
+    @Test(testName = "Create listing reject", priority = 3)
     public void createListingReject() {
         HomePage homePage = new HomePage();
         homePage.header.search(nftWithoutListing_4.getName());
@@ -283,7 +283,7 @@ public class ListingTests extends BaseListingTests {
         soft.assertAll();
     }
 
-    @Test(testName = "Cancel listing from nft details", enabled = false)
+    @Test(testName = "Cancel listing from nft details")
     public void cancelListingFromNftDetails() {
         String price = faker.random().nextInt(1, 5).toString();
         String currency = "4KB";
@@ -331,7 +331,7 @@ public class ListingTests extends BaseListingTests {
         soft.assertAll();
     }
 
-    @Test(testName = "Cancel listing reject", enabled = false)
+    @Test(testName = "Cancel listing reject")
     public void cancelListingReject() {
         String price = faker.random().nextInt(1, 5).toString();
         String currency = "4KB";
