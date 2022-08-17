@@ -274,10 +274,8 @@ public class ListingTests extends BaseListingTests {
         SignApprovePage signApprovePage = new SignApprovePage();
         signApprovePage.reject();
         BasePage.switchTo(Page.MAIN);
-        assertEquals(listingDialog.getListingFailedStatus(), " Listing creation failed");
+        assertEquals(listingDialog.getListingFailedStatus(), "Listing creation failed");
         assertEquals(listingDialog.getModalErrorMessage(), "MetaMask Message Signature: User denied message signature.");
-
-        listingDialog.closeDialog();
     }
 
     @Test(testName = "Cancel listing from nft details", priority = 4)
