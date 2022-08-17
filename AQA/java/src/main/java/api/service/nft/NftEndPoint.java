@@ -8,4 +8,5 @@ public class NftEndPoint {
     public static final String GET_USER_PINNED_NFT = "/v1/users/{id}/nfts/pinned";
     public static final String GET_NFT_DETAILS = "/v2/collections/{contractAddress}/{tokenId}";
     public static final String GET_ACTIVE_OFFERS = "/v1/nfts/{id}/offers";
+    public static final String GET_OFFER_DETAILS = "/v1/offers/{id}";
 }

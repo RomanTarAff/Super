@@ -27,7 +27,7 @@ public class ListingDialog extends BasePage {
     private final TextLabel thirdStepStatus = new TextLabel(By.xpath("//div[@class='step-status-mark step-status-mark__completed']"), 2);
 
     private final TextLabel listingStatus = new TextLabel(By.xpath("//div[@class='step-modal__footer-finished']"));
-    private final TextLabel listingStatusFailed = new TextLabel(By.xpath("//div[@class='step-status-mark step-status-mark__failed']"));
+    private final TextLabel listingStatusFailed = new TextLabel(By.xpath("//div[@class='step-modal__footer-finished']"));
     private final TextLabel modalError = new TextLabel(By.xpath("//div[@class='step-modal__footer-error']"));
 
     private final Button viwYourItemBtn = new Button(By.xpath("//button[text()=' View your item ']"));

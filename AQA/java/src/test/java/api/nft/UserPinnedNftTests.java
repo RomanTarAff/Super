@@ -67,7 +67,7 @@ public class UserPinnedNftTests extends BaseApiTests {
             assertEquals(nft.getOwnerAddress(), userMint.getEthAddress());
             assertTrue(nft.isPinned(), "NFT should be pinned in group");
         });
-        assertEquals(nfts.getNfts().size(), nftsAgain.getNfts().size() + 1,
+        assertEquals(nfts.getNfts().size() + 1, nftsAgain.getNfts().size(),
                 "Size of pinned nfts list is not the same after pin NFT");
         
         //unpin nft
