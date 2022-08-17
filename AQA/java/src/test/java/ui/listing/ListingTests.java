@@ -156,7 +156,7 @@ public class ListingTests extends BaseListingTests {
         assertEquals(listingDialog.getSecondStepSubTitle(), "To get set up for listings for the first time, you must approve this item for sale, which requires a one-time gas fee.");
         assertFalse(listingDialog.isSecondStepNotReady(), "Second step is completed");
 
-        assertEquals(listingDialog.getThirdStepSubTitle(), "Confirm your sell. Waiting for signature...");
+        assertEquals(listingDialog.getThirdStepTitle(), "Confirm your sell. Waiting for signature...");
         assertEquals(listingDialog.getThirdStepSubTitle(), "Accept the signature request in your wallet extension and wait for your listing to process.");
         assertFalse(listingDialog.isThirdStepNotReady(), "Third step is completed");
 
@@ -356,7 +356,6 @@ public class ListingTests extends BaseListingTests {
         BasePage.switchTo(Page.MAIN);
         assertFalse(nftDetailsPage1.isSellNftDisplayed(), "Sell nft btn should be not present");
         assertTrue(nftDetailsPage1.isCancelListingDisplayed(), "Cancel listing btn should be present");
-        assertEquals(nftDetailsPage1.getNotification(), "MetaMask Tx Signature: User denied transaction signature.");
     }
 
     //    @Test(testName = "Cancel listing from three dot menu")
