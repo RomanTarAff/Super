@@ -33,8 +33,11 @@ public class BaseTests {
     protected static final String NPM_RUN_TEST = String.format("npm --prefix %s/node run tokenTest", HOME);
     protected static final String NPM_RUN_MINT = String.format("npm --prefix %s/node run mint", HOME);
     protected String MINT_TOKEN = "";
+    protected String MINT_SIGNATURE = "";
     protected String ADMIN_TOKEN = "";
+    protected String ADMIN_SIGNATURE = "";
     protected String BUY_TOKEN = "";
+    protected String BUY_SIGNATURE = "";
     protected String MINT_NFT_NAME = "";
     protected String TEST_COLLECTION_CONTRACT_ADDRESS = "0x902dfd8f9f9d72feeb2457b45f528cd873b7669b";
     protected ProfileResponse userMint;
@@ -49,7 +52,7 @@ public class BaseTests {
         Process proc = null;
 
         try {
-            if (System.getProperty("host").equals("develop")) {
+            if (System.getenv("host").equals("develop")) {
                 proc = rt.exec(NPM_RUN_DEV);
             } else if (System.getProperty("host").equals("test")) {
                 proc = rt.exec(NPM_RUN_TEST);
@@ -144,6 +147,21 @@ public class BaseTests {
                     if (s.contains("Mint nft name:")) {
                         String[] parts = s.split(" ");
                         MINT_NFT_NAME = parts[3];
+                    }
+                    if (s.contains("Signature MINT DEV") || s.contains("Signature MINT TEST")) {
+                        String[] parts = s.split(" ");
+                        MINT_SIGNATURE = parts[3];
+                        System.setProperty(Account.MINT.getSignature(), MINT_SIGNATURE);
+                    }
+                    if (s.contains("Signature BUY DEV") || s.contains("Signature BUY TEST")) {
+                        String[] parts = s.split(" ");
+                        BUY_SIGNATURE = parts[3];
+                        System.setProperty(Account.BUY.getSignature(), BUY_SIGNATURE);
+                    }
+                    if (s.contains("Signature ADMIN DEV") || s.contains("Signature ADMIN TEST")) {
+                        String[] parts = s.split(" ");
+                        ADMIN_SIGNATURE = parts[3];
+                        System.setProperty(Account.ADMIN.getSignature(), ADMIN_SIGNATURE);
                     }
                 }
             } catch (IOException ioe) {

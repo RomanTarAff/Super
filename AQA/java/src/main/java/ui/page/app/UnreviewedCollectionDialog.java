@@ -19,7 +19,7 @@ public class UnreviewedCollectionDialog extends BasePage {
     private final TextLabel itemContractAddress = new TextLabel(By.xpath("//span[@class='collection-warning-modal__item-name']"), 3);
     private final TextLabel itemTotalItems = new TextLabel(By.xpath("//span[@class='collection-warning-modal__item-name']"), 4);
 
-    private final TextLabel collectionName = new TextLabel(By.xpath("//li[.//span[text()=' Name ']]/a"));
+    private final TextLabel collectionName = new TextLabel(By.xpath("//li[.//span[text()=' Name ']]/div"));
     private final TextLabel totalSales = new TextLabel(By.xpath("//li[.//span[text()=' Total Sales ']]/span[contains(@class,'item-value')]"));
     private final TextLabel price = new TextLabel(By.xpath("//li[.//span[text()=' Total Volume ']]//span[contains(@class,'price-amount')]"));
     private final TextLabel priceUsd = new TextLabel(By.xpath("//li[.//span[text()=' Total Volume ']]//div[contains(@class,'currency-price')]"));

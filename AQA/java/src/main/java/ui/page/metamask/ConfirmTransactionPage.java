@@ -22,6 +22,7 @@ public class ConfirmTransactionPage extends BasePage {
     }
 
     public void confirm() {
+        sleep(7);
         confirmBtn.press();
     }
 

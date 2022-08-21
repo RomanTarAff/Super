@@ -1,5 +1,6 @@
 package api.service.social;
 
+import api.model.request.social.ChangeCollectionRoyaltiesRequest;
 import api.model.request.social.EditProfileRequest;
 import api.model.request.social.SearchSuggestionsRequest;
 import api.service.BaseApi;
@@ -36,6 +37,19 @@ public class SocialService extends BaseApi {
         return new AssertableResponse(setupSocialSpec(token)
                 .pathParam("id", contractAddress)
                 .get(SocialEndPoint.GET_COLLECTION));
+    }
+
+    public AssertableResponse getCollectionRoyalties(String contractAddress, String token) {
+        return new AssertableResponse(setupSocialSpec(token)
+                .pathParam("id", contractAddress)
+                .get(SocialEndPoint.GET_COLLECTION_ROYALTIES));
+    }
+
+    public AssertableResponse changeCollectionRoyalties(ChangeCollectionRoyaltiesRequest request, String contractAddress, String token) {
+        return new AssertableResponse(setupSocialSpec(token)
+                .pathParam("id", contractAddress)
+                .body(request)
+                .post(SocialEndPoint.CHANGE_COLLECTION_ROYALTIES));
     }
 
     public AssertableResponse getCollectionOwnersCount(String id, String token) {

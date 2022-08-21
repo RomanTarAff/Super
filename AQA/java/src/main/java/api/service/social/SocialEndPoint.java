@@ -14,9 +14,13 @@ public class SocialEndPoint {
     public static final String REPORTS = "/v1/users/{id}/reports";
     public static final String GET_USER_PLAYLISTS = "/v1/users/{id}/playlists";
 
+    public static final String CHANGE_COLLECTION_ROYALTIES = "/v1/collections/{id}/royalties";
+    public static final String GET_COLLECTION_ROYALTIES = "/v1/collections/{id}/royalties";
     public static final String GET_COLLECTIONS_INFO = "/v1/collections/{id}/info";
     public static final String GET_COLLECTION = "/v2/collections/{id}";
     public static final String GET_COLLECTION_OWNERS_COUNT = "/v2/collections/{id}/stats/owner-count";
     public static final String SEARCH_SUGGESTIONS = "/v1/search/suggestions";
+
+
 
 }

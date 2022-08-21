@@ -66,8 +66,8 @@ public class MyProfilePage extends BasePage {
 
     public void openTab(String tabTitle) {
         Button b = new Button(By.xpath(String.format(tab, tabTitle)));
-        b.press();
-        sleep(5);
+        b.pressWithout();
+        sleep(3);
     }
 
     public void reloadPageUntilMintedNftPresent(int count) {

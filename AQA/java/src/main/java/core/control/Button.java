@@ -35,7 +35,26 @@ public class Button extends BaseControl {
         getElement().click();
     }
 
+    public void pressWithScrollDown() {
+        JavascriptExecutor js = (JavascriptExecutor) DriverManager.getInstance().getDriver();
+        Point location = getElement().getLocation();
+        String script = String.format("window.scrollTo(0, %d);", location.getY() + 20);
+        js.executeScript(script);
+        getElement().isDisplayed(true);
+        DriverWait.waitElementClickable(getElement().get_by());
+        getElement().click();
+    }
+
     public void pressWithout() {
+        getElement().isDisplayed(true);
+        DriverWait.waitElementClickable(getElement().get_by());
+        getElement().click();
+    }
+
+    public void pressWithScrollUp() {
+        JavascriptExecutor js = (JavascriptExecutor) DriverManager.getInstance().getDriver();
+        String script = "window.scrollTo(0, 0);";
+        js.executeScript(script);
         getElement().isDisplayed(true);
         DriverWait.waitElementClickable(getElement().get_by());
         getElement().click();

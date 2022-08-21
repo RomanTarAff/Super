@@ -3,6 +3,8 @@ package ui.form;
 import core.control.Button;
 import core.control.TextLabel;
 import org.openqa.selenium.By;
+import ui.page.app.collection.CollectionDetailsPage;
+import ui.page.app.offer.RenewOfferPage;
 
 public class Table {
 
@@ -79,44 +81,48 @@ public class Table {
 
     private TextLabel getFromByRow(int row) {
         return new TextLabel(By
-                .xpath(String.format("//a[@row-key='%d'][@column-key='6']", row - 1)));
+                .xpath(String.format("//*[@row-key='%d'][@column-key='6']", row - 1)));
     }
 
     private TextLabel getWhenByRow(int row) {
         return new TextLabel(By
-                .xpath(String.format("//div[@row-key='%d'][@column-key='8']//div[@class='date']", row - 1)));
+                .xpath(String.format("//*[@row-key='%d'][@column-key='8']//div[@class='date']", row - 1)));
     }
 
     private Button getCancelOfferByRow(int row) {
         return new Button(By
-                .xpath(String.format("//div[@row-key='%d'][@column-key='9']//button", row - 1)));
+                .xpath(String.format("//*[@row-key='%d'][@column-key='9']//button", row - 1)));
     }
 
     private Button getRenewOfferByRow(int row) {
         return new Button(By
-                .xpath(String.format("//div[@row-key='%d'][@column-key='9']//*[text()=' Renew Offer ']", row - 1)));
+                .xpath(String.format("//*[@row-key='%d'][@column-key='9']//*[text()=' Renew Offer ']", row - 1)));
+    }
+
+    private Button getRowByIndexAndGetCollection(int row) {
+        return new Button(By.xpath(String.format("//div[contains(@class,'table-body-row')][%d][.//div[contains(@class,'table-cell')]]//div[contains(@class,'ui-collection-name')]", row)));
     }
     
     
     //my offers table
-    private TextLabel getExpirationByRow(int row) {
+    public TextLabel getExpirationByRow(int row) {
         return new TextLabel(By
-                .xpath(String.format("//div[@row-key='%d'][@column-key='3']", row - 1)));
+                .xpath(String.format("//*[@row-key='%d'][@column-key='3']", row - 1)));
     }
 
-    private TextLabel getSentByRow(int row) {
+    public TextLabel getSentByRow(int row) {
         return new TextLabel(By
                 .xpath(String.format("//div[contains(@class,'table-body-row')][%d]//div[@class='time-status']", row)));
     }
 
-    private Button getCancelOfferFromMyOffers(int row) {
+    public Button getCancelOfferFromMyOffers(int row) {
         return new Button(By
-                .xpath(String.format("//div[@row-key='%d'][@column-key='5']//button", row - 1)));
+                .xpath(String.format("//*[@row-key='%d'][@column-key='5']//button", row - 1)));
     }
 
-    private Button getRenewOfferFromMyOffers(int row) {
+    public Button getRenewOfferFromMyOffers(int row) {
         return new Button(By
-                .xpath(String.format("//div[@row-key='%d'][@column-key='5']//*[text()=' Renew ']", row - 1)));
+                .xpath(String.format("//*[@row-key='%d'][@column-key='5']//*[text()=' Renew ']", row - 1)));
     }
 
     //methods
@@ -126,6 +132,10 @@ public class Table {
 
     public String getEventValue(String name) {
         return getEventByName(name).getText();
+    }
+
+    public String getEventValueWithout(String name) {
+        return getEventByName(name).getTextWithout();
     }
 
     public String getContent(String name) {
@@ -156,6 +166,11 @@ public class Table {
         return getNameByRow(row).getText();
     }
 
+    public CollectionDetailsPage clickOnCollection(int row) {
+        getRowByIndexAndGetCollection(row).pressWithout();
+        return new CollectionDetailsPage();
+    }
+
     public String getEventValue(int row) {
         return getEventByRow(row).getText();
     }
@@ -168,12 +183,24 @@ public class Table {
         return getCollectionByRow(row).getText();
     }
 
+    public String getCollectionWithout(int row) {
+        return getCollectionByRow(row).getTextWithout();
+    }
+
     public String getPrice(int row) {
         return getPriceByRow(row).getText();
     }
 
+    public String getPriceWithout(int row) {
+        return getPriceByRow(row).getTextWithout();
+    }
+
     public String getFrom(int row) {
         return getFromByRow(row).getText();
+    }
+
+    public String getFromWithout(int row) {
+        return getFromByRow(row).getTextWithout();
     }
 
     public String getWhen(int row) {
@@ -184,16 +211,18 @@ public class Table {
         getCancelOfferByRow(row).press();
     }
 
-    public void renewOffer(int row) {
+    public RenewOfferPage renewOffer(int row) {
         getRenewOfferByRow(row).press();
+        return new RenewOfferPage();
     }
 
     public void cancelOfferFromMyOffers(int row) {
         getCancelOfferFromMyOffers(row).press();
     }
 
-    public void renewOfferFromMyOffers(int row) {
-        getRenewOfferFromMyOffers(row).press();
+    public RenewOfferPage renewOfferFromMyOffers(int row) {
+        getRenewOfferFromMyOffers(row).pressWithout();
+        return new RenewOfferPage();
     }
 
 }
