@@ -51,7 +51,7 @@ public class Button extends BaseControl {
         getElement().click();
     }
 
-    public void pressWithScrollUp() {
+    public void pressElementAndScrollToTheTop() {
         JavascriptExecutor js = (JavascriptExecutor) DriverManager.getInstance().getDriver();
         String script = "window.scrollTo(0, 0);";
         js.executeScript(script);

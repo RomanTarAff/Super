@@ -16,7 +16,7 @@ public class MyOffersPage extends BasePage {
 
 
     public void status(String item) {
-        new Button(By.xpath(String.format(STATUS, item))).pressWithScrollUp();
+        new Button(By.xpath(String.format(STATUS, item))).pressElementAndScrollToTheTop();
         sleep(2);
     }
 }
