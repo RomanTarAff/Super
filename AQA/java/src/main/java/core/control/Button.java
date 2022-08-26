@@ -45,7 +45,7 @@ public class Button extends BaseControl {
         getElement().click();
     }
 
-    public void pressWithout() {
+    public void scrollToElementAndPress() {
         getElement().isDisplayed(true);
         DriverWait.waitElementClickable(getElement().get_by());
         getElement().click();

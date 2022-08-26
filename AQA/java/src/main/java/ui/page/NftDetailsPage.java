@@ -3,11 +3,8 @@ package ui.page;
 import core.control.Button;
 import core.control.TextLabel;
 import org.apache.log4j.Logger;
-import org.checkerframework.checker.units.qual.A;
-import org.checkerframework.checker.units.qual.C;
 import org.openqa.selenium.By;
 import ui.BasePage;
-import ui.form.Header;
 import ui.page.app.UnreviewedCollectionDialog;
 import ui.page.app.collection.CollectionDetailsPage;
 import ui.page.app.offer.AcceptOfferPage;
@@ -152,7 +149,7 @@ public class NftDetailsPage extends BasePage {
     //buttons
 
     public UnreviewedCollectionDialog makeOffer() {
-        makeOfferBtn.pressWithout();
+        makeOfferBtn.scrollToElementAndPress();
         return new UnreviewedCollectionDialog();
     }
 
@@ -167,22 +164,22 @@ public class NftDetailsPage extends BasePage {
     }
 
     public SellNftPage sellNFT() {
-        sellNftBtn.pressWithout();
+        sellNftBtn.scrollToElementAndPress();
         return new SellNftPage();
     }
 
     public UnreviewedCollectionDialog buyNow() {
-        buyNowBtn.pressWithout();
+        buyNowBtn.scrollToElementAndPress();
         return new UnreviewedCollectionDialog();
     }
 
     public AcceptOfferPage acceptOffer() {
-        acceptOffer.pressWithout();
+        acceptOffer.scrollToElementAndPress();
         return new AcceptOfferPage();
     }
 
     public CancelListingDialog cancelListing() {
-        cancelListingBtn.pressWithout();
+        cancelListingBtn.scrollToElementAndPress();
         return new CancelListingDialog();
     }
 
@@ -211,7 +208,7 @@ public class NftDetailsPage extends BasePage {
     }
 
     public CollectionDetailsPage clickOnCollection() {
-        nftCollection.pressWithout();
+        nftCollection.scrollToElementAndPress();
         return new CollectionDetailsPage();
     }
 
@@ -258,7 +255,7 @@ public class NftDetailsPage extends BasePage {
     }
 
     public void expandOffersTab() {
-        offersTab.pressWithout();
+        offersTab.scrollToElementAndPress();
     }
 
     public String getContentFromOffersTab() {

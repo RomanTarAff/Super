@@ -22,7 +22,7 @@ public class Header {
             .xpath("//section[contains(@class,'result-section')][.//h3[contains(text(),'NFT')]]//div[@class='result-section__list']//a[@class='result-item']"), 0);
 
     public void connectWallet() {
-        connectWalletBtn.pressWithout();
+        connectWalletBtn.scrollToElementAndPress();
     }
 
     public void selectMetamask() {

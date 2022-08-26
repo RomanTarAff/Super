@@ -26,7 +26,7 @@ public class CollectionDetailsPage extends BasePage {
     }
 
     public void openTab(String tabTitle) {
-        new Button(By.xpath(String.format(tab, tabTitle))).pressWithout();
+        new Button(By.xpath(String.format(tab, tabTitle))).scrollToElementAndPress();
     }
 
     public void searchNft(String nft) {

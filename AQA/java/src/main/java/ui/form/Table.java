@@ -167,7 +167,7 @@ public class Table {
     }
 
     public CollectionDetailsPage clickOnCollection(int row) {
-        getRowByIndexAndGetCollection(row).pressWithout();
+        getRowByIndexAndGetCollection(row).scrollToElementAndPress();
         return new CollectionDetailsPage();
     }
 
@@ -221,7 +221,7 @@ public class Table {
     }
 
     public RenewOfferPage renewOfferFromMyOffers(int row) {
-        getRenewOfferFromMyOffers(row).pressWithout();
+        getRenewOfferFromMyOffers(row).scrollToElementAndPress();
         return new RenewOfferPage();
     }
 

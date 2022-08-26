@@ -25,7 +25,7 @@ public class FilterTags {
     }
 
     public void clearAllFilters() {
-        clearFiltersBtn.pressWithout();
+        clearFiltersBtn.scrollToElementAndPress();
         try {
             TimeUnit.SECONDS.sleep(4);
         } catch (InterruptedException e) {
@@ -35,7 +35,7 @@ public class FilterTags {
     }
 
     public void closeFilter(String filter) {
-        getCloseFilterBtn(filter).pressWithout();
+        getCloseFilterBtn(filter).scrollToElementAndPress();
         try {
             TimeUnit.SECONDS.sleep(4);
         } catch (InterruptedException e) {

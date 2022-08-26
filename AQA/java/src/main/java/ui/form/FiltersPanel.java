@@ -19,12 +19,12 @@ public class FiltersPanel {
     private final Button collectionsTab = new Button(By.xpath("//button[@class='new-filters__button']//div[text()='Collections']"));
 
     public void openStatusTab() {
-        statusTabBtn.pressWithout();
+        statusTabBtn.scrollToElementAndPress();
         log.info("Status tab is clicked");
     }
 
     public void statusOfferMade() {
-        statusOfferMade.pressWithout();
+        statusOfferMade.scrollToElementAndPress();
         log.info("Status offer made is clicked");
         try {
             TimeUnit.SECONDS.sleep(5);
@@ -34,7 +34,7 @@ public class FiltersPanel {
     }
 
     public void mints() {
-        mintsBtn.pressWithout();
+        mintsBtn.scrollToElementAndPress();
         log.info("Status Mints is clicked");
         try {
             TimeUnit.SECONDS.sleep(5);

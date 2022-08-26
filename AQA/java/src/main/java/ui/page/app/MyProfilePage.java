@@ -1,6 +1,5 @@
 package ui.page.app;
 
-import com.epam.ta.reportportal.ws.annotations.In;
 import core.control.Button;
 import core.control.TextField;
 import core.control.TextLabel;
@@ -66,7 +65,7 @@ public class MyProfilePage extends BasePage {
 
     public void openTab(String tabTitle) {
         Button b = new Button(By.xpath(String.format(tab, tabTitle)));
-        b.pressWithout();
+        b.scrollToElementAndPress();
         sleep(3);
     }
 
