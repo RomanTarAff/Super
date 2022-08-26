@@ -70,6 +70,7 @@ export const test = base.extend<TestFixtures, WorkerFixtures>({
 
             //sign message and get code for base account
             const signedMessage = await service.authDev.signMessageAndGetCode(wallet.address, sessionIdAndOtp.data, wallet.useAccount);
+            console.log(`Signature MINT DEV ${signedMessage}`)
 
             const verifyRequest: VerifyRequest = {
                 sessionId: sessionIdAndOtp.data.sessionId,
@@ -85,6 +86,7 @@ export const test = base.extend<TestFixtures, WorkerFixtures>({
 
             //sign message and get code admin
             const signedMessageAdmin = await service.authDev.signMessageAndGetCode(walletAdmin.address, sessionIdAndOtpAdmin.data, walletAdmin.useAccount);
+            console.log(`Signature ADMIN DEV ${signedMessageAdmin}`)
 
             const verifyRequestAdmin: VerifyRequest = {
                 sessionId: sessionIdAndOtpAdmin.data.sessionId,
@@ -101,6 +103,7 @@ export const test = base.extend<TestFixtures, WorkerFixtures>({
 
             //sign message and get code for second account
             const signedMessageTwo = await service.authDev.signMessageAndGetCode(walletTwo.address, sessionIdAndOtpTwo.data, walletTwo.useAccount);
+            console.log(`Signature BUY DEV ${signedMessageTwo}`)
 
             const verifyRequestTwo: VerifyRequest = {
                 sessionId: sessionIdAndOtpTwo.data.sessionId,
@@ -132,6 +135,7 @@ export const test = base.extend<TestFixtures, WorkerFixtures>({
 
             //sign message and get code for base account
             const signedMessage = await service.authTest.signMessageAndGetCode(wallet.address, sessionIdAndOtp.data, wallet.useAccount);
+            console.log(`Signature MINT TEST ${signedMessage}`)
 
             const verifyRequest: VerifyRequest = {
                 sessionId: sessionIdAndOtp.data.sessionId,
@@ -148,6 +152,7 @@ export const test = base.extend<TestFixtures, WorkerFixtures>({
 
             //sign message and get code admin
             const signedMessageAdmin = await service.authTest.signMessageAndGetCode(walletAdmin.address, sessionIdAndOtpAdmin.data, walletAdmin.useAccount);
+            console.log(`Signature ADMIN TEST ${signedMessageAdmin}`)
 
             const verifyRequestAdmin: VerifyRequest = {
                 sessionId: sessionIdAndOtpAdmin.data.sessionId,
@@ -164,6 +169,7 @@ export const test = base.extend<TestFixtures, WorkerFixtures>({
 
             //sign message and get code for second account
             const signedMessageTwo = await service.authTest.signMessageAndGetCode(walletTwo.address, sessionIdAndOtpTwo.data, walletTwo.useAccount);
+            console.log(`Signature BUY TEST ${signedMessageTwo}`)
 
             const verifyRequestTwo: VerifyRequest = {
                 sessionId: sessionIdAndOtpTwo.data.sessionId,

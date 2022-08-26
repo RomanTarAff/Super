@@ -31,6 +31,6 @@ public class CancelOfferPage extends BasePage {
 
     public void cancelOffer() {
         cancelOfferBtn.press();
-        DriverWait.waitElementNotPresent(By.xpath("//p[@class='confirmation-modal-header__title']")); //title
+        //DriverWait.waitElementNotPresent(By.xpath("//p[@class='confirmation-modal-header__title']")); //title
     }
 }

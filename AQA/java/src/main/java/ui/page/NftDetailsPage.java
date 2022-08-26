@@ -5,8 +5,10 @@ import core.control.TextLabel;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import ui.BasePage;
-import ui.form.Header;
 import ui.page.app.UnreviewedCollectionDialog;
+import ui.page.app.collection.CollectionDetailsPage;
+import ui.page.app.offer.AcceptOfferPage;
+import ui.page.app.offer.CancelOfferPage;
 import ui.page.app.offer.MakeOfferPage;
 import ui.page.app.sell.CancelListingDialog;
 import ui.page.app.sell.SellNftPage;
@@ -16,22 +18,23 @@ public class NftDetailsPage extends BasePage {
     private static final Logger log = Logger.getLogger(NftDetailsPage.class);
 
     private final TextLabel nftName = new TextLabel(By.xpath("//span[@class='main-info__name text-h2']"), 1);
-    private final TextLabel nftCollection = new TextLabel(By.xpath("//div[@class='wrapper-right']//div[contains(@class,'collection-name')]"));
+    private final Button nftCollection = new Button(By.xpath("//div[@class='wrapper-right']//div[contains(@class,'collection-name')]"));
     private final TextLabel nftOwner = new TextLabel(By.xpath("//div[@class='main-info__flex-owner text-footnote']"), 1);
     private final TextLabel nftOwnerId = new TextLabel(By.xpath("//div[@class='ui-user-name']/a"), 1);
     private final TextLabel nftLikes = new TextLabel(By.xpath("//div[@class='wrapper-right']//div[.//div[@class='like-button']]//span[@class='nft-action-button__label']"));
     private final TextLabel priceAmount = new TextLabel(By.xpath("//div[@class='wrapper-right']//div[contains(@class,'item-buy-area__price')]//span[@class='price-amount']"));
     private final TextLabel priceCurrency = new TextLabel(By.xpath("//div[@class='my-item-buy-area']//div[contains(@class,'price-wrapper')]//img"));
     private final TextLabel priceUsd = new TextLabel(By.xpath("//div[@class='currency-price']"));
-    private final TextLabel highestOfferTitle = new TextLabel(By.xpath("//span[@class='text-subhead price-buy-area__title']"));
+    private final TextLabel highestOfferTitle = new TextLabel(By.xpath("//span[@class='text-subhead price-buy-area__title']"), 1);
     private final TextLabel highestOfferPrice = new TextLabel(By.xpath("//div[@class='wrapper-right']//div[contains(@class,'item-buy-area__highest-offer')]//span[@class='price-amount']"));
-    private final TextLabel yourOfferTitle = new TextLabel(By.xpath("//div[@class='price-buy-area__highest-offer']"));
+    private final TextLabel yourOfferTitle = new TextLabel(By.xpath("//div[@class='price-buy-area__highest-offer']"), 1);
 
     private final TextLabel notification = new TextLabel(By.xpath("//div[@class='notification-text']"));
 
     private final Button makeOfferBtn = new Button(By.xpath("//div[@class='wrapper-right']//button[contains(@class,'makeoffer-button')]"));
     private final Button makeNewOfferBtn = new Button(By.xpath("//div[@class='wrapper-right']//button[text()=' Make new offer']"));
     private final Button cancelThisOfferBtn = new Button(By.xpath("//div[@class='wrapper-right']//button[text()=' Cancel this offer ']"));
+    private final Button acceptOffer = new Button(By.xpath("//div[@class='wrapper-right']//button[text()=' Accept Offer ']"));
     private final Button sellNftBtn = new Button(By.xpath("//div[@class='wrapper-right']//button[text()=' Sell NFT ']"));
     private final Button buyNowBtn = new Button(By.xpath("//div[@class='wrapper-right']//button[text()=' BUY NOW ']"));
     private final Button cancelListingBtn = new Button(By.xpath("//div[@class='wrapper-right']//button[text()=' Cancel Listing ']"));
@@ -145,9 +148,9 @@ public class NftDetailsPage extends BasePage {
 
     //buttons
 
-    public MakeOfferPage makeOffer() {
-        makeOfferBtn.press();
-        return new MakeOfferPage();
+    public UnreviewedCollectionDialog makeOffer() {
+        makeOfferBtn.scrollToElementAndPress();
+        return new UnreviewedCollectionDialog();
     }
 
     public MakeOfferPage makeNewOffer() {
@@ -161,17 +164,22 @@ public class NftDetailsPage extends BasePage {
     }
 
     public SellNftPage sellNFT() {
-        sellNftBtn.pressWithout();
+        sellNftBtn.scrollToElementAndPress();
         return new SellNftPage();
     }
 
     public UnreviewedCollectionDialog buyNow() {
-        buyNowBtn.pressWithout();
+        buyNowBtn.scrollToElementAndPress();
         return new UnreviewedCollectionDialog();
     }
 
+    public AcceptOfferPage acceptOffer() {
+        acceptOffer.scrollToElementAndPress();
+        return new AcceptOfferPage();
+    }
+
     public CancelListingDialog cancelListing() {
-        cancelListingBtn.pressWithout();
+        cancelListingBtn.scrollToElementAndPress();
         return new CancelListingDialog();
     }
 
@@ -197,6 +205,11 @@ public class NftDetailsPage extends BasePage {
 
     public boolean isSellNftDisplayed() {
         return sellNftBtn.isPresent();
+    }
+
+    public CollectionDetailsPage clickOnCollection() {
+        nftCollection.scrollToElementAndPress();
+        return new CollectionDetailsPage();
     }
 
     //listings
@@ -242,7 +255,7 @@ public class NftDetailsPage extends BasePage {
     }
 
     public void expandOffersTab() {
-        offersTab.press();
+        offersTab.scrollToElementAndPress();
     }
 
     public String getContentFromOffersTab() {
@@ -265,10 +278,10 @@ public class NftDetailsPage extends BasePage {
         return new TextLabel(By.xpath(String.format(offerFromByRow, row))).getText();
     }
 
-    public CancelListingDialog cancelOfferFromOffersTab(int row) {
+    public CancelOfferPage cancelOfferFromOffersTab(int row) {
         Button b = new Button(By.xpath(String.format(cancelOfferFromOffersTabByRow, row)));
         b.press();
-        return new CancelListingDialog();
+        return new CancelOfferPage();
     }
 
     //item history
