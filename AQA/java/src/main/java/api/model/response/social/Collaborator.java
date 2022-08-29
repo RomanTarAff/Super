@@ -9,6 +9,4 @@ public class Collaborator {
     private String ethAddress;
     private String username;
     private String id;
-
-
 }

@@ -21,5 +21,4 @@ public class CollectionSettingsResponse {
     private String websiteUrl;
     private SocialLinks socialLinks;
     private Object royalties;
-
 }
