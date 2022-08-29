@@ -41,7 +41,7 @@ public class GetUpdateCollectionSettingsTests extends BaseApiTests {
     public void getCollectionsSettingsNotValidId() {
 
         CodeMessageResponse codeMessageResponse = socialService
-                .getCollectionSettings("gf", System.getProperty(Account.BUY.getENV()))
+                .getCollectionSettings("invalidCollectionId", System.getProperty(Account.BUY.getENV()))
                 .shouldHave(Conditions.statusCode(422))
                 .asClass(CodeMessageResponse.class);
 
@@ -129,7 +129,7 @@ public class GetUpdateCollectionSettingsTests extends BaseApiTests {
 
         CollectionSettingsRequest request = CollectionSettingsRequest
                 .builder()
-                .websiteUrl("gfhghg")
+                .websiteUrl("invalidWebsiteUrl")
                 .build();
 
         CodeMessageResponse codeMessageResponse = socialService.updateCollectionSettings(getTestCollectionData().getId(),
@@ -148,7 +148,7 @@ public class GetUpdateCollectionSettingsTests extends BaseApiTests {
 
         SocialLinks socialLinks = SocialLinks
                 .builder()
-                .twitter(List.of("gfgfgf"))
+                .twitter(List.of("invalidTwitterLink"))
                 .build();
 
         CollectionSettingsRequest request = CollectionSettingsRequest
@@ -171,7 +171,7 @@ public class GetUpdateCollectionSettingsTests extends BaseApiTests {
 
         SocialLinks socialLinks = SocialLinks
                 .builder()
-                .linkedin(List.of("gfgfgf"))
+                .linkedin(List.of("invalidLinkedInLink"))
                 .build();
 
         CollectionSettingsRequest request = CollectionSettingsRequest
@@ -194,7 +194,7 @@ public class GetUpdateCollectionSettingsTests extends BaseApiTests {
 
         SocialLinks socialLinks = SocialLinks
                 .builder()
-                .instagram(List.of("gfgfgf"))
+                .instagram(List.of("invalidInstagramLink"))
                 .build();
 
         CollectionSettingsRequest request = CollectionSettingsRequest
@@ -217,7 +217,7 @@ public class GetUpdateCollectionSettingsTests extends BaseApiTests {
 
         SocialLinks socialLinks = SocialLinks
                 .builder()
-                .youtube(List.of("gfgfgf"))
+                .youtube(List.of("invalidYoutubeLink"))
                 .build();
 
         CollectionSettingsRequest request = CollectionSettingsRequest
@@ -240,7 +240,7 @@ public class GetUpdateCollectionSettingsTests extends BaseApiTests {
 
         SocialLinks socialLinks = SocialLinks
                 .builder()
-                .twitch(List.of("gfgfgf"))
+                .twitch(List.of("invalidTwitchLink"))
                 .build();
 
         CollectionSettingsRequest request = CollectionSettingsRequest
@@ -263,7 +263,7 @@ public class GetUpdateCollectionSettingsTests extends BaseApiTests {
 
         SocialLinks socialLinks = SocialLinks
                 .builder()
-                .telegram(List.of("gfgfgf"))
+                .telegram(List.of("invalidTelegramLink"))
                 .build();
 
         CollectionSettingsRequest request = CollectionSettingsRequest
@@ -286,7 +286,7 @@ public class GetUpdateCollectionSettingsTests extends BaseApiTests {
 
         SocialLinks socialLinks = SocialLinks
                 .builder()
-                .snapchat(List.of("gfgfgf"))
+                .snapchat(List.of("invalidSnapchatLink"))
                 .build();
 
         CollectionSettingsRequest request = CollectionSettingsRequest
@@ -309,7 +309,7 @@ public class GetUpdateCollectionSettingsTests extends BaseApiTests {
 
         SocialLinks socialLinks = SocialLinks
                 .builder()
-                .medium(List.of("gfgfgf"))
+                .medium(List.of("invalidMediumLink"))
                 .build();
 
         CollectionSettingsRequest request = CollectionSettingsRequest
@@ -332,7 +332,7 @@ public class GetUpdateCollectionSettingsTests extends BaseApiTests {
 
         SocialLinks socialLinks = SocialLinks
                 .builder()
-                .facebook(List.of("gfgfgf"))
+                .facebook(List.of("invalidFacebookLink"))
                 .build();
 
         CollectionSettingsRequest request = CollectionSettingsRequest
@@ -355,7 +355,7 @@ public class GetUpdateCollectionSettingsTests extends BaseApiTests {
 
         CollectionSettingsRequest request = CollectionSettingsRequest
                 .builder()
-                .description("gf")
+                .description("description")
                 .build();
 
         CodeMessageResponse codeMessageResponse = socialService
@@ -372,7 +372,7 @@ public class GetUpdateCollectionSettingsTests extends BaseApiTests {
 
         CollectionSettingsRequest request = CollectionSettingsRequest
                 .builder()
-                .description("gf")
+                .description("description")
                 .build();
 
         CodeMessageResponse codeMessageResponse = socialService
