@@ -28,6 +28,7 @@
             <class name="api.social.GetCollectionRoyaltiesTests"></class>
             <class name="api.social.GetCollectionsTests"></class>
             <class name="api.social.GetMyCollectionsTests"></class>
+            <class name="api.social.GetUpdateCollectionSettingsTests"></class>
         </classes>
     </test>
 </suite>

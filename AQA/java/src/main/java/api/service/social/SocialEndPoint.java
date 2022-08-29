@@ -7,6 +7,8 @@ public class SocialEndPoint {
     public static final String GET_MY_PLAYLISTS = "/v1/me/playlists";
     public static final String GET_MY_BADGES = "/v1/me/badges";
     public static final String GET_MY_COLLECTIONS = "/v1/me/collections";
+    public static final String GET_COLLECTION_SETTINGS = "/v1/collections/{id}/settings";
+    public static final String UPDATE_COLLECTION_SETTINGS = "/v1/collections/{id}/settings";
     public static final String GET_NONCE = "/v1/me/nonce";
     public static final String GET_PROFILE = "/v1/{ethAddress}";
     public static final String FOLLOW_UNFOLLOW_USER = "/v1/users/{id}/followers";
