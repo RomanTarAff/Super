@@ -1,8 +1,11 @@
 package api.model.response.social;
 
 import api.model.FloorPrice;
+import api.model.response.Token;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
+
+import java.util.List;
 
 @Data
 public class CollectionResponse {
@@ -21,7 +24,7 @@ public class CollectionResponse {
     private String websiteUrl;
     private FloorPrice floorPrice;
     private Object socialLinks;
-    private Object tokens;
+    private List<Token> tokens;
     private Object royalties;
 
     @JsonProperty("isFollowed")

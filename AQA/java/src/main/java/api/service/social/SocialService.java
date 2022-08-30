@@ -1,6 +1,7 @@
 package api.service.social;
 
 import api.model.request.social.ChangeCollectionRoyaltiesRequest;
+import api.model.request.social.CollectionSettingsRequest;
 import api.model.request.social.EditProfileRequest;
 import api.model.request.social.SearchSuggestionsRequest;
 import api.service.BaseApi;
@@ -86,5 +87,18 @@ public class SocialService extends BaseApi {
         return new AssertableResponse(setupSocialSpec(token)
                 .params(params)
                 .get(SocialEndPoint.GET_MY_COLLECTIONS));
+    }
+
+    public AssertableResponse getCollectionSettings(String collectionId, String token) {
+        return new AssertableResponse(setupSocialSpec(token)
+                .pathParam("id", collectionId)
+                .get(SocialEndPoint.GET_COLLECTION_SETTINGS));
+    }
+
+    public AssertableResponse updateCollectionSettings(String collectionId, CollectionSettingsRequest request, String token) {
+        return new AssertableResponse(setupSocialSpec(token)
+                .pathParam("id", collectionId)
+                .body(request)
+                .patch(SocialEndPoint.UPDATE_COLLECTION_SETTINGS));
     }
 }
