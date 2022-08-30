@@ -163,7 +163,7 @@ public class GetUpdateCollectionSettingsTests extends BaseApiTests {
 
         assertEquals(codeMessageResponse.getCode(), "ValidationError");
         assertEquals(codeMessageResponse.getMessage(), "Data validation error");
-        assertEquals(codeMessageResponse.getPayload().getErrors().get(0), "gfgfgf link doesn't have domain");
+        assertEquals(codeMessageResponse.getPayload().getErrors().get(0), "invalidTwitterLink link doesn't have domain");
     }
 
     @Test(testName = "Edit collection settings - invalid linkedin")
@@ -186,7 +186,7 @@ public class GetUpdateCollectionSettingsTests extends BaseApiTests {
 
         assertEquals(codeMessageResponse.getCode(), "ValidationError");
         assertEquals(codeMessageResponse.getMessage(), "Data validation error");
-        assertEquals(codeMessageResponse.getPayload().getErrors().get(0), "gfgfgf link doesn't have domain");
+        assertEquals(codeMessageResponse.getPayload().getErrors().get(0), "invalidLinkedInLink link doesn't have domain");
     }
 
     @Test(testName = "Edit collection settings - invalid instagram")
@@ -209,7 +209,7 @@ public class GetUpdateCollectionSettingsTests extends BaseApiTests {
 
         assertEquals(codeMessageResponse.getCode(), "ValidationError");
         assertEquals(codeMessageResponse.getMessage(), "Data validation error");
-        assertEquals(codeMessageResponse.getPayload().getErrors().get(0), "gfgfgf link doesn't have domain");
+        assertEquals(codeMessageResponse.getPayload().getErrors().get(0), "invalidInstagramLink link doesn't have domain");
     }
 
     @Test(testName = "Edit collection settings - invalid youtube")
@@ -232,7 +232,7 @@ public class GetUpdateCollectionSettingsTests extends BaseApiTests {
 
         assertEquals(codeMessageResponse.getCode(), "ValidationError");
         assertEquals(codeMessageResponse.getMessage(), "Data validation error");
-        assertEquals(codeMessageResponse.getPayload().getErrors().get(0), "gfgfgf link doesn't have domain");
+        assertEquals(codeMessageResponse.getPayload().getErrors().get(0), "invalidYoutubeLink link doesn't have domain");
     }
 
     @Test(testName = "Edit collection settings - invalid twitch")
@@ -255,7 +255,7 @@ public class GetUpdateCollectionSettingsTests extends BaseApiTests {
 
         assertEquals(codeMessageResponse.getCode(), "ValidationError");
         assertEquals(codeMessageResponse.getMessage(), "Data validation error");
-        assertEquals(codeMessageResponse.getPayload().getErrors().get(0), "gfgfgf link doesn't have domain");
+        assertEquals(codeMessageResponse.getPayload().getErrors().get(0), "invalidTwitchLink link doesn't have domain");
     }
 
     @Test(testName = "Edit collection settings - invalid telegram")
@@ -278,7 +278,7 @@ public class GetUpdateCollectionSettingsTests extends BaseApiTests {
 
         assertEquals(codeMessageResponse.getCode(), "ValidationError");
         assertEquals(codeMessageResponse.getMessage(), "Data validation error");
-        assertEquals(codeMessageResponse.getPayload().getErrors().get(0), "gfgfgf link doesn't have domain");
+        assertEquals(codeMessageResponse.getPayload().getErrors().get(0), "invalidTelegramLink link doesn't have domain");
     }
 
     @Test(testName = "Edit collection settings - invalid snapchat")
@@ -301,7 +301,7 @@ public class GetUpdateCollectionSettingsTests extends BaseApiTests {
 
         assertEquals(codeMessageResponse.getCode(), "ValidationError");
         assertEquals(codeMessageResponse.getMessage(), "Data validation error");
-        assertEquals(codeMessageResponse.getPayload().getErrors().get(0), "gfgfgf link doesn't have domain");
+        assertEquals(codeMessageResponse.getPayload().getErrors().get(0), "invalidSnapchatLink link doesn't have domain");
     }
 
     @Test(testName = "Edit collection settings - invalid medium")
@@ -324,7 +324,7 @@ public class GetUpdateCollectionSettingsTests extends BaseApiTests {
 
         assertEquals(codeMessageResponse.getCode(), "ValidationError");
         assertEquals(codeMessageResponse.getMessage(), "Data validation error");
-        assertEquals(codeMessageResponse.getPayload().getErrors().get(0), "gfgfgf link doesn't have domain");
+        assertEquals(codeMessageResponse.getPayload().getErrors().get(0), "invalidMediumLink link doesn't have domain");
     }
 
     @Test(testName = "Edit collection settings - invalid facebook")
@@ -347,7 +347,7 @@ public class GetUpdateCollectionSettingsTests extends BaseApiTests {
 
         assertEquals(codeMessageResponse.getCode(), "ValidationError");
         assertEquals(codeMessageResponse.getMessage(), "Data validation error");
-        assertEquals(codeMessageResponse.getPayload().getErrors().get(0), "gfgfgf link doesn't have domain");
+        assertEquals(codeMessageResponse.getPayload().getErrors().get(0), "invalidFacebookLink link doesn't have domain");
     }
 
     @Test(testName = "Edit collection settings - unauthorized")
