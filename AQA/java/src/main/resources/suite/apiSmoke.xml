@@ -7,7 +7,6 @@
     <test name="API">
         <classes>
             <class name="api.nft.search.SearchNftInCollectionTests"></class>
-            <class name="api.nft.search.SearchNftNegativeTests"></class>
             <class name="api.nft.search.SearchNftTests"></class>
 
             <class name="api.nft.GetNftDetailsTests"></class>
