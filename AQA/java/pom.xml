@@ -214,7 +214,7 @@
                         <version>2.22.2</version>
                         <configuration>
                             <suiteXmlFiles>
-                                <suiteXmlFile>src/main/resources/suite/api.xml</suiteXmlFile>
+                                <suiteXmlFile>src/main/resources/suite/${suiteXmlFile}.xml</suiteXmlFile>
                             </suiteXmlFiles>
                         </configuration>
                     </plugin>

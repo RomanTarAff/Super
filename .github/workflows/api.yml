@@ -31,7 +31,7 @@ jobs:
       run: npm install
     - name: Run UI tests
       working-directory: AQA/java
-      run: xvfb-run --auto-servernum mvn clean test -Papi -q -Dhost=${{ env.HOST }} -Drp.launch=API -Drp.attributes="id:$RP_RUN_ID;env:$HOST;tag:API"
+      run: xvfb-run --auto-servernum mvn clean test -Papi -q -DsuiteXmlFile=api -Dhost=${{ env.HOST }} -Drp.launch=API -Drp.attributes="id:$RP_RUN_ID;env:$HOST;tag:API"
       env:
         JOB_NAME: API tests on ${{ env.HOST }}
 
