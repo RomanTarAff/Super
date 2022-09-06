@@ -225,22 +225,22 @@ export const test = base.extend<TestFixtures, WorkerFixtures>({
             const verifyResponseMintAccount = await service.verifyStg.verify(verifyRequest);
             console.log(`Access token MINT STG ${verifyResponseMintAccount.data.accessToken}`)
 
-            // console.log('Login Admin DEV account')
-            //login on admin
-            const walletAdmin = await metamaskHelper.createNewWalletAdminStg();
-            const sessionIdAndOtpAdmin = await service.authStg.login(walletAdmin);
-
-            //sign message and get code admin
-            const signedMessageAdmin = await service.authStg.signMessageAndGetCode(walletAdmin.address, sessionIdAndOtpAdmin.data, walletAdmin.useAccount);
-            console.log(`Signature ADMIN STG ${signedMessageAdmin}`)
-
-            const verifyRequestAdmin: VerifyRequest = {
-                sessionId: sessionIdAndOtpAdmin.data.sessionId,
-                code: signedMessageAdmin
-            }
-
-            const verifyResponseAdmin = await service.verifyStg.verify(verifyRequestAdmin);
-            console.log(`Access token ADMIN STG ${verifyResponseAdmin.data.accessToken}`)
+            // // console.log('Login Admin DEV account')
+            // //login on admin
+            // const walletAdmin = await metamaskHelper.createNewWalletAdminStg();
+            // const sessionIdAndOtpAdmin = await service.authStg.login(walletAdmin);
+            //
+            // //sign message and get code admin
+            // const signedMessageAdmin = await service.authStg.signMessageAndGetCode(walletAdmin.address, sessionIdAndOtpAdmin.data, walletAdmin.useAccount);
+            // console.log(`Signature ADMIN STG ${signedMessageAdmin}`)
+            //
+            // const verifyRequestAdmin: VerifyRequest = {
+            //     sessionId: sessionIdAndOtpAdmin.data.sessionId,
+            //     code: signedMessageAdmin
+            // }
+            //
+            // const verifyResponseAdmin = await service.verifyStg.verify(verifyRequestAdmin);
+            // console.log(`Access token ADMIN STG ${verifyResponseAdmin.data.accessToken}`)
 
             ///
             // console.log('Login BUY DEV account')
@@ -262,7 +262,7 @@ export const test = base.extend<TestFixtures, WorkerFixtures>({
             use({
                 accessTokenMintStg: verifyResponseMintAccount.data.accessToken,
                 accessTokenBuyStg: verifyResponseBuyAccount.data.accessToken,
-                accessTokenAdminStg: verifyResponseAdmin.data.accessToken,
+                accessTokenAdminStg: "",
             });
         },
         {scope: 'worker'}
