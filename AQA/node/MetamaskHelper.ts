@@ -5,6 +5,7 @@ import {WalletRequest} from "./wallet";
 export class MetamaskHelper {
 
     private NETWORK = "rinkeby";
+    private NETWORK_MAINNET = "mainnet";
     public TESTING_PRIVATE_KEY_BASE_ACCOUNT = "92688588d2a683dd9d0163ced8d0db4206bbbb9d695a85bef210facd494b7678";
     public WALLET_ADDRESS_BASE_ACCOUNT = "0xb2e41d98db19fb7052e07952e47d987946cd1fb0";
     public WALLET_ADDRESS_SECOND_ACCOUNT = "0x46f893c8ada8E87A6e14639a42c4b378d9662740";
@@ -15,6 +16,8 @@ export class MetamaskHelper {
     private provider = new ethers.providers.InfuraProvider(this.NETWORK);
     private walletPrivateKey = new Wallet(this.WALLET_PRIVATE_KEY_MINT);
     private user = this.walletPrivateKey.connect(this.provider);
+
+    private providerStg = new ethers.providers.InfuraProvider(this.NETWORK_MAINNET);
 
     async createNewWalletMint(): Promise<WalletRequest> {
         const account = new ethers.Wallet(this.WALLET_PRIVATE_KEY_MINT, this.provider);
@@ -44,6 +47,45 @@ export class MetamaskHelper {
 
     async createNewWalletAdmin(): Promise<WalletRequest> {
         const account = new ethers.Wallet(this.WALLET_PRIVATE_KEY_MINT, this.provider);
+        const network = await (account.provider).getNetwork();
+        const netIdFromWallet = network.chainId;
+        console.log(`... attempting to use address ${account.address} and get netId ${netIdFromWallet}...`);
+        return {
+            address: account.address,
+            netId: netIdFromWallet,
+            audience: 'admin',
+            useAccount: account
+        }
+    }
+
+    async createNewWalletMintStg(): Promise<WalletRequest> {
+        const account = new ethers.Wallet(this.WALLET_PRIVATE_KEY_MINT, this.providerStg);
+        const network = await (account.provider).getNetwork();
+        const netIdFromWallet = network.chainId;
+        //console.log(`... attempting to use address ${account.address} and get netId ${netIdFromWallet}...`);
+        return {
+            address: account.address,
+            netId: netIdFromWallet,
+            audience: 'user',
+            useAccount: account
+        }
+    }
+
+    async createNewWalletBuyStg(): Promise<WalletRequest> {
+        const account = new ethers.Wallet(this.WALLET_PRIVATE_KEY_BUY, this.providerStg);
+        const network = await (account.provider).getNetwork();
+        const netIdFromWallet = network.chainId;
+        //console.log(`... attempting to use address ${account.address} and get netId ${netIdFromWallet}...`);
+        return {
+            address: account.address,
+            netId: netIdFromWallet,
+            audience: 'user',
+            useAccount: account
+        }
+    }
+
+    async createNewWalletAdminStg(): Promise<WalletRequest> {
+        const account = new ethers.Wallet(this.WALLET_PRIVATE_KEY_MINT, this.providerStg);
         const network = await (account.provider).getNetwork();
         const netIdFromWallet = network.chainId;
         console.log(`... attempting to use address ${account.address} and get netId ${netIdFromWallet}...`);

@@ -15,7 +15,10 @@ type Service = {
     verifyDev: VerifyService,
 
     authTest: AuthService,
-    verifyTest: VerifyService
+    verifyTest: VerifyService,
+
+    authStg: AuthService,
+    verifyStg: VerifyService
 };
 
 type AccessTokenDev = {
@@ -30,10 +33,17 @@ type AccessTokenTest = {
     accessTokenAdminTest: string
 }
 
+type AccessTokenStg = {
+    accessTokenMintStg: string,
+    accessTokenBuyStg: string,
+    accessTokenAdminStg: string
+}
+
 type WorkerFixtures = {
     service: Service;
     authModeDev: AccessTokenDev;
     authModeTest: AccessTokenTest;
+    authModeStg: AccessTokenStg;
 };
 
 
@@ -44,15 +54,19 @@ export const test = base.extend<TestFixtures, WorkerFixtures>({
         async ({}, use) => {
             const yamlDevelop = load(await readFile(`config.develop.yml`, "utf8"));
             const yamlTest = load(await readFile(`config.test.yml`, "utf8"));
+            const yamlStg = load(await readFile(`config.staging.yml`, "utf8"));
             // eslint-disable-next-line @typescript-eslint/ban-ts-comment
             // @ts-ignore
             const urlsDev = yamlDevelop.baseUrls;
             const urlsTest = yamlTest.baseUrls;
+            const urlsStg = yamlStg.baseUrls;
             use({
                 authDev: new AuthService(urlsDev.authBaseUrl),
                 verifyDev: new VerifyService(urlsDev.authBaseUrl),
                 authTest: new AuthService(urlsTest.authBaseUrl),
                 verifyTest: new VerifyService(urlsTest.authBaseUrl),
+                authStg: new AuthService(urlsStg.authBaseUrl),
+                verifyStg: new VerifyService(urlsStg.authBaseUrl),
             });
         },
         {scope: 'worker'}
@@ -185,6 +199,71 @@ export const test = base.extend<TestFixtures, WorkerFixtures>({
                 accessTokenAdminTest: verifyResponseAdmin.data.accessToken,
             });
 
+        },
+        {scope: 'worker'}
+    ],
+
+    authModeStg: [
+        // eslint-disable-next-line no-empty-pattern
+        async ({service}, use) => {
+            const metamaskHelper: MetamaskHelper = new MetamaskHelper();
+
+            //TEST
+            //console.log('Login MINT DEV account')
+            const wallet = await metamaskHelper.createNewWalletMintStg();
+            const sessionIdAndOtp = await service.authStg.login(wallet);
+
+            //sign message and get code for base account
+            const signedMessage = await service.authStg.signMessageAndGetCode(wallet.address, sessionIdAndOtp.data, wallet.useAccount);
+            console.log(`Signature MINT STG ${signedMessage}`)
+
+            const verifyRequest: VerifyRequest = {
+                sessionId: sessionIdAndOtp.data.sessionId,
+                code: signedMessage
+            }
+
+            const verifyResponseMintAccount = await service.verifyStg.verify(verifyRequest);
+            console.log(`Access token MINT STG ${verifyResponseMintAccount.data.accessToken}`)
+
+            // console.log('Login Admin DEV account')
+            //login on admin
+            const walletAdmin = await metamaskHelper.createNewWalletAdminStg();
+            const sessionIdAndOtpAdmin = await service.authStg.login(walletAdmin);
+
+            //sign message and get code admin
+            const signedMessageAdmin = await service.authStg.signMessageAndGetCode(walletAdmin.address, sessionIdAndOtpAdmin.data, walletAdmin.useAccount);
+            console.log(`Signature ADMIN STG ${signedMessageAdmin}`)
+
+            const verifyRequestAdmin: VerifyRequest = {
+                sessionId: sessionIdAndOtpAdmin.data.sessionId,
+                code: signedMessageAdmin
+            }
+
+            const verifyResponseAdmin = await service.verifyStg.verify(verifyRequestAdmin);
+            console.log(`Access token ADMIN STG ${verifyResponseAdmin.data.accessToken}`)
+
+            ///
+            // console.log('Login BUY DEV account')
+            const walletTwo = await metamaskHelper.createNewWalletBuyStg();
+            const sessionIdAndOtpTwo = await service.authStg.login(walletTwo);
+
+            //sign message and get code for second account
+            const signedMessageTwo = await service.authStg.signMessageAndGetCode(walletTwo.address, sessionIdAndOtpTwo.data, walletTwo.useAccount);
+            console.log(`Signature BUY STG ${signedMessageTwo}`)
+
+            const verifyRequestTwo: VerifyRequest = {
+                sessionId: sessionIdAndOtpTwo.data.sessionId,
+                code: signedMessageTwo
+            }
+
+            const verifyResponseBuyAccount = await service.verifyStg.verify(verifyRequestTwo);
+            console.log(`Access token BUY STG ${verifyResponseBuyAccount.data.accessToken}`)
+
+            use({
+                accessTokenMintStg: verifyResponseMintAccount.data.accessToken,
+                accessTokenBuyStg: verifyResponseBuyAccount.data.accessToken,
+                accessTokenAdminStg: verifyResponseAdmin.data.accessToken,
+            });
         },
         {scope: 'worker'}
     ],

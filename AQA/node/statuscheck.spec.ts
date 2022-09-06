@@ -24,4 +24,10 @@ test.describe('Status check', async function () {
         process.env.MINT_TOKEN = authModeTest.accessTokenMintTest;
         process.env.BUY_TOKEN = authModeTest.accessTokenBuyTest;
     });
+
+    test('Get token @tokenStg', async ({service, authModeStg}) => {
+        console.log('INIT STG TOKENS')
+        process.env.MINT_TOKEN = authModeStg.accessTokenMintStg;
+        process.env.BUY_TOKEN = authModeStg.accessTokenBuyStg;
+    });
 });
