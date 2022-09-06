@@ -13,7 +13,7 @@ import org.testng.annotations.Test;
 import java.util.List;
 
 import static java.net.HttpURLConnection.*;
-import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.*;
 
 public class GetNftDetailsTests extends BaseApiTests {
 
@@ -37,34 +37,32 @@ public class GetNftDetailsTests extends BaseApiTests {
                 .shouldHave(Conditions.statusCode(HTTP_OK))
                 .asClass(NftDetails.class);
 
-        soft.assertEquals(nftDetails.getContractType(), ContractType.ERC721.getValue(), "Contract type is invalid");
-        soft.assertEquals(nftDetails.getNftStatus(), NftStatus.ACTIVE.getValue(), "NFT should be active");
-        soft.assertEquals(nftDetails.getName(), nft.getName(), "NFT name is not correct");
-        soft.assertEquals(nftDetails.getBlockchain().getName(), Blockchain.ETH.getName(), "Blockchain name is invalid");
-        soft.assertEquals(nftDetails.getBlockchain().getNetwork(), Blockchain.ETH.getNetwork(), "Blockchain name is invalid");
-        soft.assertNotNull(nftDetails.getTokenId(), "Token id should not be null");
-        soft.assertTrue(nftDetails.getLikesCount() >= 0, "Likes should be >= 0");
-        soft.assertTrue(nftDetails.getWatchers() >= 0, "Watchers should be >= 0");
-        soft.assertTrue(nftDetails.getViews() >= 0, "Views should be >= 0");
-        soft.assertEquals(nftDetails.getContractAddress(), getTestCollectionData().getContractAddress(),
+        assertEquals(nftDetails.getContractType(), ContractType.ERC721.getValue(), "Contract type is invalid");
+        assertEquals(nftDetails.getNftStatus(), NftStatus.ACTIVE.getValue(), "NFT should be active");
+        assertEquals(nftDetails.getName(), nft.getName(), "NFT name is not correct");
+        assertEquals(nftDetails.getBlockchain().getName(), Blockchain.ETH.getName(), "Blockchain name is invalid");
+        assertEquals(nftDetails.getBlockchain().getNetwork(), Blockchain.ETH.getNetwork(), "Blockchain name is invalid");
+        assertNotNull(nftDetails.getTokenId(), "Token id should not be null");
+        assertTrue(nftDetails.getLikesCount() >= 0, "Likes should be >= 0");
+        assertTrue(nftDetails.getWatchers() >= 0, "Watchers should be >= 0");
+        assertTrue(nftDetails.getViews() >= 0, "Views should be >= 0");
+        assertEquals(nftDetails.getContractAddress(), getTestCollectionData().getContractAddress(),
                 "Contract address is not correct");
-        soft.assertNotNull(nftDetails.getId(), "id should not be null");
-        soft.assertNotNull(nftDetails.getTokens(), "Tokens should not be null");
+        assertNotNull(nftDetails.getId(), "id should not be null");
+        assertNotNull(nftDetails.getTokens(), "Tokens should not be null");
 
-        soft.assertTrue(nftDetails.getOwner().getAddress().contains(Account.MINT.getAddress().toLowerCase()),
+        assertTrue(nftDetails.getOwner().getAddress().contains(Account.MINT.getAddress().toLowerCase()),
                 "NFT owner should be MINT user");
-        soft.assertTrue(nftDetails.getStatuses().contains(Status.ON_SALE.getValue()), "Statuses should contains on sale");
+        assertTrue(nftDetails.getStatuses().contains(Status.ON_SALE.getValue()), "Statuses should contains on sale");
 
-        soft.assertEquals(nftDetails.getCollection().getId(), getTestCollectionData().getId(),
+        assertEquals(nftDetails.getCollection().getId(), getTestCollectionData().getId(),
                 "Collection id is not correct");
-        soft.assertEquals(nftDetails.getCollection().getContractAddress(), getTestCollectionData().getContractAddress(),
+        assertEquals(nftDetails.getCollection().getContractAddress(), getTestCollectionData().getContractAddress(),
                 "Collection contract address is not correct");
 
-        soft.assertNotNull(nftDetails.getListing(), "NFT details listing should not be null");
-        soft.assertFalse(nftDetails.getCollection().isVerified(), "Collection should not be verified");
-        soft.assertNotNull(nftDetails.getCollection().getSlug(), "Collection slug should not be null");
-        soft.assertNotNull(nftDetails.getCollection().getName(), "Collection name should not be null");
-        soft.assertAll();
+        assertNotNull(nftDetails.getListing(), "NFT details listing should not be null");
+        assertFalse(nftDetails.getCollection().isVerified(), "Collection should not be verified");
+        assertNotNull(nftDetails.getCollection().getName(), "Collection name should not be null");
     }
 
     @Test(testName = "NFT details with offers")
@@ -87,34 +85,32 @@ public class GetNftDetailsTests extends BaseApiTests {
                 .shouldHave(Conditions.statusCode(HTTP_OK))
                 .asClass(NftDetails.class);
 
-        soft.assertEquals(nftDetails.getContractType(), ContractType.ERC721.getValue(), "Contract type is invalid");
-        soft.assertEquals(nftDetails.getNftStatus(), NftStatus.ACTIVE.getValue(), "NFT should be active");
-        soft.assertEquals(nftDetails.getName(), nft.getName(), "NFT name is not correct");
-        soft.assertEquals(nftDetails.getBlockchain().getName(), Blockchain.ETH.getName(), "Blockchain name is invalid");
-        soft.assertEquals(nftDetails.getBlockchain().getNetwork(), Blockchain.ETH.getNetwork(), "Blockchain name is invalid");
-        soft.assertNotNull(nftDetails.getTokenId(), "Token id should not be null");
-        soft.assertTrue(nftDetails.getLikesCount() >= 0, "Likes should be >= 0");
-        soft.assertTrue(nftDetails.getWatchers() >= 0, "Watchers should be >= 0");
-        soft.assertTrue(nftDetails.getViews() >= 0, "Views should be >= 0");
-        soft.assertEquals(nftDetails.getContractAddress(), getTestCollectionData().getContractAddress(),
+        assertEquals(nftDetails.getContractType(), ContractType.ERC721.getValue(), "Contract type is invalid");
+        assertEquals(nftDetails.getNftStatus(), NftStatus.ACTIVE.getValue(), "NFT should be active");
+        assertEquals(nftDetails.getName(), nft.getName(), "NFT name is not correct");
+        assertEquals(nftDetails.getBlockchain().getName(), Blockchain.ETH.getName(), "Blockchain name is invalid");
+        assertEquals(nftDetails.getBlockchain().getNetwork(), Blockchain.ETH.getNetwork(), "Blockchain name is invalid");
+        assertNotNull(nftDetails.getTokenId(), "Token id should not be null");
+        assertTrue(nftDetails.getLikesCount() >= 0, "Likes should be >= 0");
+        assertTrue(nftDetails.getWatchers() >= 0, "Watchers should be >= 0");
+        assertTrue(nftDetails.getViews() >= 0, "Views should be >= 0");
+        assertEquals(nftDetails.getContractAddress(), getTestCollectionData().getContractAddress(),
                 "Contract address is not correct");
-        soft.assertNotNull(nftDetails.getId(), "id should not be null");
-        soft.assertNotNull(nftDetails.getTokens(), "Tokens should not be null");
+        assertNotNull(nftDetails.getId(), "id should not be null");
+        assertNotNull(nftDetails.getTokens(), "Tokens should not be null");
 
-        soft.assertTrue(nftDetails.getOwner().getAddress().contains(Account.MINT.getAddress().toLowerCase()),
+        assertTrue(nftDetails.getOwner().getAddress().contains(Account.MINT.getAddress().toLowerCase()),
                 "NFT owner should be MINT user");
-        soft.assertTrue(nftDetails.getStatuses().contains(Status.HAS_OFFERS.getValue()), "Statuses should contains has_offers");
+        assertTrue(nftDetails.getStatuses().contains(Status.HAS_OFFERS.getValue()), "Statuses should contains has_offers");
 
-        soft.assertEquals(nftDetails.getCollection().getId(), getTestCollectionData().getId(),
+        assertEquals(nftDetails.getCollection().getId(), getTestCollectionData().getId(),
                 "Collection id is not correct");
-        soft.assertEquals(nftDetails.getCollection().getContractAddress(), getTestCollectionData().getContractAddress(),
+        assertEquals(nftDetails.getCollection().getContractAddress(), getTestCollectionData().getContractAddress(),
                 "Collection contract address is not correct");
 
-        soft.assertNotNull(nftDetails.getHighestOffer(), "Highest offer should not be null");
-        soft.assertFalse(nftDetails.getCollection().isVerified(), "Collection should not be verified");
-        soft.assertNotNull(nftDetails.getCollection().getSlug(), "Collection slug should not be null");
-        soft.assertNotNull(nftDetails.getCollection().getName(), "Collection name should not be null");
-        soft.assertAll();
+        assertNotNull(nftDetails.getHighestOffer(), "Highest offer should not be null");
+        assertFalse(nftDetails.getCollection().isVerified(), "Collection should not be verified");
+        assertNotNull(nftDetails.getCollection().getName(), "Collection name should not be null");
     }
 
     @Test(testName = "NFT details invalid contract address")
@@ -162,6 +158,4 @@ public class GetNftDetailsTests extends BaseApiTests {
         assertEquals(codeMessageResponse.getCode(), "NFTNotFound");
         assertEquals(codeMessageResponse.getMessage(), "NFT not found");
     }
-
-
 }

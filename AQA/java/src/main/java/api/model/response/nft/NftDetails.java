@@ -15,6 +15,7 @@ public class NftDetails {
     private String nftStatus;
     private String externalLink;
     private String name;
+    private String tokenURI;
     private Blockchain blockchain;
     private boolean acceptOffers;
     private String previewUrl;

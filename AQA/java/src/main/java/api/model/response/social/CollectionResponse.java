@@ -9,6 +9,7 @@ public class CollectionResponse {
 
     private String id;
     private String contractAddress;
+    private String contractType;
     private String name;
     private String description;
     private String avatarUrl;
