@@ -50,7 +50,7 @@ public class SearchNftTests extends BaseApiTests {
         soft.assertAll();
     }
 
-    @Test(testName = "Search nfts in wallet recently listed")
+    @Test(testName = "Search nfts in wallet recently listed", enabled = false)
     public void searchInWalletRecentlyListed() {
         SearchNftRequest search = SearchNftRequest.builder()
                 .group(Group.IN_WALLET.getValue())
