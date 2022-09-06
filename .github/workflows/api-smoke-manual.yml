@@ -1,4 +1,4 @@
-name: API Smoke
+name: API Smoke Manual
 
 on:
   workflow_dispatch:
