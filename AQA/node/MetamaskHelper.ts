@@ -64,7 +64,7 @@ export class MetamaskHelper {
         const netIdFromWallet = network.chainId;
         //console.log(`... attempting to use address ${account.address} and get netId ${netIdFromWallet}...`);
         return {
-            address: account.address,
+            address: account.address.toLowerCase(),
             netId: netIdFromWallet,
             audience: 'user',
             useAccount: account
