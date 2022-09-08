@@ -5,14 +5,16 @@ import api.enums.Account;
 import api.model.response.CodeMessageResponse;
 import api.model.response.social.CollectionResponse;
 import api.util.conditions.Conditions;
+import io.qameta.allure.Epic;
 import org.testng.annotations.Test;
 
 import static java.net.HttpURLConnection.*;
 import static org.testng.Assert.*;
 
+@Epic("Get collections")
 public class GetCollectionsTests extends BaseApiTests {
 
-    @Test(testName = "Get collection")
+    @Test(description = "Get collection")
     public void getMyCollection() {
 
         CollectionResponse collection = socialService.getCollection(getTestCollectionData().getContractAddress(), System.getProperty(Account.BUY.getENV()))
@@ -33,7 +35,7 @@ public class GetCollectionsTests extends BaseApiTests {
         assertNotNull(collection.getFloorPrice());
     }
 
-    @Test(testName = "Get collections not found")
+    @Test(description = "Get collections not found")
     public void getCollectionsNotFound() {
 
         CodeMessageResponse codeMessageResponse = socialService.getCollection(faker.internet().uuid(), System.getProperty(Account.MINT.getENV()))
@@ -43,7 +45,7 @@ public class GetCollectionsTests extends BaseApiTests {
         assertEquals(codeMessageResponse.getMessage(), "Collection not found");
     }
 
-    @Test(testName = "Get collections invalid token address")
+    @Test(description = "Get collections invalid token address")
     public void getCollectionsInvalidTokenAddress() {
 
         CodeMessageResponse codeMessageResponse = socialService.getCollection("gfgf", System.getProperty(Account.MINT.getENV()))

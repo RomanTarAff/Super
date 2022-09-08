@@ -5,15 +5,17 @@ import api.enums.Account;
 import api.model.request.social.EditProfileRequest;
 import api.model.response.CodeMessageResponse;
 import api.util.conditions.Conditions;
+import io.qameta.allure.Epic;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
+@Epic("Edit profile negative")
 public class EditProfileNegativeTests extends BaseApiTests {
 
-    @Test(testName = "Edit profile invalid username", dataProvider = "usernames")
+    @Test(description = "Edit profile invalid username", dataProvider = "usernames")
     public void editProfileInvalidUsername(String username, String error) {
         EditProfileRequest request = EditProfileRequest.builder()
                 .username(username).build();
@@ -27,7 +29,7 @@ public class EditProfileNegativeTests extends BaseApiTests {
         assertTrue(codeMessageResponse.getPayload().getErrors().get(0).contains(error));
     }
 
-    @Test(testName = "Edit profile invalid email", dataProvider = "emails")
+    @Test(description = "Edit profile invalid email", dataProvider = "emails")
     public void editProfileInvalidEmail(String email, String error) {
         EditProfileRequest request = EditProfileRequest.builder()
                 .email(email).build();
@@ -41,7 +43,7 @@ public class EditProfileNegativeTests extends BaseApiTests {
         assertEquals(codeMessageResponse.getPayload().getErrors().get(0), error);
     }
 
-    @Test(testName = "Edit profile invalid description")
+    @Test(description = "Edit profile invalid description")
     public void editProfileInvalidDescription() {
         EditProfileRequest request = EditProfileRequest.builder()
                 .description(faker.lorem().characters(1005)).build();
@@ -55,7 +57,7 @@ public class EditProfileNegativeTests extends BaseApiTests {
         assertEquals(codeMessageResponse.getPayload().getErrors().get(0), "data/data/description must NOT have more than 1000 characters");
     }
 
-    @Test(testName = "Edit profile invalid website url", dataProvider = "urls")
+    @Test(description = "Edit profile invalid website url", dataProvider = "urls")
     public void editProfileInvalidWebsiteUrl(String url, String error) {
         EditProfileRequest request = EditProfileRequest.builder()
                 .websiteUrl(url).build();
@@ -69,7 +71,7 @@ public class EditProfileNegativeTests extends BaseApiTests {
         assertTrue(codeMessageResponse.getPayload().getErrors().get(0).contains(error));
     }
 
-    @Test(testName = "Edit profile invalid banner url", dataProvider = "urls")
+    @Test(description = "Edit profile invalid banner url", dataProvider = "urls")
     public void editProfileInvalidBannerUrl(String url, String error) {
         EditProfileRequest request = EditProfileRequest.builder()
                 .bannerUrl(url).build();
@@ -83,7 +85,7 @@ public class EditProfileNegativeTests extends BaseApiTests {
         assertTrue(codeMessageResponse.getPayload().getErrors().get(0).contains(error));
     }
 
-    @Test(testName = "Edit profile invalid avatar url", dataProvider = "urls")
+    @Test(description = "Edit profile invalid avatar url", dataProvider = "urls")
     public void editProfileInvalidAvatarUrl(String url, String error) {
         EditProfileRequest request = EditProfileRequest.builder()
                 .avatarUrl(url).build();

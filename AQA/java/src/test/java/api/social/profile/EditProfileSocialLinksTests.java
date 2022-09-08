@@ -6,6 +6,7 @@ import api.model.request.social.EditProfileRequest;
 import api.model.request.social.SocialLinks;
 import api.model.response.social.ProfileResponse;
 import api.util.conditions.Conditions;
+import io.qameta.allure.Epic;
 import org.testng.annotations.Test;
 
 import java.util.List;
@@ -14,9 +15,10 @@ import static java.net.HttpURLConnection.HTTP_NO_CONTENT;
 import static java.net.HttpURLConnection.HTTP_OK;
 import static org.testng.Assert.assertEquals;
 
+@Epic("Edit profile social links")
 public class EditProfileSocialLinksTests extends BaseApiTests {
 
-    @Test(testName = "Edit profile facebook")
+    @Test(description = "Edit profile facebook")
     public void editProfileFacebook() {
         List<String> facebook = List.of("https://" + faker.internet().url(), "https://" + faker.internet().url());
         EditProfileRequest request = EditProfileRequest.builder()
@@ -35,7 +37,7 @@ public class EditProfileSocialLinksTests extends BaseApiTests {
         assertEquals(profileResponse.getSocialLinks().getFacebook(), facebook);
     }
 
-    @Test(testName = "Edit profile instagram")
+    @Test(description = "Edit profile instagram")
     public void editProfileInstagram() {
         List<String> instagram = List.of("https://" + faker.internet().url(), "https://" + faker.internet().url());
         EditProfileRequest request = EditProfileRequest.builder()
@@ -54,7 +56,7 @@ public class EditProfileSocialLinksTests extends BaseApiTests {
         assertEquals(profileResponse.getSocialLinks().getInstagram(), instagram);
     }
 
-    @Test(testName = "Edit profile linkedin")
+    @Test(description = "Edit profile linkedin")
     public void editProfileLinkedin() {
         List<String> linkedin = List.of("https://" + faker.internet().url(), "https://" + faker.internet().url());
         EditProfileRequest request = EditProfileRequest.builder()
@@ -73,7 +75,7 @@ public class EditProfileSocialLinksTests extends BaseApiTests {
         assertEquals(profileResponse.getSocialLinks().getLinkedin(), linkedin);
     }
 
-    @Test(testName = "Edit profile medium")
+    @Test(description = "Edit profile medium")
     public void editProfileMedium() {
         List<String> medium = List.of("https://" + faker.internet().url(), "https://" + faker.internet().url());
         EditProfileRequest request = EditProfileRequest.builder()
@@ -92,7 +94,7 @@ public class EditProfileSocialLinksTests extends BaseApiTests {
         assertEquals(profileResponse.getSocialLinks().getMedium(), medium);
     }
 
-    @Test(testName = "Edit profile snapchat")
+    @Test(description = "Edit profile snapchat")
     public void editProfileSnapchat() {
         List<String> snapchat = List.of("https://" + faker.internet().url(), "https://" + faker.internet().url());
         EditProfileRequest request = EditProfileRequest.builder()
@@ -111,7 +113,7 @@ public class EditProfileSocialLinksTests extends BaseApiTests {
         assertEquals(profileResponse.getSocialLinks().getSnapchat(), snapchat);
     }
 
-    @Test(testName = "Edit profile telegram")
+    @Test(description = "Edit profile telegram")
     public void editProfileTelegram() {
         List<String> telegram = List.of("https://" + faker.internet().url(), "https://" + faker.internet().url());
         EditProfileRequest request = EditProfileRequest.builder()
@@ -130,7 +132,7 @@ public class EditProfileSocialLinksTests extends BaseApiTests {
         assertEquals(profileResponse.getSocialLinks().getTelegram(), telegram);
     }
 
-    @Test(testName = "Edit profile twitch")
+    @Test(description = "Edit profile twitch")
     public void editProfileTwitch() {
         List<String> twitch = List.of("https://" + faker.internet().url(), "https://" + faker.internet().url());
         EditProfileRequest request = EditProfileRequest.builder()
@@ -149,7 +151,7 @@ public class EditProfileSocialLinksTests extends BaseApiTests {
         assertEquals(profileResponse.getSocialLinks().getTwitch(), twitch);
     }
 
-    @Test(testName = "Edit profile twitter")
+    @Test(description = "Edit profile twitter")
     public void editProfileTwitter() {
         List<String> twitter = List.of("https://" + faker.internet().url(), "https://" + faker.internet().url());
         EditProfileRequest request = EditProfileRequest.builder()
@@ -168,7 +170,7 @@ public class EditProfileSocialLinksTests extends BaseApiTests {
         assertEquals(profileResponse.getSocialLinks().getTwitter(), twitter);
     }
 
-    @Test(testName = "Edit profile youtube")
+    @Test(description = "Edit profile youtube")
     public void editProfileYoutube() {
         List<String> youtube = List.of("https://" + faker.internet().url(), "https://" + faker.internet().url());
         EditProfileRequest request = EditProfileRequest.builder()
@@ -187,7 +189,7 @@ public class EditProfileSocialLinksTests extends BaseApiTests {
         assertEquals(profileResponse.getSocialLinks().getYoutube(), youtube);
     }
 
-    @Test(testName = "Edit profile discord")
+    @Test(description = "Edit profile discord")
     public void editProfileDiscord() {
         List<String> discord = List.of("https://" + faker.internet().url(), "https://" + faker.internet().url());
         EditProfileRequest request = EditProfileRequest.builder()

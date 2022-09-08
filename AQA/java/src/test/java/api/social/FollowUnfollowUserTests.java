@@ -6,6 +6,7 @@ import api.model.response.CodeMessageResponse;
 import api.model.response.admin.UserListResponse;
 import api.model.response.social.ProfileResponse;
 import api.util.conditions.Conditions;
+import io.qameta.allure.Epic;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -14,6 +15,7 @@ import java.util.Map;
 
 import static java.net.HttpURLConnection.*;
 
+@Epic("Follow unfollow user")
 public class FollowUnfollowUserTests extends BaseApiTests {
 
     private ProfileResponse user;
@@ -43,7 +45,7 @@ public class FollowUnfollowUserTests extends BaseApiTests {
     }
 
 
-    @Test(testName = "Follow and unfollow user")
+    @Test(description = "Follow and unfollow user")
     public void followUnfollowUser() {
 
         //follow
@@ -70,7 +72,7 @@ public class FollowUnfollowUserTests extends BaseApiTests {
         soft.assertAll();
     }
 
-    @Test(testName = "Follow unauthorized")
+    @Test(description = "Follow unauthorized")
     public void followUnauthorized() {
         CodeMessageResponse codeMessageResponse = socialService.followUser(user.getId(), null)
                 .shouldHave(Conditions.statusCode(HTTP_UNAUTHORIZED))
@@ -80,7 +82,7 @@ public class FollowUnfollowUserTests extends BaseApiTests {
         soft.assertAll();
     }
 
-    @Test(testName = "Unfollow unauthorized")
+    @Test(description = "Unfollow unauthorized")
     public void unfollowUnauthorized() {
         CodeMessageResponse codeMessageResponse = socialService.unfollowUser(user.getId(), null)
                 .shouldHave(Conditions.statusCode(HTTP_UNAUTHORIZED))
@@ -90,7 +92,7 @@ public class FollowUnfollowUserTests extends BaseApiTests {
         soft.assertAll();
     }
 
-    @Test(testName = "Follow user invalid user id")
+    @Test(description = "Follow user invalid user id")
     public void followUserInvalidId() {
         CodeMessageResponse codeMessageResponse = socialService.followUser("invalid", System.getProperty(Account.MINT.getENV()))
                 .shouldHave(Conditions.statusCode(422))
@@ -102,7 +104,7 @@ public class FollowUnfollowUserTests extends BaseApiTests {
         soft.assertAll();
     }
 
-    @Test(testName = "Unfollow user invalid user id")
+    @Test(description = "Unfollow user invalid user id")
     public void unfollowInvalidId() {
         CodeMessageResponse codeMessageResponse = socialService.unfollowUser("invalid", System.getProperty(Account.MINT.getENV()))
                 .shouldHave(Conditions.statusCode(422))

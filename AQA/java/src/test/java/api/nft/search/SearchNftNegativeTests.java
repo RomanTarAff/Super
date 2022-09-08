@@ -8,6 +8,7 @@ import api.enums.Status;
 import api.model.request.nft.SearchNftRequest;
 import api.model.response.CodeMessageResponse;
 import api.util.conditions.Conditions;
+import io.qameta.allure.Epic;
 import org.testng.annotations.Test;
 
 import java.util.List;
@@ -15,6 +16,7 @@ import java.util.List;
 import static java.net.HttpURLConnection.HTTP_FORBIDDEN;
 import static org.testng.Assert.assertEquals;
 
+@Epic("Search NFT negative")
 public class SearchNftNegativeTests extends BaseApiTests {
 
     @Test(testName = "Search nft without limit")

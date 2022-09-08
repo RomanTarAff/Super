@@ -10,6 +10,7 @@ import api.model.response.CodeMessageResponse;
 import api.model.response.nft.SearchNftResponse;
 import api.model.response.nft.SearchNftResponseList;
 import api.util.conditions.Conditions;
+import io.qameta.allure.Epic;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -17,6 +18,7 @@ import java.util.List;
 
 import static java.net.HttpURLConnection.*;
 
+@Epic("Pin unpin NFT")
 public class PinUnpinNftTests extends BaseApiTests {
 
     private SearchNftResponse nftResult;
@@ -36,7 +38,7 @@ public class PinUnpinNftTests extends BaseApiTests {
                 .filter(nft -> !nft.isPinned()).findFirst().get();
     }
 
-    @Test(testName = "Pin and unpin nft", enabled = false)
+    @Test(description = "Pin and unpin nft", enabled = false)
     public void pinAndUnpinNft() {
 
         //pin nft
@@ -73,7 +75,7 @@ public class PinUnpinNftTests extends BaseApiTests {
         soft.assertAll();
     }
 
-    @Test(testName = "Pin unauthorized")
+    @Test(description = "Pin unauthorized")
     public void pinUnauthorized() {
         CodeMessageResponse codeMessageResponse = nftService.pinNft(nftResult.getId(), null)
                 .shouldHave(Conditions.statusCode(HTTP_UNAUTHORIZED))
@@ -83,7 +85,7 @@ public class PinUnpinNftTests extends BaseApiTests {
         soft.assertAll();
     }
 
-    @Test(testName = "Unpin unauthorized")
+    @Test(description = "Unpin unauthorized")
     public void unpinUnauthorized() {
         CodeMessageResponse codeMessageResponse = nftService.unpinNft(nftResult.getId(), null)
                 .shouldHave(Conditions.statusCode(HTTP_UNAUTHORIZED))
@@ -93,7 +95,7 @@ public class PinUnpinNftTests extends BaseApiTests {
         soft.assertAll();
     }
 
-    @Test(testName = "Pin invalid nft id")
+    @Test(description = "Pin invalid nft id")
     public void pinInvalidNftId() {
         CodeMessageResponse codeMessageResponse = nftService.pinNft("575226ae-00bf-5f4a-8gb9c-3d4c9c4b644f", System.getProperty(Account.MINT.getENV()))
                 .shouldHave(Conditions.statusCode(422))
@@ -105,7 +107,7 @@ public class PinUnpinNftTests extends BaseApiTests {
         soft.assertAll();
     }
 
-    @Test(testName = "Unpin invalid nft id")
+    @Test(description = "Unpin invalid nft id")
     public void unpinInvalidNftId() {
         CodeMessageResponse codeMessageResponse = nftService.unpinNft("575226ae-00bf-5f4a-8gb9c-3d4c9c4b644f", System.getProperty(Account.MINT.getENV()))
                 .shouldHave(Conditions.statusCode(422))
@@ -116,7 +118,7 @@ public class PinUnpinNftTests extends BaseApiTests {
         soft.assertAll();
     }
 
-    @Test(testName = "Pin not existing nft id")
+    @Test(description = "Pin not existing nft id")
     public void pinNotExistingNftId() {
         CodeMessageResponse codeMessageResponse = nftService.pinNft(faker.internet().uuid(), System.getProperty(Account.MINT.getENV()))
                 .shouldHave(Conditions.statusCode(HTTP_NOT_FOUND))
@@ -127,7 +129,7 @@ public class PinUnpinNftTests extends BaseApiTests {
         soft.assertAll();
     }
 
-    @Test(testName = "Unpin not existing nft id")
+    @Test(description = "Unpin not existing nft id")
     public void unpinNotExistingNftId() {
         CodeMessageResponse codeMessageResponse = nftService.unpinNft(faker.internet().uuid(), System.getProperty(Account.MINT.getENV()))
                 .shouldHave(Conditions.statusCode(HTTP_NOT_FOUND))

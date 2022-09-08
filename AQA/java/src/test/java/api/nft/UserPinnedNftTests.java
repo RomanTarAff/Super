@@ -9,6 +9,7 @@ import api.model.request.nft.SearchNftRequest;
 import api.model.response.nft.SearchNftResponse;
 import api.model.response.nft.SearchNftResponseList;
 import api.util.conditions.Conditions;
+import io.qameta.allure.Epic;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -19,6 +20,7 @@ import static java.net.HttpURLConnection.HTTP_OK;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
+@Epic("Get user pinned NFT")
 public class UserPinnedNftTests extends BaseApiTests {
 
     private SearchNftResponse nftResult;
@@ -38,7 +40,7 @@ public class UserPinnedNftTests extends BaseApiTests {
                 .filter(nft -> !nft.isPinned()).findFirst().get();
     }
 
-    @Test(testName = "Get pinned nfts")
+    @Test(description = "Get pinned nfts")
     public void getPinnedNfts() {
 
         //get pinned nfts
