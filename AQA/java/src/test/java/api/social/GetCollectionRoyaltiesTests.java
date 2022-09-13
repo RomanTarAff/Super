@@ -22,7 +22,7 @@ public class GetCollectionRoyaltiesTests extends BaseApiTests {
         assertEquals(emptyRoyalties, "{\"royalties\":[]}");
     }
 
-    @Test(description = "Get collection royalties unauthorized")
+    @Test(description = "Get collection royalties. Unauthorized")
     public void getCollectionRoyaltiesUnauthorized() {
 
         Object emptyRoyalties = socialService.getCollectionRoyalties(getTestCollectionData().getId(), null)
@@ -31,7 +31,7 @@ public class GetCollectionRoyaltiesTests extends BaseApiTests {
         assertEquals(emptyRoyalties, "{\"royalties\":[]}");
     }
 
-    @Test(description = "Get collection royalties invalid id")
+    @Test(description = "Get collection royalties. Invalid collection id")
     public void getCollectionRoyaltiesInvalidId() {
 
         CodeMessageResponse codeMessageResponse = socialService.getCollectionRoyalties(getTestCollectionData().getContractAddress(),

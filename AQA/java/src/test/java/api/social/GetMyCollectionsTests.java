@@ -36,7 +36,7 @@ public class GetMyCollectionsTests extends BaseApiTests {
         assertTrue(collections.getCollections().isEmpty());
     }
 
-    @Test(description = "Get my collections unauthorized")
+    @Test(description = "Get my collections. Unauthorized")
     public void getMyCollectionsUnauthorized() {
 
         Map<String, Object> params = new HashMap<>();
@@ -63,7 +63,7 @@ public class GetMyCollectionsTests extends BaseApiTests {
         assertEquals(codeMessageResponse.getPayload().getErrors().get(1), "data must have required property 'sort'");
     }
 
-    @Test(description = "Get my collections invalid sort")
+    @Test(description = "Get my collections. Invalid sort")
     public void getMyCollectionsInvalidSort() {
 
         Map<String, Object> params = new HashMap<>();

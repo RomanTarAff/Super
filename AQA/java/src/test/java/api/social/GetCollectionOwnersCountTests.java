@@ -29,7 +29,7 @@ public class GetCollectionOwnersCountTests extends BaseApiTests {
         assertTrue(ownersCount.getPeriods().stream().anyMatch(period -> period.getName().equals(Period.ONE_YEAR.getValue())));
     }
 
-    @Test(description = "Get collection owners count unauthorized")
+    @Test(description = "Get collection owners count. Unauthorized")
     public void getCollectionOwnersCountUnauthorized() {
 
         CollectionOwnersCount ownersCount = socialService.getCollectionOwnersCount(getTestCollectionData().getContractAddress(), null)

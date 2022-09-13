@@ -58,7 +58,7 @@ public class GetNftActiveOffers extends BaseApiTests {
         });
     }
 
-    @Test(description = "Get NFT active offers not found nft id")
+    @Test(description = "Get NFT active offers. NFT not found")
     public void getNftActiveOffersNotFoundNftId() {
         CodeMessageResponse codeMessageResponse = nftService.getNftActiveOffers(faker.internet().uuid(), System.getProperty(Account.MINT.getENV()))
                 .shouldHave(Conditions.statusCode(HTTP_NOT_FOUND))
@@ -67,7 +67,7 @@ public class GetNftActiveOffers extends BaseApiTests {
         assertEquals(codeMessageResponse.getMessage(), "NFT not found");
     }
 
-    @Test(description = "Get NFT active offers invalid nft id")
+    @Test(description = "Get NFT active offers. NFT id invalid")
     public void getNftActiveOffersInvalidNftId() {
         CodeMessageResponse codeMessageResponse = nftService.getNftActiveOffers("435gvgf", System.getProperty(Account.MINT.getENV()))
                 .shouldHave(Conditions.statusCode(422))

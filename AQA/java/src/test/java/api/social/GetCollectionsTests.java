@@ -35,7 +35,7 @@ public class GetCollectionsTests extends BaseApiTests {
         assertNotNull(collection.getFloorPrice());
     }
 
-    @Test(description = "Get collections not found")
+    @Test(description = "Get collections. Collection not found")
     public void getCollectionsNotFound() {
 
         CodeMessageResponse codeMessageResponse = socialService.getCollection(faker.internet().uuid(), System.getProperty(Account.MINT.getENV()))
@@ -45,7 +45,7 @@ public class GetCollectionsTests extends BaseApiTests {
         assertEquals(codeMessageResponse.getMessage(), "Collection not found");
     }
 
-    @Test(description = "Get collections invalid token address")
+    @Test(description = "Get collections. Invalid token address")
     public void getCollectionsInvalidTokenAddress() {
 
         CodeMessageResponse codeMessageResponse = socialService.getCollection("gfgf", System.getProperty(Account.MINT.getENV()))

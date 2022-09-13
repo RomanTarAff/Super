@@ -56,7 +56,7 @@ public class GetOfferDetailsTests extends BaseApiTests {
         assertNotNull(offerDetails.getSender());
     }
 
-    @Test(description = "Get offer details - not found")
+    @Test(description = "Get offer details. Offer not found")
     public void getOfferDetailsNotFound() {
         CodeMessageResponse codeMessageResponse = nftService.getOfferDetails(nft.getId(), System.getProperty(Account.MINT.getENV()))
                 .shouldHave(Conditions.statusCode(HTTP_NOT_FOUND))
@@ -66,7 +66,7 @@ public class GetOfferDetailsTests extends BaseApiTests {
         assertEquals(codeMessageResponse.getMessage(), "Offer not found");
     }
 
-    @Test(description = "Get offer details - unauthorized")
+    @Test(description = "Get offer details. Unauthorized")
     public void getOfferDetailsUnauthorized() {
         CodeMessageResponse codeMessageResponse = nftService.getOfferDetails(nft.getHighestOffer().getId(), null)
                 .shouldHave(Conditions.statusCode(HTTP_UNAUTHORIZED))

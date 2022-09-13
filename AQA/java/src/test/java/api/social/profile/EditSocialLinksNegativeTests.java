@@ -18,7 +18,7 @@ import static org.testng.Assert.assertTrue;
 @Epic("Edit profile social links negative")
 public class EditSocialLinksNegativeTests extends BaseApiTests {
 
-    @Test(description = "Edit profile invalid facebook", dataProvider = "urls")
+    @Test(description = "Edit profile. Invalid facebook", dataProvider = "urls")
     public void editProfileInvalidFacebook(String url, String error) {
         EditProfileRequest request = EditProfileRequest.builder()
                 .socialLinks(SocialLinks.builder()
@@ -35,7 +35,7 @@ public class EditSocialLinksNegativeTests extends BaseApiTests {
         assertTrue(codeMessageResponse.getPayload().getErrors().get(0).contains(error));
     }
 
-    @Test(description = "Edit profile invalid instagram", dataProvider = "urls")
+    @Test(description = "Edit profile. Invalid instagram", dataProvider = "urls")
     public void editProfileInvalidInstagram(String url, String error) {
         EditProfileRequest request = EditProfileRequest.builder()
                 .socialLinks(SocialLinks.builder()
@@ -52,7 +52,7 @@ public class EditSocialLinksNegativeTests extends BaseApiTests {
         assertTrue(codeMessageResponse.getPayload().getErrors().get(0).contains(error));
     }
 
-    @Test(description = "Edit profile invalid linkedin", dataProvider = "urls")
+    @Test(description = "Edit profile. Invalid linkedin", dataProvider = "urls")
     public void editProfileInvalidLinkedin(String url, String error) {
         EditProfileRequest request = EditProfileRequest.builder()
                 .socialLinks(SocialLinks.builder()
@@ -69,7 +69,7 @@ public class EditSocialLinksNegativeTests extends BaseApiTests {
         assertTrue(codeMessageResponse.getPayload().getErrors().get(0).contains(error));
     }
 
-    @Test(description = "Edit profile invalid medium", dataProvider = "urls")
+    @Test(description = "Edit profile. Invalid medium", dataProvider = "urls")
     public void editProfileInvalidMedium(String url, String error) {
         EditProfileRequest request = EditProfileRequest.builder()
                 .socialLinks(SocialLinks.builder()
@@ -86,7 +86,7 @@ public class EditSocialLinksNegativeTests extends BaseApiTests {
         assertTrue(codeMessageResponse.getPayload().getErrors().get(0).contains(error));
     }
 
-    @Test(description = "Edit profile invalid snapchat", dataProvider = "urls")
+    @Test(description = "Edit profile. Invalid snapchat", dataProvider = "urls")
     public void editProfileInvalidSnapchat(String url, String error) {
         EditProfileRequest request = EditProfileRequest.builder()
                 .socialLinks(SocialLinks.builder()
@@ -103,7 +103,7 @@ public class EditSocialLinksNegativeTests extends BaseApiTests {
         assertTrue(codeMessageResponse.getPayload().getErrors().get(0).contains(error));
     }
 
-    @Test(description = "Edit profile invalid telegram", dataProvider = "urls")
+    @Test(description = "Edit profile. Invalid telegram", dataProvider = "urls")
     public void editProfileInvalidTelegram(String url, String error) {
         EditProfileRequest request = EditProfileRequest.builder()
                 .socialLinks(SocialLinks.builder()
@@ -120,7 +120,7 @@ public class EditSocialLinksNegativeTests extends BaseApiTests {
         assertTrue(codeMessageResponse.getPayload().getErrors().get(0).contains(error));
     }
 
-    @Test(description = "Edit profile invalid twitch", dataProvider = "urls")
+    @Test(description = "Edit profile. Invalid twitch", dataProvider = "urls")
     public void editProfileInvalidTwitch(String url, String error) {
         EditProfileRequest request = EditProfileRequest.builder()
                 .socialLinks(SocialLinks.builder()
@@ -137,7 +137,7 @@ public class EditSocialLinksNegativeTests extends BaseApiTests {
         assertTrue(codeMessageResponse.getPayload().getErrors().get(0).contains(error));
     }
 
-    @Test(description = "Edit profile invalid twitter", dataProvider = "urls")
+    @Test(description = "Edit profile. Invalid twitter", dataProvider = "urls")
     public void editProfileInvalidTwitter(String url, String error) {
         EditProfileRequest request = EditProfileRequest.builder()
                 .socialLinks(SocialLinks.builder()
@@ -154,7 +154,7 @@ public class EditSocialLinksNegativeTests extends BaseApiTests {
         assertTrue(codeMessageResponse.getPayload().getErrors().get(0).contains(error));
     }
 
-    @Test(description = "Edit profile invalid youtube", dataProvider = "urls")
+    @Test(description = "Edit profile. Invalid youtube", dataProvider = "urls")
     public void editProfileInvalidYoutube(String url, String error) {
         EditProfileRequest request = EditProfileRequest.builder()
                 .socialLinks(SocialLinks.builder()
@@ -171,7 +171,7 @@ public class EditSocialLinksNegativeTests extends BaseApiTests {
         assertTrue(codeMessageResponse.getPayload().getErrors().get(0).contains(error));
     }
 
-    @Test(description = "Edit profile invalid discord", dataProvider = "urls")
+    @Test(description = "Edit profile. Invalid discord", dataProvider = "urls")
     public void editProfileInvalidDiscord(String url, String error) {
         EditProfileRequest request = EditProfileRequest.builder()
                 .socialLinks(SocialLinks.builder()
@@ -188,7 +188,7 @@ public class EditSocialLinksNegativeTests extends BaseApiTests {
         assertTrue(codeMessageResponse.getPayload().getErrors().get(0).contains(error));
     }
 
-    @Test(description = "Edit profile facebook length")
+    @Test(description = "Edit profile. Invalid facebook length")
     public void editProfileFacebookLength() {
         List<String> facebook = List.of("https://" + faker.internet().url(), "https://" + faker.internet().url(), "https://" + faker.internet().url());
         EditProfileRequest request = EditProfileRequest.builder()
@@ -206,7 +206,7 @@ public class EditSocialLinksNegativeTests extends BaseApiTests {
         assertEquals(codeMessageResponse.getPayload().getErrors().get(0), "data/data/socialLinks/facebook must NOT have more than 2 items");
     }
 
-    @Test(description = "Edit profile instagram length")
+    @Test(description = "Edit profile. Invalid instagram length")
     public void editProfileInstagramLength() {
         List<String> instagram = List.of("https://" + faker.internet().url(), "https://" + faker.internet().url(), "https://" + faker.internet().url());
         EditProfileRequest request = EditProfileRequest.builder()
@@ -224,7 +224,7 @@ public class EditSocialLinksNegativeTests extends BaseApiTests {
         assertEquals(codeMessageResponse.getPayload().getErrors().get(0), "data/data/socialLinks/instagram must NOT have more than 2 items");
     }
 
-    @Test(description = "Edit profile linkedin length")
+    @Test(description = "Edit profile. Invalid linkedin length")
     public void editProfileLinkedinLength() {
         List<String> linkedin = List.of("https://" + faker.internet().url(), "https://" + faker.internet().url(), "https://" + faker.internet().url());
         EditProfileRequest request = EditProfileRequest.builder()
@@ -242,7 +242,7 @@ public class EditSocialLinksNegativeTests extends BaseApiTests {
         assertEquals(codeMessageResponse.getPayload().getErrors().get(0), "data/data/socialLinks/linkedin must NOT have more than 2 items");
     }
 
-    @Test(description = "Edit profile medium length")
+    @Test(description = "Edit profile. Invalid medium length")
     public void editProfileMediumLength() {
         List<String> medium = List.of("https://" + faker.internet().url(), "https://" + faker.internet().url(), "https://" + faker.internet().url());
         EditProfileRequest request = EditProfileRequest.builder()
@@ -260,7 +260,7 @@ public class EditSocialLinksNegativeTests extends BaseApiTests {
         assertEquals(codeMessageResponse.getPayload().getErrors().get(0), "data/data/socialLinks/medium must NOT have more than 2 items");
     }
 
-    @Test(description = "Edit profile snapchat length")
+    @Test(description = "Edit profile. Invalid snapchat length")
     public void editProfileSnapchatLength() {
         List<String> snapchat = List.of("https://" + faker.internet().url(), "https://" + faker.internet().url(), "https://" + faker.internet().url());
         EditProfileRequest request = EditProfileRequest.builder()
@@ -278,7 +278,7 @@ public class EditSocialLinksNegativeTests extends BaseApiTests {
         assertEquals(codeMessageResponse.getPayload().getErrors().get(0), "data/data/socialLinks/snapchat must NOT have more than 2 items");
     }
 
-    @Test(description = "Edit profile telegram length")
+    @Test(description = "Edit profile. Invalid telegram length")
     public void editProfileTelegramLength() {
         List<String> telegram = List.of("https://" + faker.internet().url(), "https://" + faker.internet().url(), "https://" + faker.internet().url());
         EditProfileRequest request = EditProfileRequest.builder()
@@ -296,7 +296,7 @@ public class EditSocialLinksNegativeTests extends BaseApiTests {
         assertEquals(codeMessageResponse.getPayload().getErrors().get(0), "data/data/socialLinks/telegram must NOT have more than 2 items");
     }
 
-    @Test(description = "Edit profile twitch length")
+    @Test(description = "Edit profile. Invalid twitch length")
     public void editProfileTwitchLength() {
         List<String> twitch = List.of("https://" + faker.internet().url(), "https://" + faker.internet().url(), "https://" + faker.internet().url());
         EditProfileRequest request = EditProfileRequest.builder()
@@ -314,7 +314,7 @@ public class EditSocialLinksNegativeTests extends BaseApiTests {
         assertEquals(codeMessageResponse.getPayload().getErrors().get(0), "data/data/socialLinks/twitch must NOT have more than 2 items");
     }
 
-    @Test(description = "Edit profile twitter length")
+    @Test(description = "Edit profile. Invalid twitter length")
     public void editProfileTwitterLength() {
         List<String> twitter = List.of("https://" + faker.internet().url(), "https://" + faker.internet().url(), "https://" + faker.internet().url());
         EditProfileRequest request = EditProfileRequest.builder()
@@ -332,7 +332,7 @@ public class EditSocialLinksNegativeTests extends BaseApiTests {
         assertEquals(codeMessageResponse.getPayload().getErrors().get(0), "data/data/socialLinks/twitter must NOT have more than 2 items");
     }
 
-    @Test(description = "Edit profile youtube length")
+    @Test(description = "Edit profile. Invalid youtube length")
     public void editProfileYoutubeLength() {
         List<String> youtube = List.of("https://" + faker.internet().url(), "https://" + faker.internet().url(), "https://" + faker.internet().url());
         EditProfileRequest request = EditProfileRequest.builder()
@@ -350,7 +350,7 @@ public class EditSocialLinksNegativeTests extends BaseApiTests {
         assertEquals(codeMessageResponse.getPayload().getErrors().get(0), "data/data/socialLinks/youtube must NOT have more than 2 items");
     }
 
-    @Test(description = "Edit profile discord length")
+    @Test(description = "Edit profile. Invalid discord length")
     public void editProfileDiscordLength() {
         List<String> discord = List.of("https://" + faker.internet().url(), "https://" + faker.internet().url(), "https://" + faker.internet().url());
         EditProfileRequest request = EditProfileRequest.builder()

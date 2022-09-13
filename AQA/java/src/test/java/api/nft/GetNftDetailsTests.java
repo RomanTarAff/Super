@@ -115,7 +115,7 @@ public class GetNftDetailsTests extends BaseApiTests {
         assertNotNull(nftDetails.getCollection().getName(), "Collection name should not be null");
     }
 
-    @Test(description = "NFT details invalid contract address")
+    @Test(description = "NFT details. Invalid contract address")
     public void nftDetailsInvalidContractAddress() {
 
         SearchNftRequest search = SearchNftRequest.builder()
@@ -138,7 +138,7 @@ public class GetNftDetailsTests extends BaseApiTests {
         assertEquals(codeMessageResponse.getMessage(), "Collection not found");
     }
 
-    @Test(description = "NFT details invalid token id")
+    @Test(description = "NFT details. Invalid token id")
     public void nftDetailsInvalidTokenId() {
 
         SearchNftRequest search = SearchNftRequest.builder()

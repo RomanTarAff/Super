@@ -82,7 +82,7 @@ public class LikeUnlikeNftTests extends BaseApiTests {
         soft.assertAll();
     }
 
-    @Test(description = "Like unauthorized")
+    @Test(description = "Like. Unauthorized")
     public void likeUnauthorized() {
         CodeMessageResponse codeMessageResponse = nftService.likeNft(nft_1.getId(), null)
                 .shouldHave(Conditions.statusCode(HTTP_UNAUTHORIZED))
@@ -92,7 +92,7 @@ public class LikeUnlikeNftTests extends BaseApiTests {
         soft.assertAll();
     }
 
-    @Test(description = "Unlike unauthorized")
+    @Test(description = "Unlike. Unauthorized")
     public void unlikeUnauthorized() {
         CodeMessageResponse codeMessageResponse = nftService.unlikeNft(nft_1.getId(), null)
                 .shouldHave(Conditions.statusCode(HTTP_UNAUTHORIZED))
@@ -102,7 +102,7 @@ public class LikeUnlikeNftTests extends BaseApiTests {
         soft.assertAll();
     }
 
-    @Test(description = "Like invalid nft id")
+    @Test(description = "Like NFT. Invalid nft id")
     public void likeInvalidNftId() {
         CodeMessageResponse codeMessageResponse = nftService.likeNft(faker.internet().uuid(), System.getProperty(Account.MINT.getENV()))
                 .shouldHave(Conditions.statusCode(HTTP_NOT_FOUND))
@@ -113,7 +113,7 @@ public class LikeUnlikeNftTests extends BaseApiTests {
         soft.assertAll();
     }
 
-    @Test(description = "Unlike invalid nft id")
+    @Test(description = "Unlike NFT. Invalid nft id")
     public void unlikeInvalidNftId() {
         CodeMessageResponse codeMessageResponse = nftService.unlikeNft(faker.internet().uuid(), System.getProperty(Account.MINT.getENV()))
                 .shouldHave(Conditions.statusCode(HTTP_NOT_FOUND))

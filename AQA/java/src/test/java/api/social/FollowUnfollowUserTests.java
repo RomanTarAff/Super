@@ -72,7 +72,7 @@ public class FollowUnfollowUserTests extends BaseApiTests {
         soft.assertAll();
     }
 
-    @Test(description = "Follow unauthorized")
+    @Test(description = "Follow user. Unauthorized")
     public void followUnauthorized() {
         CodeMessageResponse codeMessageResponse = socialService.followUser(user.getId(), null)
                 .shouldHave(Conditions.statusCode(HTTP_UNAUTHORIZED))
@@ -82,7 +82,7 @@ public class FollowUnfollowUserTests extends BaseApiTests {
         soft.assertAll();
     }
 
-    @Test(description = "Unfollow unauthorized")
+    @Test(description = "Unfollow user. Unauthorized")
     public void unfollowUnauthorized() {
         CodeMessageResponse codeMessageResponse = socialService.unfollowUser(user.getId(), null)
                 .shouldHave(Conditions.statusCode(HTTP_UNAUTHORIZED))
@@ -92,7 +92,7 @@ public class FollowUnfollowUserTests extends BaseApiTests {
         soft.assertAll();
     }
 
-    @Test(description = "Follow user invalid user id")
+    @Test(description = "Follow user. Invalid user id")
     public void followUserInvalidId() {
         CodeMessageResponse codeMessageResponse = socialService.followUser("invalid", System.getProperty(Account.MINT.getENV()))
                 .shouldHave(Conditions.statusCode(422))
@@ -104,7 +104,7 @@ public class FollowUnfollowUserTests extends BaseApiTests {
         soft.assertAll();
     }
 
-    @Test(description = "Unfollow user invalid user id")
+    @Test(description = "Unfollow user. Invalid user id")
     public void unfollowInvalidId() {
         CodeMessageResponse codeMessageResponse = socialService.unfollowUser("invalid", System.getProperty(Account.MINT.getENV()))
                 .shouldHave(Conditions.statusCode(422))
