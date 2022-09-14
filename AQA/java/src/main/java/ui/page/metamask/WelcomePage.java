@@ -1,6 +1,7 @@
 package ui.page.metamask;
 
 import core.control.Button;
+import io.qameta.allure.Step;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import ui.BasePage;
@@ -16,6 +17,7 @@ public class WelcomePage extends BasePage {
         log.info("Welcome page is opened");
     }
 
+    @Step("Start on Metamask Welcome page")
     public ImportPage start() {
         startBtn.press();
         log.info("Start is clicked");

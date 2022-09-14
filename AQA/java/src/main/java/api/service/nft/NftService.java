@@ -3,9 +3,11 @@ package api.service.nft;
 import api.model.request.nft.SearchNftRequest;
 import api.service.BaseApi;
 import api.util.assertions.AssertableResponse;
+import io.qameta.allure.Step;
 
 public class NftService extends BaseApi {
 
+    @Step("Call endpoint - search NFTs")
     public AssertableResponse searchNftItems(SearchNftRequest searchNftRequest, String token) {
         return new AssertableResponse(setupNftSpec(token)
                 .body(searchNftRequest)
@@ -49,6 +51,7 @@ public class NftService extends BaseApi {
                 .get(NftEndPoint.GET_NFT_DETAILS));
     }
 
+    @Step("Call endpoint - get active NFT offers")
     public AssertableResponse getNftActiveOffers(String nftId, String token) {
         return new AssertableResponse(setupNftSpec(token)
                 .pathParam("id", nftId)

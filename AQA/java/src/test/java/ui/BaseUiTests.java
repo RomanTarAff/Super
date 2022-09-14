@@ -5,6 +5,7 @@ import base.BaseTests;
 import core.selenium.DriverManager;
 import core.selenium.TargetFactory;
 import core.selenium.wait.DriverWait;
+import io.qameta.allure.Step;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import ui.enums.Page;
@@ -16,6 +17,7 @@ public class BaseUiTests extends BaseTests {
 
     private final Dimension dimension = new Dimension(1920, 1080);
 
+    @Step("Open browser and install metamask")
     protected void initMetamask(Account account) {
         WebDriver driver = new TargetFactory().createInstance("chrome");
         DriverManager.getInstance().setDriver(driver);
