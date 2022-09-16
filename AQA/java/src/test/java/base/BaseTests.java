@@ -31,6 +31,7 @@ public class BaseTests {
     protected static final String HOME = String.valueOf(Paths.get(new File("").getAbsolutePath()).getParent());
     protected static final String NPM_RUN_DEV = String.format("npm --prefix %s/node run tokenDev", HOME);
     protected static final String NPM_RUN_TEST = String.format("npm --prefix %s/node run tokenTest", HOME);
+    protected static final String NPM_RUN_STG = String.format("npm --prefix %s/node run tokenStg", HOME);
     protected static final String NPM_RUN_MINT = String.format("npm --prefix %s/node run mint", HOME);
     protected String MINT_TOKEN = "";
     protected String MINT_SIGNATURE = "";
@@ -56,8 +57,9 @@ public class BaseTests {
                 proc = rt.exec(NPM_RUN_DEV);
             } else if (System.getProperty("host").equals("test")) {
                 proc = rt.exec(NPM_RUN_TEST);
+            } else if (System.getProperty("host").equals("staging")) {
+                proc = rt.exec(NPM_RUN_STG);
             }
-
             errorReported = getStreamWrapper(proc.getErrorStream(), "ERROR");
             outputMessage = getStreamWrapper(proc.getInputStream(), "OUTPUT");
             errorReported.start();
@@ -106,7 +108,7 @@ public class BaseTests {
 
 
     protected String getTestCollectionRoyalties() {
-        if(getTestCollectionData().getRoyalties() == null) {
+        if (getTestCollectionData().getRoyalties() == null) {
             return "0";
         } else return getTestCollectionData().getRoyalties().toString();
     }
@@ -129,17 +131,17 @@ public class BaseTests {
                         new InputStreamReader(is));
                 while ((s = br.readLine()) != null) {
                     System.out.println(s);
-                    if (s.contains("Access token MINT DEV") || s.contains("Access token MINT TEST")) {
+                    if (s.contains("Access token MINT DEV") || s.contains("Access token MINT TEST") || s.contains("Access token MINT STG")) {
                         String[] parts = s.split(" ");
                         MINT_TOKEN = parts[4];
                         System.setProperty(Account.MINT.getENV(), MINT_TOKEN);
                     }
-                    if (s.contains("Access token BUY DEV") || s.contains("Access token BUY TEST")) {
+                    if (s.contains("Access token BUY DEV") || s.contains("Access token BUY TEST") || s.contains("Access token BUY STG")) {
                         String[] parts = s.split(" ");
                         BUY_TOKEN = parts[4];
                         System.setProperty(Account.BUY.getENV(), BUY_TOKEN);
                     }
-                    if (s.contains("Access token ADMIN DEV") || s.contains("Access token ADMIN TEST")) {
+                    if (s.contains("Access token ADMIN DEV") || s.contains("Access token ADMIN TEST") || s.contains("Access token ADMIN STG")) {
                         String[] parts = s.split(" ");
                         ADMIN_TOKEN = parts[4];
                         System.setProperty(Account.ADMIN.getENV(), ADMIN_TOKEN);

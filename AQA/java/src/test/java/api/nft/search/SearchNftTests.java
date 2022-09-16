@@ -181,7 +181,7 @@ public class SearchNftTests extends BaseApiTests {
         soft.assertAll();
     }
 
-    @Test(testName = "Search nfts limit value")
+    @Test(testName = "Search nfts limit value", enabled = false)
     public void searchLimitValue() {
         int limit = faker.random().nextInt(10, 20);
         SearchNftRequest search = SearchNftRequest.builder()

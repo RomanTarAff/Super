@@ -10,6 +10,7 @@ on:
         options:
           - develop
           - test
+          - staging
 
 jobs:
   api-tests:

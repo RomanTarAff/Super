@@ -29,11 +29,24 @@ jobs:
     - name: NPM
       working-directory: AQA/node
       run: npm install
-    - name: Run API smoke tests
+    - name: Run API develop smoke tests
       working-directory: AQA/java
+      if:  ${{ inputs.environment == 'develop' }}
       run: xvfb-run --auto-servernum mvn clean test -Papi -q -DsuiteXmlFile=apiSmoke -Dhost=${{ env.HOST }} -Drp.launch=API -Drp.attributes="id:$RP_RUN_ID;env:$HOST;tag:API"
       env:
-        JOB_NAME: API tests on ${{ env.HOST }}
+        JOB_NAME: API smoke tests on ${{ env.HOST }}
+    - name: Run API test smoke tests
+      working-directory: AQA/java
+      if:  ${{ inputs.environment == 'test' }}
+      run: xvfb-run --auto-servernum mvn clean test -Papi -q -DsuiteXmlFile=apiSmoke -Dhost=${{ env.HOST }} -Drp.launch=API -Drp.attributes="id:$RP_RUN_ID;env:$HOST;tag:API"
+      env:
+        JOB_NAME: API smoke tests on ${{ env.HOST }}
+    - name: Run API staging smoke tests
+      working-directory: AQA/java
+      if:  ${{ inputs.environment == 'staging' }}
+      run: xvfb-run --auto-servernum mvn clean test -Papi -q -DsuiteXmlFile=apiSmokeStg -Dhost=${{ env.HOST }} -Drp.launch=API -Drp.attributes="id:$RP_RUN_ID;env:$HOST;tag:API"
+      env:
+        JOB_NAME: API smoke tests on ${{ env.HOST }}
 
   report:
     runs-on: ubuntu-latest
