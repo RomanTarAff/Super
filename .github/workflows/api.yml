@@ -53,14 +53,14 @@ jobs:
         PUBLISH_BRANCH: feat/SFRU-7190
         PUBLISH_DIR: allure-history
 
-#    - name: Post the link to the report
-#      if: always()
-#      uses: Sibz/github-status-action@v1
-#      with:
-#          authToken: ${{secrets.GITHUB_TOKEN}}
-#          context: 'Test report'
-#          state: 'success'
-#          target_url: https://romantaraff.github.io/Super/github-allure-history/${{ github.run_number }}
+    - name: Post the link to the report
+      if: always()
+      uses: Sibz/github-status-action@v1
+      with:
+          authToken: ${{secrets.GITHUB_TOKEN}}
+          context: 'Test report'
+          state: 'success'
+          target_url: https://romantaraff.github.io/Super/github-allure-history/${{ github.run_number }}
 #
 #  notify:
 #    name: Slack Notification
