@@ -60,7 +60,7 @@ jobs:
           authToken: ${{secrets.GITHUB_TOKEN}}
           context: 'Test report'
           state: 'success'
-          target_url: https://allure.rmr-t.ru/github-allure-history/${{ github.run_number }}
+          target_url: https://romantaraff.github.io/Super/github-allure-history/${{ github.run_number }}
 
   notify:
     name: Slack Notification
