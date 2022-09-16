@@ -1,8 +1,0 @@
-baseUrls:
-    authBaseUrl: "https://y0b4uqtpt5.execute-api.us-east-1.amazonaws.com/test"
-    socialBaseUrl: "https://p150wk5f5l.execute-api.us-east-1.amazonaws.com/test"
-    adminBaseUrl: "https://b2pps5i0sf.execute-api.us-east-1.amazonaws.com/test"
-    nftBaseUrl: "https://hvffetbrm3.execute-api.us-east-1.amazonaws.com/test"
-    dropsBaseUrl: "https://xlsqu35rhk.execute-api.us-east-1.amazonaws.com/test"
-    mediahubBaseUrl: "https://4druhj5pk6.execute-api.us-east-1.amazonaws.com/test"
-    baseUiUrl: "https://gm-test.superfarm.workers.dev/"
