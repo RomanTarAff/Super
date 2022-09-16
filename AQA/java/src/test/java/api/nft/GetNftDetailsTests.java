@@ -8,6 +8,7 @@ import api.model.response.nft.NftDetails;
 import api.model.response.nft.SearchNftResponse;
 import api.model.response.nft.SearchNftResponseList;
 import api.util.conditions.Conditions;
+import io.qameta.allure.Epic;
 import org.testng.annotations.Test;
 
 import java.util.List;
@@ -15,9 +16,10 @@ import java.util.List;
 import static java.net.HttpURLConnection.*;
 import static org.testng.Assert.*;
 
+@Epic("Get nft details")
 public class GetNftDetailsTests extends BaseApiTests {
 
-    @Test(testName = "NFT details with listing")
+    @Test(description = "NFT details with listing")
     public void nftDetailsWithListing() {
 
         SearchNftRequest search = SearchNftRequest.builder()
@@ -65,7 +67,7 @@ public class GetNftDetailsTests extends BaseApiTests {
         assertNotNull(nftDetails.getCollection().getName(), "Collection name should not be null");
     }
 
-    @Test(testName = "NFT details with offers")
+    @Test(description = "NFT details with offers")
     public void nftDetailsWithOffers() {
 
         SearchNftRequest search = SearchNftRequest.builder()
@@ -113,7 +115,7 @@ public class GetNftDetailsTests extends BaseApiTests {
         assertNotNull(nftDetails.getCollection().getName(), "Collection name should not be null");
     }
 
-    @Test(testName = "NFT details invalid contract address")
+    @Test(description = "NFT details. Invalid contract address")
     public void nftDetailsInvalidContractAddress() {
 
         SearchNftRequest search = SearchNftRequest.builder()
@@ -136,7 +138,7 @@ public class GetNftDetailsTests extends BaseApiTests {
         assertEquals(codeMessageResponse.getMessage(), "Collection not found");
     }
 
-    @Test(testName = "NFT details invalid token id")
+    @Test(description = "NFT details. Invalid token id")
     public void nftDetailsInvalidTokenId() {
 
         SearchNftRequest search = SearchNftRequest.builder()

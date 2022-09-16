@@ -5,15 +5,17 @@ import api.enums.Account;
 import api.model.request.social.EditProfileRequest;
 import api.model.response.social.ProfileResponse;
 import api.util.conditions.Conditions;
+import io.qameta.allure.Epic;
 import org.testng.annotations.Test;
 
 import static java.net.HttpURLConnection.HTTP_NO_CONTENT;
 import static java.net.HttpURLConnection.HTTP_OK;
 import static org.testng.Assert.assertEquals;
 
+@Epic("Edit profile")
 public class EditProfileTests extends BaseApiTests {
 
-    @Test(testName = "Edit profile username")
+    @Test(description = "Edit profile username")
     public void editProfileUsername() {
         String username = faker.name().firstName();
 
@@ -31,7 +33,7 @@ public class EditProfileTests extends BaseApiTests {
                 String.format("Username should be %s", username));
     }
 
-    @Test(testName = "Edit profile email")
+    @Test(description = "Edit profile email")
     public void editProfileEmail() {
         String email = faker.internet().emailAddress();
 
@@ -49,7 +51,7 @@ public class EditProfileTests extends BaseApiTests {
                 String.format("Email should be %s", email));
     }
 
-    @Test(testName = "Edit profile description")
+    @Test(description = "Edit profile description")
     public void editProfileDescription() {
         String description = faker.lorem().characters(20, true);
 
@@ -67,7 +69,7 @@ public class EditProfileTests extends BaseApiTests {
                 String.format("Description should be %s", description));
     }
 
-    @Test(testName = "Edit profile website url")
+    @Test(description = "Edit profile website url")
     public void editProfileWebsiteUrl() {
         String url = "https://" + faker.internet().url();
 
@@ -85,7 +87,7 @@ public class EditProfileTests extends BaseApiTests {
                 String.format("Website url should be %s", url));
     }
 
-    @Test(testName = "Edit profile avatar url")
+    @Test(description = "Edit profile avatar url")
     public void editProfileAvatarUrl() {
         String url = "https://" + faker.internet().url();
 
@@ -103,7 +105,7 @@ public class EditProfileTests extends BaseApiTests {
                 String.format("Avatar url should be %s", url));
     }
 
-    @Test(testName = "Edit profile banner url")
+    @Test(description = "Edit profile banner url")
     public void editProfileBannerUrl() {
         String url = "https://" + faker.internet().url();
 

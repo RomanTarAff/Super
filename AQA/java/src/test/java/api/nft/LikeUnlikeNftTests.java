@@ -10,6 +10,7 @@ import api.model.response.CodeMessageResponse;
 import api.model.response.nft.SearchNftResponse;
 import api.model.response.nft.SearchNftResponseList;
 import api.util.conditions.Conditions;
+import io.qameta.allure.Epic;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -17,6 +18,7 @@ import java.util.List;
 
 import static java.net.HttpURLConnection.*;
 
+@Epic("Like unlike NFT")
 public class LikeUnlikeNftTests extends BaseApiTests {
 
     private SearchNftResponse nft_1;
@@ -36,7 +38,7 @@ public class LikeUnlikeNftTests extends BaseApiTests {
         nft_1 = nfts.get(0);
     }
 
-    @Test(testName = "Like and unlike nft", enabled = false)
+    @Test(description = "Like and unlike nft", enabled = false)
     public void likeAndUnlikeNft() {
         //check count of likes
 
@@ -80,7 +82,7 @@ public class LikeUnlikeNftTests extends BaseApiTests {
         soft.assertAll();
     }
 
-    @Test(testName = "Like unauthorized")
+    @Test(description = "Like. Unauthorized")
     public void likeUnauthorized() {
         CodeMessageResponse codeMessageResponse = nftService.likeNft(nft_1.getId(), null)
                 .shouldHave(Conditions.statusCode(HTTP_UNAUTHORIZED))
@@ -90,7 +92,7 @@ public class LikeUnlikeNftTests extends BaseApiTests {
         soft.assertAll();
     }
 
-    @Test(testName = "Unlike unauthorized")
+    @Test(description = "Unlike. Unauthorized")
     public void unlikeUnauthorized() {
         CodeMessageResponse codeMessageResponse = nftService.unlikeNft(nft_1.getId(), null)
                 .shouldHave(Conditions.statusCode(HTTP_UNAUTHORIZED))
@@ -100,7 +102,7 @@ public class LikeUnlikeNftTests extends BaseApiTests {
         soft.assertAll();
     }
 
-    @Test(testName = "Like invalid nft id")
+    @Test(description = "Like NFT. Invalid nft id")
     public void likeInvalidNftId() {
         CodeMessageResponse codeMessageResponse = nftService.likeNft(faker.internet().uuid(), System.getProperty(Account.MINT.getENV()))
                 .shouldHave(Conditions.statusCode(HTTP_NOT_FOUND))
@@ -111,7 +113,7 @@ public class LikeUnlikeNftTests extends BaseApiTests {
         soft.assertAll();
     }
 
-    @Test(testName = "Unlike invalid nft id")
+    @Test(description = "Unlike NFT. Invalid nft id")
     public void unlikeInvalidNftId() {
         CodeMessageResponse codeMessageResponse = nftService.unlikeNft(faker.internet().uuid(), System.getProperty(Account.MINT.getENV()))
                 .shouldHave(Conditions.statusCode(HTTP_NOT_FOUND))

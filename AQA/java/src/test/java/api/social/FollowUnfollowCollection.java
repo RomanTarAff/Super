@@ -6,11 +6,13 @@ import api.model.response.CodeMessageResponse;
 import api.model.response.admin.CollectionListResponse;
 import api.model.response.social.CollectionResponse;
 import api.util.conditions.Conditions;
+import io.qameta.allure.Epic;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import static java.net.HttpURLConnection.*;
 
+@Epic("Follow unfollow collection")
 public class FollowUnfollowCollection extends BaseApiTests {
 
     private CollectionResponse collection;
@@ -28,7 +30,7 @@ public class FollowUnfollowCollection extends BaseApiTests {
         followers = collection.getTotalFollowers();
     }
 
-    @Test(testName = "Follow and unfollow collection")
+    @Test(description = "Follow and unfollow collection")
     public void followCollection() {
 
         //follow
@@ -55,7 +57,7 @@ public class FollowUnfollowCollection extends BaseApiTests {
         soft.assertAll();
     }
 
-    @Test(testName = "Follow unauthorized")
+    @Test(description = "Follow collection. Unauthorized")
     public void followUnauthorized() {
         CodeMessageResponse codeMessageResponse = socialService.followCollection(collection.getId(), null)
                 .shouldHave(Conditions.statusCode(HTTP_UNAUTHORIZED))
@@ -65,7 +67,7 @@ public class FollowUnfollowCollection extends BaseApiTests {
         soft.assertAll();
     }
 
-    @Test(testName = "Unfollow unauthorized")
+    @Test(description = "Unfollow collection. Unauthorized")
     public void unfollowUnauthorized() {
         CodeMessageResponse codeMessageResponse = socialService.unfollowCollection(collection.getId(), null)
                 .shouldHave(Conditions.statusCode(HTTP_UNAUTHORIZED))
@@ -75,7 +77,7 @@ public class FollowUnfollowCollection extends BaseApiTests {
         soft.assertAll();
     }
 
-    @Test(testName = "Follow collection invalid collection id")
+    @Test(description = "Follow collection. Invalid collection id")
     public void followInvalidCollectionId() {
         CodeMessageResponse codeMessageResponse = socialService.followCollection("invalid", System.getProperty(Account.MINT.getENV()))
                 .shouldHave(Conditions.statusCode(422))
@@ -87,7 +89,7 @@ public class FollowUnfollowCollection extends BaseApiTests {
         soft.assertAll();
     }
 
-    @Test(testName = "Unfollow collection invalid collection id")
+    @Test(description = "Unfollow collection. Invalid collection id")
     public void unfollowInvalidCollectionId() {
         CodeMessageResponse codeMessageResponse = socialService.unfollowCollection("invalid", System.getProperty(Account.MINT.getENV()))
                 .shouldHave(Conditions.statusCode(422))
@@ -99,7 +101,7 @@ public class FollowUnfollowCollection extends BaseApiTests {
         soft.assertAll();
     }
 
-    @Test(testName = "Follow collection not existing collection id")
+    @Test(description = "Follow collection. Collection id not found")
     public void followNotExistingCollectionId() {
         CodeMessageResponse codeMessageResponse = socialService.followCollection(faker.internet().uuid(), System.getProperty(Account.MINT.getENV()))
                 .shouldHave(Conditions.statusCode(HTTP_NOT_FOUND))
@@ -110,7 +112,7 @@ public class FollowUnfollowCollection extends BaseApiTests {
         soft.assertAll();
     }
 
-    @Test(testName = "Unfollow collection not existing collection id")
+    @Test(description = "Unfollow collection. Collection id not found")
     public void unfollowNotExistingCollectionId() {
         CodeMessageResponse codeMessageResponse = socialService.unfollowCollection(faker.internet().uuid(), System.getProperty(Account.MINT.getENV()))
                 .shouldHave(Conditions.statusCode(HTTP_NOT_FOUND))

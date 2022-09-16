@@ -6,6 +6,7 @@ import api.enums.Sort;
 import api.model.response.CodeMessageResponse;
 import api.model.response.social.CollectionsListResponse;
 import api.util.conditions.Conditions;
+import io.qameta.allure.Epic;
 import org.testng.annotations.Test;
 
 
@@ -17,10 +18,10 @@ import static java.net.HttpURLConnection.HTTP_UNAUTHORIZED;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
+@Epic("Get my collections")
 public class GetMyCollectionsTests extends BaseApiTests {
-
-
-    @Test(testName = "Get my collections - have no collections")
+    
+    @Test(description = "Get my collections - have no collections")
     public void getMyCollections() {
 
         Map<String, Object> params = new HashMap<>();
@@ -35,7 +36,7 @@ public class GetMyCollectionsTests extends BaseApiTests {
         assertTrue(collections.getCollections().isEmpty());
     }
 
-    @Test(testName = "Get my collections unauthorized")
+    @Test(description = "Get my collections. Unauthorized")
     public void getMyCollectionsUnauthorized() {
 
         Map<String, Object> params = new HashMap<>();
@@ -49,7 +50,7 @@ public class GetMyCollectionsTests extends BaseApiTests {
         assertEquals(codeMessageResponse.getMessage(), "Unauthorized");
     }
 
-    @Test(testName = "Get my collections without required fields")
+    @Test(description = "Get my collections without required fields")
     public void getMyCollectionsWithoutRequiredFields() {
 
         Map<String, Object> params = new HashMap<>();
@@ -62,7 +63,7 @@ public class GetMyCollectionsTests extends BaseApiTests {
         assertEquals(codeMessageResponse.getPayload().getErrors().get(1), "data must have required property 'sort'");
     }
 
-    @Test(testName = "Get my collections invalid sort")
+    @Test(description = "Get my collections. Invalid sort")
     public void getMyCollectionsInvalidSort() {
 
         Map<String, Object> params = new HashMap<>();

@@ -11,6 +11,7 @@ import api.model.response.nft.OfferDetails;
 import api.model.response.nft.SearchNftResponse;
 import api.model.response.nft.SearchNftResponseList;
 import api.util.conditions.Conditions;
+import io.qameta.allure.Epic;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -20,6 +21,7 @@ import static java.net.HttpURLConnection.*;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertNotNull;
 
+@Epic("Get offers details")
 public class GetOfferDetailsTests extends BaseApiTests {
 
     private SearchNftResponse nft;
@@ -39,7 +41,7 @@ public class GetOfferDetailsTests extends BaseApiTests {
                 .asClass(SearchNftResponseList.class).getNfts().get(0);
     }
 
-    @Test(testName = "Get offer details")
+    @Test(description = "Get offer details")
     public void getOfferDetails() {
 
         OfferDetails offerDetails = nftService.getOfferDetails(nft.getHighestOffer().getId(), System.getProperty(Account.MINT.getENV()))
@@ -54,7 +56,7 @@ public class GetOfferDetailsTests extends BaseApiTests {
         assertNotNull(offerDetails.getSender());
     }
 
-    @Test(testName = "Get offer details - not found")
+    @Test(description = "Get offer details. Offer not found")
     public void getOfferDetailsNotFound() {
         CodeMessageResponse codeMessageResponse = nftService.getOfferDetails(nft.getId(), System.getProperty(Account.MINT.getENV()))
                 .shouldHave(Conditions.statusCode(HTTP_NOT_FOUND))
@@ -64,7 +66,7 @@ public class GetOfferDetailsTests extends BaseApiTests {
         assertEquals(codeMessageResponse.getMessage(), "Offer not found");
     }
 
-    @Test(testName = "Get offer details - unauthorized")
+    @Test(description = "Get offer details. Unauthorized")
     public void getOfferDetailsUnauthorized() {
         CodeMessageResponse codeMessageResponse = nftService.getOfferDetails(nft.getHighestOffer().getId(), null)
                 .shouldHave(Conditions.statusCode(HTTP_UNAUTHORIZED))

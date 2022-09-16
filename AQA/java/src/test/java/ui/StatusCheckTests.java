@@ -47,7 +47,7 @@ public class StatusCheckTests extends BaseUiTests {
         }
     }
 
-    @Test(testName = "Mint nft and check activity table")
+    @Test(description = "Mint nft and check activity table")
     public void mintStatus() {
         initMetamask(Account.MINT);
         HomePage homePage = new HomePage();

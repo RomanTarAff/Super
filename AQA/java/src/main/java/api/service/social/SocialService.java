@@ -6,11 +6,13 @@ import api.model.request.social.EditProfileRequest;
 import api.model.request.social.SearchSuggestionsRequest;
 import api.service.BaseApi;
 import api.util.assertions.AssertableResponse;
+import io.qameta.allure.Step;
 
 import java.util.Map;
 
 public class SocialService extends BaseApi {
 
+    @Step("Get my profile")
     public AssertableResponse getMyProfile(String token) {
         return new AssertableResponse(setupSocialSpec(token)
                 .get(SocialEndPoint.GET_MY_PROFILE));
@@ -22,6 +24,7 @@ public class SocialService extends BaseApi {
                 .get(SocialEndPoint.GET_PROFILE));
     }
 
+    @Step("Edit my profile")
     public AssertableResponse editProfile(EditProfileRequest request, String token) {
         return new AssertableResponse(setupSocialSpec(token)
                 .body(request)

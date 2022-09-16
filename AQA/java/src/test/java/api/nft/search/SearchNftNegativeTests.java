@@ -8,6 +8,7 @@ import api.enums.Status;
 import api.model.request.nft.SearchNftRequest;
 import api.model.response.CodeMessageResponse;
 import api.util.conditions.Conditions;
+import io.qameta.allure.Epic;
 import org.testng.annotations.Test;
 
 import java.util.List;
@@ -15,6 +16,7 @@ import java.util.List;
 import static java.net.HttpURLConnection.HTTP_FORBIDDEN;
 import static org.testng.Assert.assertEquals;
 
+@Epic("Search NFT negative")
 public class SearchNftNegativeTests extends BaseApiTests {
 
     @Test(testName = "Search nft without limit")
@@ -69,7 +71,7 @@ public class SearchNftNegativeTests extends BaseApiTests {
         assertEquals(codeMessageResponse.getPayload().getErrors().get(0), "data/search must NOT have more than 100 characters");
     }
 
-    @Test(testName = "Search nft invalid status")
+    @Test(testName = "Search nft. Invalid status")
     public void searchInvalidStatus() {
         SearchNftRequest search = SearchNftRequest.builder()
                 .search("Lesley")
@@ -87,7 +89,7 @@ public class SearchNftNegativeTests extends BaseApiTests {
         assertEquals(codeMessageResponse.getPayload().getErrors().get(0), "data/statuses/0 must be equal to one of the allowed values");
     }
 
-    @Test(testName = "Search nft invalid group")
+    @Test(testName = "Search nft. Invalid group")
     public void searchInvalidGroup() {
         SearchNftRequest search = SearchNftRequest.builder()
                 .search("Lesley")
@@ -105,7 +107,7 @@ public class SearchNftNegativeTests extends BaseApiTests {
         assertEquals(codeMessageResponse.getPayload().getErrors().get(0), "data/group must be equal to one of the allowed values");
     }
 
-    @Test(testName = "Search nft invalid sort")
+    @Test(testName = "Search nft. Invalid sort")
     public void searchInvalidSort() {
         SearchNftRequest search = SearchNftRequest.builder()
                 .search("Lesley")
@@ -123,7 +125,7 @@ public class SearchNftNegativeTests extends BaseApiTests {
         assertEquals(codeMessageResponse.getPayload().getErrors().get(0), "data/sort must be equal to one of the allowed values");
     }
 
-    @Test(testName = "Search nft invalid limit")
+    @Test(testName = "Search nft. Invalid limit")
     public void searchInvalidLimit() {
         SearchNftRequest search = SearchNftRequest.builder()
                 .search("Lesley")
@@ -141,7 +143,7 @@ public class SearchNftNegativeTests extends BaseApiTests {
         assertEquals(codeMessageResponse.getPayload().getErrors().get(0), "data/limit must be <= 120");
     }
 
-    @Test(testName = "Search nft empty search")
+    @Test(testName = "Search nft. Empty search")
     public void searchNftsEmptySearch() {
         SearchNftRequest search = SearchNftRequest.builder()
                 .search("")
@@ -159,7 +161,7 @@ public class SearchNftNegativeTests extends BaseApiTests {
         assertEquals(codeMessageResponse.getPayload().getErrors().get(0), "data/search must NOT have fewer than 3 characters");
     }
 
-    @Test(testName = "Search nft unauthorized")
+    @Test(testName = "Search nft. Unauthorized")
     public void searchNftsUnauthorized() {
         SearchNftRequest search = SearchNftRequest.builder()
                 .search("Lesley")

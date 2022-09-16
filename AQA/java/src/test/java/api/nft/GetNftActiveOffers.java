@@ -11,6 +11,7 @@ import api.model.response.nft.OffersListResponse;
 import api.model.response.nft.SearchNftResponse;
 import api.model.response.nft.SearchNftResponseList;
 import api.util.conditions.Conditions;
+import io.qameta.allure.Epic;
 import org.testng.annotations.Test;
 
 import java.util.List;
@@ -19,9 +20,10 @@ import static java.net.HttpURLConnection.*;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertNotNull;
 
+@Epic("Get active offers NFT")
 public class GetNftActiveOffers extends BaseApiTests {
 
-    @Test(testName = "Get NFT active offers")
+    @Test(description = "Get NFT active offers")
     public void getNftActiveOffers() {
 
         SearchNftRequest search = SearchNftRequest.builder()
@@ -56,7 +58,7 @@ public class GetNftActiveOffers extends BaseApiTests {
         });
     }
 
-    @Test(testName = "Get NFT active offers not found nft id")
+    @Test(description = "Get NFT active offers. NFT not found")
     public void getNftActiveOffersNotFoundNftId() {
         CodeMessageResponse codeMessageResponse = nftService.getNftActiveOffers(faker.internet().uuid(), System.getProperty(Account.MINT.getENV()))
                 .shouldHave(Conditions.statusCode(HTTP_NOT_FOUND))
@@ -65,7 +67,7 @@ public class GetNftActiveOffers extends BaseApiTests {
         assertEquals(codeMessageResponse.getMessage(), "NFT not found");
     }
 
-    @Test(testName = "Get NFT active offers invalid nft id")
+    @Test(description = "Get NFT active offers. NFT id invalid")
     public void getNftActiveOffersInvalidNftId() {
         CodeMessageResponse codeMessageResponse = nftService.getNftActiveOffers("435gvgf", System.getProperty(Account.MINT.getENV()))
                 .shouldHave(Conditions.statusCode(422))

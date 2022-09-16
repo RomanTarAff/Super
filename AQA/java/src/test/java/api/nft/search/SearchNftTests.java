@@ -10,6 +10,7 @@ import api.model.response.nft.SearchNftResponseList;
 import api.util.conditions.Conditions;
 import base.BaseTests;
 import com.google.common.collect.Ordering;
+import io.qameta.allure.Epic;
 import org.apache.log4j.Logger;
 import org.testng.annotations.Test;
 import util.DateHelper;
@@ -21,6 +22,7 @@ import java.util.stream.Collectors;
 import static java.net.HttpURLConnection.HTTP_OK;
 import static org.testng.Assert.*;
 
+@Epic("Search NFT")
 public class SearchNftTests extends BaseApiTests {
 
     private static final Logger log = Logger.getLogger(BaseTests.class);

@@ -7,6 +7,7 @@ import api.model.request.social.SocialLinks;
 import api.model.response.CodeMessageResponse;
 import api.model.response.social.CollectionSettingsResponse;
 import api.util.conditions.Conditions;
+import io.qameta.allure.Epic;
 import org.testng.annotations.Test;
 
 import java.util.List;
@@ -14,9 +15,10 @@ import java.util.List;
 import static java.net.HttpURLConnection.*;
 import static org.testng.Assert.assertEquals;
 
+@Epic("Get update collection settings")
 public class GetUpdateCollectionSettingsTests extends BaseApiTests {
 
-    @Test(testName = "Get collection settings")
+    @Test(description = "Get collection settings")
     public void getCollectionsSettings() {
 
         CollectionSettingsResponse collectionSettingsResponse = socialService
@@ -25,7 +27,7 @@ public class GetUpdateCollectionSettingsTests extends BaseApiTests {
                 .asClass(CollectionSettingsResponse.class);
     }
 
-    @Test(testName = "Get collection settings not access")
+    @Test(description = "Get collection settings. Not access")
     public void getCollectionsSettingsNotAccess() {
 
         CodeMessageResponse codeMessageResponse = socialService
@@ -37,7 +39,7 @@ public class GetUpdateCollectionSettingsTests extends BaseApiTests {
         assertEquals(codeMessageResponse.getMessage(), "Access denied");
     }
 
-    @Test(testName = "Get collection settings not valid id")
+    @Test(description = "Get collection settings. Invalid collection id")
     public void getCollectionsSettingsNotValidId() {
 
         CodeMessageResponse codeMessageResponse = socialService
@@ -50,7 +52,7 @@ public class GetUpdateCollectionSettingsTests extends BaseApiTests {
         assertEquals(codeMessageResponse.getPayload().getErrors().get(0), "data/id must match format \"uuid\"");
     }
 
-    @Test(testName = "Edit collection settings - all fields")
+    @Test(description = "Edit collection settings - all fields")
     public void editCollectionSettingsAllFields() {
 
         String name = faker.lorem().characters(5);
@@ -103,7 +105,7 @@ public class GetUpdateCollectionSettingsTests extends BaseApiTests {
         assertEquals(collectionSettingsResponse.getSocialLinks(), socialLinks);
     }
 
-    @Test(testName = "Edit collection settings - description length")
+    @Test(description = "Edit collection settings. Invalid description length")
     public void editCollectionSettingsDescriptionLength() {
 
         String description = faker.lorem().characters(1005);
@@ -123,7 +125,7 @@ public class GetUpdateCollectionSettingsTests extends BaseApiTests {
         assertEquals(codeMessageResponse.getPayload().getErrors().get(0), "data/data/description must NOT have more than 1000 characters");
     }
 
-    @Test(testName = "Edit collection settings - invalid website url")
+    @Test(description = "Edit collection settings. Invalid website url")
 
     public void editCollectionSettingsInvalidWebSiteUrl() {
 
@@ -143,7 +145,7 @@ public class GetUpdateCollectionSettingsTests extends BaseApiTests {
                 "data/data/websiteUrl must match pattern \"^((ftp|http|https):\\/\\/)?(www.)?(?!.*(ftp|http|https|www.))[a-zA-Z0-9_а-яА-ЯёЁ0-9%#$&@\\/_-]+(\\.[a-zA-Z0-9_а-яА-ЯёЁ0-9%#$&\\/_-]+)+((\\/)[\\w#]+)*(\\/\\w+\\?[a-zA-Z0-9_а-яА-ЯёЁ0-9%#$&\\/_-]+=\\w+(&[a-zA-Z0-9_а-яА-ЯёЁ0-9%#$&\\/_-]+=\\w+)*)?\\b([-a-zA-Z0-9()!@:%_+.~#?&\\/\\\\=]*)\"");
     }
 
-    @Test(testName = "Edit collection settings - invalid twitter")
+    @Test(description = "Edit collection settings. Invalid twitter")
     public void editCollectionSettingsInvalidTwitter() {
 
         SocialLinks socialLinks = SocialLinks
@@ -166,7 +168,7 @@ public class GetUpdateCollectionSettingsTests extends BaseApiTests {
         assertEquals(codeMessageResponse.getPayload().getErrors().get(0), "invalidTwitterLink link doesn't have domain");
     }
 
-    @Test(testName = "Edit collection settings - invalid linkedin")
+    @Test(description = "Edit collection settings. Invalid linkedin")
     public void editCollectionSettingsInvalidLinkedin() {
 
         SocialLinks socialLinks = SocialLinks
@@ -189,7 +191,7 @@ public class GetUpdateCollectionSettingsTests extends BaseApiTests {
         assertEquals(codeMessageResponse.getPayload().getErrors().get(0), "invalidLinkedInLink link doesn't have domain");
     }
 
-    @Test(testName = "Edit collection settings - invalid instagram")
+    @Test(description = "Edit collection settings. Invalid instagram")
     public void editCollectionSettingsInvalidInstagram() {
 
         SocialLinks socialLinks = SocialLinks
@@ -212,7 +214,7 @@ public class GetUpdateCollectionSettingsTests extends BaseApiTests {
         assertEquals(codeMessageResponse.getPayload().getErrors().get(0), "invalidInstagramLink link doesn't have domain");
     }
 
-    @Test(testName = "Edit collection settings - invalid youtube")
+    @Test(description = "Edit collection settings. Invalid youtube")
     public void editCollectionSettingsInvalidYoutube() {
 
         SocialLinks socialLinks = SocialLinks
@@ -235,7 +237,7 @@ public class GetUpdateCollectionSettingsTests extends BaseApiTests {
         assertEquals(codeMessageResponse.getPayload().getErrors().get(0), "invalidYoutubeLink link doesn't have domain");
     }
 
-    @Test(testName = "Edit collection settings - invalid twitch")
+    @Test(description = "Edit collection settings. Invalid twitch")
     public void editCollectionSettingsInvalidTwitch() {
 
         SocialLinks socialLinks = SocialLinks
@@ -258,7 +260,7 @@ public class GetUpdateCollectionSettingsTests extends BaseApiTests {
         assertEquals(codeMessageResponse.getPayload().getErrors().get(0), "invalidTwitchLink link doesn't have domain");
     }
 
-    @Test(testName = "Edit collection settings - invalid telegram")
+    @Test(description = "Edit collection settings. Invalid telegram")
     public void editCollectionSettingsInvalidTelegram() {
 
         SocialLinks socialLinks = SocialLinks
@@ -281,7 +283,7 @@ public class GetUpdateCollectionSettingsTests extends BaseApiTests {
         assertEquals(codeMessageResponse.getPayload().getErrors().get(0), "invalidTelegramLink link doesn't have domain");
     }
 
-    @Test(testName = "Edit collection settings - invalid snapchat")
+    @Test(description = "Edit collection settings. Invalid snapchat")
     public void editCollectionSettingsInvalidSnapchat() {
 
         SocialLinks socialLinks = SocialLinks
@@ -304,7 +306,7 @@ public class GetUpdateCollectionSettingsTests extends BaseApiTests {
         assertEquals(codeMessageResponse.getPayload().getErrors().get(0), "invalidSnapchatLink link doesn't have domain");
     }
 
-    @Test(testName = "Edit collection settings - invalid medium")
+    @Test(description = "Edit collection settings. Invalid medium")
     public void editCollectionSettingsInvalidMedium() {
 
         SocialLinks socialLinks = SocialLinks
@@ -327,7 +329,7 @@ public class GetUpdateCollectionSettingsTests extends BaseApiTests {
         assertEquals(codeMessageResponse.getPayload().getErrors().get(0), "invalidMediumLink link doesn't have domain");
     }
 
-    @Test(testName = "Edit collection settings - invalid facebook")
+    @Test(description = "Edit collection settings. Invalid facebook")
     public void editCollectionSettingsInvalidFacebook() {
 
         SocialLinks socialLinks = SocialLinks
@@ -350,7 +352,7 @@ public class GetUpdateCollectionSettingsTests extends BaseApiTests {
         assertEquals(codeMessageResponse.getPayload().getErrors().get(0), "invalidFacebookLink link doesn't have domain");
     }
 
-    @Test(testName = "Edit collection settings - unauthorized")
+    @Test(description = "Edit collection settings. Unauthorized")
     public void editCollectionSettingsUnauthorized() {
 
         CollectionSettingsRequest request = CollectionSettingsRequest
@@ -367,7 +369,7 @@ public class GetUpdateCollectionSettingsTests extends BaseApiTests {
         assertEquals(codeMessageResponse.getMessage(), "Unauthorized");
     }
 
-    @Test(testName = "Edit collection settings - not access")
+    @Test(description = "Edit collection settings. Not access")
     public void editCollectionSettingsNotAccess() {
 
         CollectionSettingsRequest request = CollectionSettingsRequest

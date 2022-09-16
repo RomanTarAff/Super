@@ -9,6 +9,7 @@ import api.model.response.nft.SearchNftResponse;
 import api.model.response.nft.SearchNftResponseList;
 import api.util.conditions.Conditions;
 import com.google.common.collect.Ordering;
+import io.qameta.allure.Epic;
 import org.testng.annotations.Test;
 import util.DateHelper;
 
@@ -18,11 +19,12 @@ import java.util.stream.Collectors;
 
 import static java.net.HttpURLConnection.HTTP_OK;
 
+@Epic("Search NFT in collection")
 public class SearchNftInCollectionTests extends BaseApiTests {
 
     private final String EJIK_COLLECTION_ID = "5e6ef1e3-be31-515d-9de5-07b2b89ff137";
 
-    @Test(testName = "Search nfts in random collection most recent")
+    @Test(description = "Search nfts in random collection most recent")
     public void searchInCollectionMostRecent() {
         SearchNftRequest search = SearchNftRequest.builder()
                 .collections(List.of(EJIK_COLLECTION_ID))
@@ -46,7 +48,7 @@ public class SearchNftInCollectionTests extends BaseApiTests {
         soft.assertAll();
     }
 
-    @Test(testName = "Search nfts in random collection most popular")
+    @Test(description = "Search nfts in random collection most popular")
     public void searchInCollectionMostPopular() {
         SearchNftRequest search = SearchNftRequest.builder()
                 .collections(List.of(EJIK_COLLECTION_ID))
@@ -70,7 +72,7 @@ public class SearchNftInCollectionTests extends BaseApiTests {
         soft.assertAll();
     }
 
-    @Test(testName = "Search nfts in random collection trending")
+    @Test(description = "Search nfts in random collection trending")
     public void searchInCollectionTrending() {
         SearchNftRequest search = SearchNftRequest.builder()
                 .collections(List.of(EJIK_COLLECTION_ID))
@@ -96,7 +98,7 @@ public class SearchNftInCollectionTests extends BaseApiTests {
 
     //todo price 2 tests
 
-    @Test(testName = "Search nfts in random collection on sale")
+    @Test(description = "Search nfts in random collection on sale")
     public void searchInCollectionOnSale() {
         SearchNftRequest search = SearchNftRequest.builder()
                 .collections(List.of(EJIK_COLLECTION_ID))
@@ -122,7 +124,7 @@ public class SearchNftInCollectionTests extends BaseApiTests {
         soft.assertAll();
     }
 
-    @Test(testName = "Search nfts in random collection has offers")
+    @Test(description = "Search nfts in random collection has offers")
     public void searchInCollectionHasOffers() {
         SearchNftRequest search = SearchNftRequest.builder()
                 .collections(List.of(EJIK_COLLECTION_ID))
@@ -148,7 +150,7 @@ public class SearchNftInCollectionTests extends BaseApiTests {
         soft.assertAll();
     }
 
-    @Test(testName = "Search nfts in random collection no offers")
+    @Test(description = "Search nfts in random collection no offers")
     public void searchInCollectionNoOffers() {
         SearchNftRequest search = SearchNftRequest.builder()
                 .collections(List.of(EJIK_COLLECTION_ID))
